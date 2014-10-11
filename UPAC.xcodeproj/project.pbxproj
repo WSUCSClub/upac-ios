@@ -345,6 +345,7 @@
 				INFOPLIST_FILE = UPAC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -355,6 +356,7 @@
 				INFOPLIST_FILE = UPAC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -411,6 +413,7 @@
 				20F50F6419E77D8200DBED9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		20F50F6519E77D8200DBED9A /* Build configuration list for PBXNativeTarget "UPACTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +422,7 @@
 				20F50F6719E77D8200DBED9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
