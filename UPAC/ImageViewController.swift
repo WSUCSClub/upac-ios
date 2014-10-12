@@ -1,18 +1,22 @@
 //
-//  FirstViewController.swift
+//  ImageViewController.swift
 //  UPAC
 //
-//  Created by Marquez, Richard A on 10/9/14.
+//  Created by Marquez, Richard A on 10/12/14.
 //  Copyright (c) 2014 wsu-cs-club. All rights reserved.
 //
 
+//TODO: Seque from GalleryViewController; show full-sized image view and back button
+
 import UIKit
 
-class FirstViewController: UIViewController {
+class ImageViewController: UIViewController {
+    @IBOutlet var img: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +24,4 @@ class FirstViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
 }
-

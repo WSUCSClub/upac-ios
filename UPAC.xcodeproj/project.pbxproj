@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		203397DD19EB02AA00114308 /* CollectionViewImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203397DC19EB02AA00114308 /* CollectionViewImageCell.swift */; };
+		208BBF1619E99FF600BC8F51 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208BBF1519E99FF600BC8F51 /* EventManager.swift */; };
+		208DF0E019EA132E00847186 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DF0DF19EA132E00847186 /* GalleryViewController.swift */; };
+		208DF0E219EA143000847186 /* DiscountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DF0E119EA143000847186 /* DiscountsViewController.swift */; };
+		208DF0E419EA2D4000847186 /* GalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DF0E319EA2D4000847186 /* GalleryManager.swift */; };
+		20D0446B19EB0C6A00A7795E /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D0446A19EB0C6A00A7795E /* ImageViewController.swift */; };
 		20F50F4719E77D8200DBED9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50F4619E77D8200DBED9A /* AppDelegate.swift */; };
-		20F50F4919E77D8200DBED9A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50F4819E77D8200DBED9A /* FirstViewController.swift */; };
-		20F50F4B19E77D8200DBED9A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50F4A19E77D8200DBED9A /* SecondViewController.swift */; };
+		20F50F4919E77D8200DBED9A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50F4819E77D8200DBED9A /* AboutViewController.swift */; };
+		20F50F4B19E77D8200DBED9A /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50F4A19E77D8200DBED9A /* EventsViewController.swift */; };
 		20F50F4E19E77D8200DBED9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20F50F4C19E77D8200DBED9A /* Main.storyboard */; };
 		20F50F5019E77D8200DBED9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20F50F4F19E77D8200DBED9A /* Images.xcassets */; };
 		20F50F5319E77D8200DBED9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20F50F5119E77D8200DBED9A /* LaunchScreen.xib */; };
@@ -27,11 +33,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		203397DC19EB02AA00114308 /* CollectionViewImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewImageCell.swift; sourceTree = "<group>"; };
+		208BBF1519E99FF600BC8F51 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		208DF0DF19EA132E00847186 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		208DF0E119EA143000847186 /* DiscountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountsViewController.swift; sourceTree = "<group>"; };
+		208DF0E319EA2D4000847186 /* GalleryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryManager.swift; sourceTree = "<group>"; };
+		20D0446A19EB0C6A00A7795E /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		20F50F4119E77D8200DBED9A /* UPAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UPAC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F50F4519E77D8200DBED9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20F50F4619E77D8200DBED9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		20F50F4819E77D8200DBED9A /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		20F50F4A19E77D8200DBED9A /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		20F50F4819E77D8200DBED9A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		20F50F4A19E77D8200DBED9A /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		20F50F4D19E77D8200DBED9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20F50F4F19E77D8200DBED9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		20F50F5219E77D8200DBED9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -79,12 +91,13 @@
 		20F50F4319E77D8200DBED9A /* UPAC */ = {
 			isa = PBXGroup;
 			children = (
+				20FD4B2519EB170400F8E049 /* View Controllers */,
+				20FD4B2419EB16F000F8E049 /* Models */,
+				20FD4B2619EB174D00F8E049 /* UI Components */,
 				20F50F4619E77D8200DBED9A /* AppDelegate.swift */,
-				20F50F4819E77D8200DBED9A /* FirstViewController.swift */,
-				20F50F4A19E77D8200DBED9A /* SecondViewController.swift */,
 				20F50F4C19E77D8200DBED9A /* Main.storyboard */,
-				20F50F4F19E77D8200DBED9A /* Images.xcassets */,
 				20F50F5119E77D8200DBED9A /* LaunchScreen.xib */,
+				20F50F4F19E77D8200DBED9A /* Images.xcassets */,
 				20F50F4419E77D8200DBED9A /* Supporting Files */,
 			);
 			path = UPAC;
@@ -113,6 +126,35 @@
 				20F50F5D19E77D8200DBED9A /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		20FD4B2419EB16F000F8E049 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				208BBF1519E99FF600BC8F51 /* EventManager.swift */,
+				208DF0E319EA2D4000847186 /* GalleryManager.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		20FD4B2519EB170400F8E049 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				20F50F4A19E77D8200DBED9A /* EventsViewController.swift */,
+				208DF0E119EA143000847186 /* DiscountsViewController.swift */,
+				208DF0DF19EA132E00847186 /* GalleryViewController.swift */,
+				20D0446A19EB0C6A00A7795E /* ImageViewController.swift */,
+				20F50F4819E77D8200DBED9A /* AboutViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		20FD4B2619EB174D00F8E049 /* UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				203397DC19EB02AA00114308 /* CollectionViewImageCell.swift */,
+			);
+			name = "UI Components";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,9 +257,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20F50F4B19E77D8200DBED9A /* SecondViewController.swift in Sources */,
+				208DF0E419EA2D4000847186 /* GalleryManager.swift in Sources */,
+				20F50F4B19E77D8200DBED9A /* EventsViewController.swift in Sources */,
+				20D0446B19EB0C6A00A7795E /* ImageViewController.swift in Sources */,
+				203397DD19EB02AA00114308 /* CollectionViewImageCell.swift in Sources */,
 				20F50F4719E77D8200DBED9A /* AppDelegate.swift in Sources */,
-				20F50F4919E77D8200DBED9A /* FirstViewController.swift in Sources */,
+				208DF0E019EA132E00847186 /* GalleryViewController.swift in Sources */,
+				208DF0E219EA143000847186 /* DiscountsViewController.swift in Sources */,
+				208BBF1619E99FF600BC8F51 /* EventManager.swift in Sources */,
+				20F50F4919E77D8200DBED9A /* AboutViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
