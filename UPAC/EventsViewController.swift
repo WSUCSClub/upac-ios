@@ -25,9 +25,11 @@ class EventsViewController: UITableViewController {
         return eventMgr.events.count
     }
 
+    // Set cell content
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("TableViewEventCell", forIndexPath: indexPath) as? UITableViewCell
 
+        //TODO: Manage image retrieve with URLs; override constructor? Update data model?
         (cell?.contentView.viewWithTag(1) as UIImageView).image = UIImage(named: eventMgr.events[indexPath.row].image)
         (cell?.contentView.viewWithTag(2) as UILabel).text = eventMgr.events[indexPath.row].title
         (cell?.contentView.viewWithTag(3) as UILabel).text = eventMgr.events[indexPath.row].location
@@ -36,6 +38,7 @@ class EventsViewController: UITableViewController {
         return cell!
     }
     
+    // On selection
     //TODO: Better method for showing details; accordion?
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let alert: UIAlertView = UIAlertView()

@@ -23,30 +23,32 @@ class GalleryViewController: UIViewController, UICollectionViewDelegateFlowLayou
         picsCollectionView!.registerClass(CollectionViewImageCell.self, forCellWithReuseIdentifier: "CollectionViewImageCell")
     }
     
-    // UICollectionViewDataSource
+    // Number of sections
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
+    // Size of list
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return galleryMgr.pics.count
     }
     
+    // Set cell content
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewImageCell", forIndexPath: indexPath) as CollectionViewImageCell
         
-        //cell.backgroundColor = UIColor.greenColor()
-        cell.imageView?.image = UIImage(named: galleryMgr.pics[indexPath.row].img)
+        cell.imageView?.image = UIImage(named: galleryMgr.pics[indexPath.row].src)
         
         return cell
     }
     
+    // On-selection functionality
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         // PLACEHOLDER--------
         let alert: UIAlertView = UIAlertView()
         let title = galleryMgr.pics[indexPath.row].description
         let date = NSDateFormatter.localizedStringFromDate(galleryMgr.pics[indexPath.row].date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.NoStyle)
-        let img = galleryMgr.pics[indexPath.row].img
+        let img = galleryMgr.pics[indexPath.row].src
         alert.title = title
         alert.message = "\(date)\n\(img)"
         alert.addButtonWithTitle("Ok")

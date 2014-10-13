@@ -10,16 +10,16 @@ import Foundation
 
 var galleryMgr = GalleryManager();
 
-struct Pic {
+struct Picture {
     var description: String
     var date: NSDate
     var url: NSURL
-    var img: String
+    var src: String
 }
 
 class GalleryManager {
     
-    var pics = [Pic]()    
+    var pics = [Picture]()
     
     init() {
         repopulateList()
@@ -27,30 +27,30 @@ class GalleryManager {
     
     func repopulateList() {
         //TODO: Populate list using Facebook Graph API
-        addPic("Lorem ipsum",
+        addPicture("Lorem ipsum",
             date: NSDate(),
             url: NSURL(string: "http://google.com"),
-            img: "spin")
-        addPic("Dolor sit amet",
+            src: "spin")
+        addPicture("Dolor sit amet",
             date: NSDate(),
             url: NSURL(string: "http://yahoo.com"),
-            img: "spin")
-        addPic("Lorem ipsum",
+            src: "spin")
+        addPicture("Lorem ipsum",
             date: NSDate(),
             url: NSURL(string: "http://google.com"),
-            img: "spin")
-        addPic("Dolor sit amet",
+            src: "spin")
+        addPicture("Dolor sit amet",
             date: NSDate(),
             url: NSURL(string: "http://yahoo.com"),
-            img: "scare")
-        addPic("Lorem ipsum",
+            src: "scare")
+        addPicture("Lorem ipsum",
             date: NSDate(),
             url: NSURL(string: "http://google.com"),
-            img: "scare")
+            src: "scare")
     }
     
-    private func addPic(description: String, date: NSDate, url: NSURL, img: String) {
-        pics.append(Pic(description: description, date: date, url: url, img: img))
+    private func addPicture(description: String, date: NSDate, url: NSURL, src: String) {
+        pics.append(Picture(description: description, date: date, url: url, src: src))
     }
     
 }
