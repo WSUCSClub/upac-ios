@@ -8,9 +8,9 @@
 
 import UIKit
 
-class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class EventsViewController: UITableViewController {
     
-    @IBOutlet var eventsTable: UITableView!
+    @IBOutlet var eventsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,35 +21,29 @@ class EventsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    // UITableViewDataSource
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return eventMgr.events.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Default")
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("TableViewEventCell", forIndexPath: indexPath) as? UITableViewCell
+
+        (cell?.contentView.viewWithTag(1) as UIImageView).image = UIImage(named: eventMgr.events[indexPath.row].image)
+        (cell?.contentView.viewWithTag(2) as UILabel).text = eventMgr.events[indexPath.row].title
+        (cell?.contentView.viewWithTag(3) as UILabel).text = eventMgr.events[indexPath.row].location
+        (cell?.contentView.viewWithTag(4) as UILabel).text = eventMgr.events[indexPath.row].dateStr.day
         
-        cell.textLabel?.text = eventMgr.events[indexPath.row].title
-        cell.detailTextLabel?.text = eventMgr.events[indexPath.row].location
-        
-        return cell
+        return cell!
     }
     
-    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    //TODO: Better method for showing details; accordion?
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let alert: UIAlertView = UIAlertView()
         
-        let title = eventMgr.events[indexPath.row].title
-        
-        let date = NSDateFormatter.localizedStringFromDate(eventMgr.events[indexPath.row].startDate, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.NoStyle)
-        
-        let startTime = NSDateFormatter.localizedStringFromDate(eventMgr.events[indexPath.row].startDate, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        let e = eventMgr.events[indexPath.row]
 
-        let endTime = NSDateFormatter.localizedStringFromDate(eventMgr.events[indexPath.row].endDate, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        
-        let time = "\(startTime)-\(endTime)"
-
-        alert.title = title
-        alert.message = "\(eventMgr.events[indexPath.row].location)\n\(date)\n\(time)\n\n\(eventMgr.events[indexPath.row].description)"
+        alert.title = e.title
+        alert.message = "\(e.location)\n\(e.dateStr.day)\n\(e.dateStr.startTime) - \(e.dateStr.endTime)\n\n\(e.description)"
         alert.addButtonWithTitle("Ok")
         alert.show()
     }

@@ -40,18 +40,10 @@ class DiscountsViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         let alert: UIAlertView = UIAlertView()
         
-        let title = eventMgr.events[indexPath.row].title
+        let e = eventMgr.events[indexPath.row]
         
-        let date = NSDateFormatter.localizedStringFromDate(eventMgr.events[indexPath.row].startDate, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.NoStyle)
-        
-        let startTime = NSDateFormatter.localizedStringFromDate(eventMgr.events[indexPath.row].startDate, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        
-        let endTime = NSDateFormatter.localizedStringFromDate(eventMgr.events[indexPath.row].endDate, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        
-        let time = "\(startTime)-\(endTime)"
-        
-        alert.title = title
-        alert.message = "\(eventMgr.events[indexPath.row].location)\n\(date)\n\(time)\n\n\(eventMgr.events[indexPath.row].description)"
+        alert.title = e.title
+        alert.message = "\(e.location)\n\(e.dateStr.day)\n\(e.dateStr.startTime) - \(e.dateStr.endTime)\n\n\(e.description)"
         alert.addButtonWithTitle("Ok")
         alert.show()
     }

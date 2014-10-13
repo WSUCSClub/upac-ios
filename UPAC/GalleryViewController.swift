@@ -35,7 +35,7 @@ class GalleryViewController: UIViewController, UICollectionViewDelegateFlowLayou
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewImageCell", forIndexPath: indexPath) as CollectionViewImageCell
         
-        cell.backgroundColor = UIColor.greenColor()
+        //cell.backgroundColor = UIColor.greenColor()
         cell.imageView?.image = UIImage(named: galleryMgr.pics[indexPath.row].img)
         
         return cell

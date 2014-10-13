@@ -12,13 +12,21 @@ import Foundation
 
 var eventMgr = EventManager();
 
+struct DateStr {
+    var day: String
+    var startTime: String
+    var endTime: String
+}
+
 //TODO: Add picture prop (:NSURL) if exists in FB API
 struct Event {
     var title: String
+    var image: String //TODO: Update to use NSURL
     var location: String
     var description: String
     var startDate: NSDate
     var endDate: NSDate
+    var dateStr: DateStr
 }
 
 class EventManager {
@@ -32,29 +40,39 @@ class EventManager {
     func repopulateList() {
         //TODO: Populate events list using Facebook Graph API
         addEvent("Dirty Dancing",
+            image: "spin",
             location: "Orpheum Theater - Minneapolis",
             description: "Lorem ipsum dolor sit amet",
             startDate: NSDate(),
             endDate: NSDate())
         addEvent("ValleyScare",
+            image: "scare",
             location: "ValleyFair - Shakopee",
             description: "Lorem ipsum dolor sit amet",
             startDate: NSDate(),
             endDate: NSDate())
         addEvent("$3 Bowling Night",
+            image: "scare",
             location: "Westgate Bowling Center",
             description: "Lorem ipsum dolor sit amet",
             startDate: NSDate(),
             endDate: NSDate())
         addEvent("Spin Magic",
+            image: "spin",
             location: "Gazebo / SAC",
             description: "Lorem ipsum dolor sit amet",
             startDate: NSDate(),
             endDate: NSDate())
     }
     
-    private func addEvent(title: String, location: String, description: String, startDate: NSDate, endDate: NSDate) {
-        events.append(Event(title: title, location: location, description: description, startDate: startDate, endDate: endDate))
+    private func addEvent(title: String, image: String, location: String, description: String, startDate: NSDate, endDate: NSDate) {
+        let day = NSDateFormatter.localizedStringFromDate(startDate, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.NoStyle)
+        let startTime = NSDateFormatter.localizedStringFromDate(startDate, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        let endTime = NSDateFormatter.localizedStringFromDate(endDate, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
+        
+        let dateStr = DateStr(day: day, startTime: startTime, endTime: endTime)
+        
+        events.append(Event(title: title, image: image, location: location, description: description, startDate: startDate, endDate: endDate, dateStr: dateStr))
     }
     
 }

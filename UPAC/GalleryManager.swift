@@ -30,23 +30,23 @@ class GalleryManager {
         addPic("Lorem ipsum",
             date: NSDate(),
             url: NSURL(string: "http://google.com"),
-            img: "icon")
+            img: "spin")
         addPic("Dolor sit amet",
             date: NSDate(),
             url: NSURL(string: "http://yahoo.com"),
-            img: "second")
+            img: "spin")
         addPic("Lorem ipsum",
             date: NSDate(),
             url: NSURL(string: "http://google.com"),
-            img: "first")
+            img: "spin")
         addPic("Dolor sit amet",
             date: NSDate(),
             url: NSURL(string: "http://yahoo.com"),
-            img: "second")
+            img: "scare")
         addPic("Lorem ipsum",
             date: NSDate(),
             url: NSURL(string: "http://google.com"),
-            img: "first")
+            img: "scare")
     }
     
     private func addPic(description: String, date: NSDate, url: NSURL, img: String) {

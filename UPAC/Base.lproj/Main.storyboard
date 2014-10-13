@@ -41,45 +41,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qqu-af-Otl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-822" y="-455"/>
-        </scene>
-        <!--Events-->
-        <scene sceneID="hNz-n2-bh7">
-            <objects>
-                <viewController title="Events" id="9pv-A4-QxB" customClass="EventsViewController" customModule="UPAC" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
-                        <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vlt-bO-iKY">
-                                <rect key="frame" x="16" y="20" width="568" height="523"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="cAP-tS-lQV"/>
-                                    <outlet property="delegate" destination="9pv-A4-QxB" id="mZv-am-vx3"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="vlt-bO-iKY" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="FJy-nb-PRZ"/>
-                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="vlt-bO-iKY" secondAttribute="bottom" constant="8" symbolic="YES" id="bMS-57-z5Q"/>
-                            <constraint firstItem="vlt-bO-iKY" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" id="jW9-VV-cHp"/>
-                            <constraint firstItem="vlt-bO-iKY" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" constant="20" symbolic="YES" id="uv7-jV-bg3"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Events" id="07O-mb-GnU"/>
-                    <connections>
-                        <outlet property="eventsTable" destination="vlt-bO-iKY" id="I5J-Bh-5vW"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1474" y="-455"/>
+            <point key="canvasLocation" x="-834" y="-455"/>
         </scene>
         <!--About-->
         <scene sceneID="wg7-f3-ORb">
@@ -115,7 +77,7 @@ Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sod
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="462" y="-455"/>
+            <point key="canvasLocation" x="450" y="-455"/>
         </scene>
         <!--Gallery-->
         <scene sceneID="8v2-BZ-hfZ">
@@ -170,7 +132,7 @@ Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sod
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0e-2R-aOM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-178" y="-455"/>
+            <point key="canvasLocation" x="-190" y="-455"/>
         </scene>
         <!--Image-->
         <scene sceneID="w31-DL-YKF">
@@ -202,7 +164,7 @@ Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sod
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VJv-oH-qU1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-178" y="229"/>
+            <point key="canvasLocation" x="-190" y="221"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -215,7 +177,7 @@ Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sod
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="bKV-Sp-8kV" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="cb9-yU-vyN" kind="relationship" relationship="viewControllers" id="LMX-8H-YfF"/>
                         <segue destination="zfH-H9-Bdq" kind="relationship" relationship="viewControllers" id="xHL-Oe-xaZ"/>
                         <segue destination="6Pr-7f-Ebl" kind="relationship" relationship="viewControllers" id="FI4-ao-hpW"/>
                         <segue destination="vmX-Jw-M4G" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
@@ -242,26 +204,80 @@ Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sod
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oqb-Uf-OCy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="462" y="-1138"/>
+            <point key="canvasLocation" x="450" y="-1138"/>
         </scene>
         <!--Events-->
-        <scene sceneID="Xb9-vt-ib2">
+        <scene sceneID="hny-Qi-jxg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bKV-Sp-8kV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" image="first" id="acW-dT-cKf"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Ni-KU-1te">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <tableViewController title="Events" id="kla-ku-gim" customClass="EventsViewController" customModule="UPAC" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" id="r3f-C7-1rI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewEventCell" rowHeight="85" id="LAH-7Q-HZs">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LAH-7Q-HZs" id="aMt-a3-uB7">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wsu_text" translatesAutoresizingMaskIntoConstraints="NO" id="8pb-gU-wcN">
+                                            <rect key="frame" x="13" y="7" width="75" height="75"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="75" id="9Ne-iF-g3N"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHX-X4-N13">
+                                            <rect key="frame" x="105" y="7" width="416" height="25"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5lb-LP-b9F">
+                                            <rect key="frame" x="105" y="32" width="483" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbZ-0c-jsD">
+                                            <rect key="frame" x="105" y="51" width="483" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="8pb-gU-wcN" firstAttribute="top" secondItem="PHX-X4-N13" secondAttribute="top" id="6jK-xs-cd7"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="5lb-LP-b9F" secondAttribute="bottom" constant="24" id="Bs4-1e-K9k"/>
+                                        <constraint firstItem="SbZ-0c-jsD" firstAttribute="leading" secondItem="5lb-LP-b9F" secondAttribute="leading" id="CQX-jI-iqA"/>
+                                        <constraint firstItem="PHX-X4-N13" firstAttribute="leading" secondItem="8pb-gU-wcN" secondAttribute="trailing" constant="17" id="EHT-dI-ZAZ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="5lb-LP-b9F" secondAttribute="trailing" constant="4" id="aCi-jV-XUv"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="PHX-X4-N13" secondAttribute="trailing" constant="71" id="ber-9q-7TK"/>
+                                        <constraint firstItem="8pb-gU-wcN" firstAttribute="top" secondItem="aMt-a3-uB7" secondAttribute="topMargin" constant="-1" id="brJ-ac-7Zd"/>
+                                        <constraint firstItem="5lb-LP-b9F" firstAttribute="top" secondItem="PHX-X4-N13" secondAttribute="bottom" id="c5C-Vc-CWo"/>
+                                        <constraint firstItem="5lb-LP-b9F" firstAttribute="centerY" secondItem="aMt-a3-uB7" secondAttribute="centerY" id="eNU-3z-fvQ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="8pb-gU-wcN" secondAttribute="bottom" constant="-6" id="ekU-oS-nBJ"/>
+                                        <constraint firstItem="8pb-gU-wcN" firstAttribute="leading" secondItem="aMt-a3-uB7" secondAttribute="leadingMargin" constant="5" id="iGm-33-6wu"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="SbZ-0c-jsD" secondAttribute="bottom" constant="5" id="mNM-9c-9bu"/>
+                                        <constraint firstItem="SbZ-0c-jsD" firstAttribute="trailing" secondItem="5lb-LP-b9F" secondAttribute="trailing" id="pRs-M1-nz9"/>
+                                        <constraint firstItem="SbZ-0c-jsD" firstAttribute="top" secondItem="PHX-X4-N13" secondAttribute="bottom" constant="19" id="wcY-c4-Obi"/>
+                                        <constraint firstItem="PHX-X4-N13" firstAttribute="leading" secondItem="5lb-LP-b9F" secondAttribute="leading" id="zxW-Gv-cnM"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kla-ku-gim" id="Ik2-ap-9so"/>
+                            <outlet property="delegate" destination="kla-ku-gim" id="ONi-Ho-f4c"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Events" id="eg9-Ah-TfO"/>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="zah-vG-9km"/>
+                        <outlet property="eventsTableView" destination="r3f-C7-1rI" id="pLd-rx-JbB"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="I9p-bO-fBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lVX-Kb-5fQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1474" y="-1138"/>
+            <point key="canvasLocation" x="-1474" y="-462"/>
         </scene>
         <!--Discounts-->
         <scene sceneID="0eH-iO-h1N">
@@ -283,7 +299,7 @@ Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sod
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ChC-8y-bfL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-822" y="-1138"/>
+            <point key="canvasLocation" x="-834" y="-1138"/>
         </scene>
         <!--Gallery-->
         <scene sceneID="ieg-mM-XeP">
@@ -302,11 +318,31 @@ Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sod
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cwx-JN-edW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-178" y="-1138"/>
+            <point key="canvasLocation" x="-190" y="-1138"/>
+        </scene>
+        <!--Events-->
+        <scene sceneID="Hyv-Cq-U2A">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cb9-yU-vyN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Events" image="first" id="0pf-U1-xAi"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="K0x-sx-kS7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kla-ku-gim" kind="relationship" relationship="rootViewController" id="Djk-ZA-Pas"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dqh-z2-olc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1474" y="-1138"/>
         </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
+        <image name="wsu_text" width="211" height="67"/>
     </resources>
 </document>

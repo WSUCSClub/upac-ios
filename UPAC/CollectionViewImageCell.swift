@@ -19,7 +19,9 @@ class CollectionViewImageCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        imageView = UIImageView(frame: CGRect(x: 5, y: 5, width: frame.size.width - 10, height: frame.size.height - 10))
+        backgroundColor = UIColor.lightGrayColor()
+
+        imageView = UIImageView(frame: CGRect(x: 3, y: 3, width: frame.size.width - 6, height: frame.size.height - 6))
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         contentView.addSubview(imageView)
     }
