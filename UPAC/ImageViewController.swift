@@ -11,12 +11,13 @@
 import UIKit
 
 class ImageViewController: UIViewController {
-    @IBOutlet var img: UIImageView!
+    @IBOutlet var fullImage: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //TODO: get image from presented view controller
+        fullImage.image = UIImage(named: "spin")
     }
 
     override func didReceiveMemoryWarning() {
