@@ -44,18 +44,8 @@ class GalleryViewController: UIViewController, UICollectionViewDelegateFlowLayou
     
     // On-selection functionality
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        // PLACEHOLDER--------
-        let alert: UIAlertView = UIAlertView()
-        let title = galleryMgr.pics[indexPath.row].description
-        let date = NSDateFormatter.localizedStringFromDate(galleryMgr.pics[indexPath.row].date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.NoStyle)
-        let img = galleryMgr.pics[indexPath.row].src
-        alert.title = title
-        alert.message = "\(date)\n\(img)"
-        alert.addButtonWithTitle("Ok")
-        alert.show()
-        // --------------------
-        
         //TODO: Switch to new view showing full-sized image
+        self.presentViewController(ImageViewController(), animated: true, completion: nil)
     }
 
 }

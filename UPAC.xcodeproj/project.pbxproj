@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		203397DD19EB02AA00114308 /* CollectionViewImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203397DC19EB02AA00114308 /* CollectionViewImageCell.swift */; };
+		205F54B119F1E71E00284E05 /* Raffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205F54B019F1E71E00284E05 /* Raffle.swift */; };
+		205F54B319F1EC0400284E05 /* UML.xml in Resources */ = {isa = PBXBuildFile; fileRef = 205F54B219F1EC0400284E05 /* UML.xml */; };
 		208BBF1619E99FF600BC8F51 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208BBF1519E99FF600BC8F51 /* EventManager.swift */; };
 		208DF0E019EA132E00847186 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DF0DF19EA132E00847186 /* GalleryViewController.swift */; };
-		208DF0E219EA143000847186 /* DiscountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DF0E119EA143000847186 /* DiscountsViewController.swift */; };
+		208DF0E219EA143000847186 /* RaffleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DF0E119EA143000847186 /* RaffleViewController.swift */; };
 		208DF0E419EA2D4000847186 /* GalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DF0E319EA2D4000847186 /* GalleryManager.swift */; };
 		20D0446B19EB0C6A00A7795E /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D0446A19EB0C6A00A7795E /* ImageViewController.swift */; };
+		20D647B219ED9607007E8D1C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D647B119ED9607007E8D1C /* FacebookSDK.framework */; };
+		20D647B719ED972A007E8D1C /* FBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D647B619ED972A007E8D1C /* FBHelper.swift */; };
 		20F50F4719E77D8200DBED9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50F4619E77D8200DBED9A /* AppDelegate.swift */; };
 		20F50F4919E77D8200DBED9A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50F4819E77D8200DBED9A /* AboutViewController.swift */; };
 		20F50F4B19E77D8200DBED9A /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50F4A19E77D8200DBED9A /* EventsViewController.swift */; };
@@ -34,11 +38,16 @@
 
 /* Begin PBXFileReference section */
 		203397DC19EB02AA00114308 /* CollectionViewImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewImageCell.swift; sourceTree = "<group>"; };
+		205F54B019F1E71E00284E05 /* Raffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Raffle.swift; sourceTree = "<group>"; };
+		205F54B219F1EC0400284E05 /* UML.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = UML.xml; path = UPAC/UML.xml; sourceTree = "<group>"; };
 		208BBF1519E99FF600BC8F51 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		208DF0DF19EA132E00847186 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
-		208DF0E119EA143000847186 /* DiscountsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountsViewController.swift; sourceTree = "<group>"; };
+		208DF0E119EA143000847186 /* RaffleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaffleViewController.swift; sourceTree = "<group>"; };
 		208DF0E319EA2D4000847186 /* GalleryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryManager.swift; sourceTree = "<group>"; };
 		20D0446A19EB0C6A00A7795E /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		20D647B119ED9607007E8D1C /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		20D647B319ED967B007E8D1C /* UPAC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UPAC-Bridging-Header.h"; sourceTree = "<group>"; };
+		20D647B619ED972A007E8D1C /* FBHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBHelper.swift; sourceTree = "<group>"; };
 		20F50F4119E77D8200DBED9A /* UPAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UPAC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F50F4519E77D8200DBED9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20F50F4619E77D8200DBED9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20D647B219ED9607007E8D1C /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +83,7 @@
 		20F50F3819E77D8200DBED9A = {
 			isa = PBXGroup;
 			children = (
+				205F54B219F1EC0400284E05 /* UML.xml */,
 				20F50F4319E77D8200DBED9A /* UPAC */,
 				20F50F5B19E77D8200DBED9A /* UPACTests */,
 				20F50F4219E77D8200DBED9A /* Products */,
@@ -97,6 +108,8 @@
 				20F50F4619E77D8200DBED9A /* AppDelegate.swift */,
 				20F50F4C19E77D8200DBED9A /* Main.storyboard */,
 				20F50F5119E77D8200DBED9A /* LaunchScreen.xib */,
+				20D647B319ED967B007E8D1C /* UPAC-Bridging-Header.h */,
+				20D647B119ED9607007E8D1C /* FacebookSDK.framework */,
 				20F50F4F19E77D8200DBED9A /* Images.xcassets */,
 				20F50F4419E77D8200DBED9A /* Supporting Files */,
 			);
@@ -133,6 +146,8 @@
 			children = (
 				208BBF1519E99FF600BC8F51 /* EventManager.swift */,
 				208DF0E319EA2D4000847186 /* GalleryManager.swift */,
+				20D647B619ED972A007E8D1C /* FBHelper.swift */,
+				205F54B019F1E71E00284E05 /* Raffle.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -141,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				20F50F4A19E77D8200DBED9A /* EventsViewController.swift */,
-				208DF0E119EA143000847186 /* DiscountsViewController.swift */,
+				208DF0E119EA143000847186 /* RaffleViewController.swift */,
 				208DF0DF19EA132E00847186 /* GalleryViewController.swift */,
 				20D0446A19EB0C6A00A7795E /* ImageViewController.swift */,
 				20F50F4819E77D8200DBED9A /* AboutViewController.swift */,
@@ -237,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				205F54B319F1EC0400284E05 /* UML.xml in Resources */,
 				20F50F4E19E77D8200DBED9A /* Main.storyboard in Resources */,
 				20F50F5319E77D8200DBED9A /* LaunchScreen.xib in Resources */,
 				20F50F5019E77D8200DBED9A /* Images.xcassets in Resources */,
@@ -258,12 +274,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				208DF0E419EA2D4000847186 /* GalleryManager.swift in Sources */,
+				20D647B719ED972A007E8D1C /* FBHelper.swift in Sources */,
 				20F50F4B19E77D8200DBED9A /* EventsViewController.swift in Sources */,
 				20D0446B19EB0C6A00A7795E /* ImageViewController.swift in Sources */,
 				203397DD19EB02AA00114308 /* CollectionViewImageCell.swift in Sources */,
 				20F50F4719E77D8200DBED9A /* AppDelegate.swift in Sources */,
+				205F54B119F1E71E00284E05 /* Raffle.swift in Sources */,
 				208DF0E019EA132E00847186 /* GalleryViewController.swift in Sources */,
-				208DF0E219EA143000847186 /* DiscountsViewController.swift in Sources */,
+				208DF0E219EA143000847186 /* RaffleViewController.swift in Sources */,
 				208BBF1619E99FF600BC8F51 /* EventManager.swift in Sources */,
 				20F50F4919E77D8200DBED9A /* AboutViewController.swift in Sources */,
 			);
@@ -390,9 +408,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/rmarquez14/Code/FacebookSDK,
+				);
 				INFOPLIST_FILE = UPAC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UPAC/UPAC-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -401,9 +426,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/rmarquez14/Code/FacebookSDK,
+				);
 				INFOPLIST_FILE = UPAC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UPAC/UPAC-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

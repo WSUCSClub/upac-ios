@@ -27,6 +27,7 @@ struct Event {
     var startDate: NSDate
     var endDate: NSDate
     var dateStr: DateStr
+    var raffle: Raffle
 }
 
 class EventManager {
@@ -44,35 +45,39 @@ class EventManager {
             location: "Orpheum Theater - Minneapolis",
             description: "Lorem ipsum dolor sit amet",
             startDate: NSDate(),
-            endDate: NSDate())
+            endDate: NSDate(),
+            raffle: Raffle())
         addEvent("ValleyScare",
             image: "scare",
             location: "ValleyFair - Shakopee",
             description: "Lorem ipsum dolor sit amet",
             startDate: NSDate(),
-            endDate: NSDate())
+            endDate: NSDate(),
+            raffle: Raffle())
         addEvent("$3 Bowling Night",
             image: "scare",
             location: "Westgate Bowling Center",
             description: "Lorem ipsum dolor sit amet",
             startDate: NSDate(),
-            endDate: NSDate())
+            endDate: NSDate(),
+            raffle: Raffle())
         addEvent("Spin Magic",
             image: "spin",
             location: "Gazebo / SAC",
             description: "Lorem ipsum dolor sit amet",
             startDate: NSDate(),
-            endDate: NSDate())
+            endDate: NSDate(),
+            raffle: Raffle())
     }
     
-    private func addEvent(title: String, image: String, location: String, description: String, startDate: NSDate, endDate: NSDate) {
+    private func addEvent(title: String, image: String, location: String, description: String, startDate: NSDate, endDate: NSDate, raffle: Raffle) {
         let day = NSDateFormatter.localizedStringFromDate(startDate, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.NoStyle)
         let startTime = NSDateFormatter.localizedStringFromDate(startDate, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         let endTime = NSDateFormatter.localizedStringFromDate(endDate, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
         
         let dateStr = DateStr(day: day, startTime: startTime, endTime: endTime)
         
-        events.append(Event(title: title, image: image, location: location, description: description, startDate: startDate, endDate: endDate, dateStr: dateStr))
+        events.append(Event(title: title, image: image, location: location, description: description, startDate: startDate, endDate: endDate, dateStr: dateStr, raffle: raffle))
     }
     
 }
