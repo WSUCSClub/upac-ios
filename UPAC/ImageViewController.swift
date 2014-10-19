@@ -12,13 +12,14 @@ import UIKit
 
 class ImageViewController: UIViewController {
     @IBOutlet var fullImage: UIImageView!
-    var imgId = 0
+    
+    var image:Picture!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //TODO: get image from presented view controller
-        fullImage.image = UIImage(named: galleryMgr.pics[imgId].src)
+        fullImage.image = UIImage(named: image.src)
     }
 
     override func didReceiveMemoryWarning() {

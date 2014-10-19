@@ -31,7 +31,7 @@ class RaffleViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("TableViewRaffleCell", forIndexPath: indexPath) as UITableViewCell
         
-        (cell.contentView.viewWithTag(1) as UILabel).text = eventMgr.events[indexPath.row].title
+        (cell.contentView.viewWithTag(1) as UILabel).text = eventMgr.events[indexPath.row].name
         (cell.contentView.viewWithTag(2) as UILabel).text = eventMgr.events[indexPath.row].raffle.timeRemaining()
         (cell.contentView.viewWithTag(3) as UIButton).setTitle("Enter", forState: .Normal)
         
@@ -45,7 +45,7 @@ class RaffleViewController: UITableViewController {
         
         let e = eventMgr.events[indexPath.row]
         
-        alert.title = e.title
+        alert.title = e.name
         alert.message = "\(e.location)\n\(e.dateStr.day)\n\(e.dateStr.startTime) - \(e.dateStr.endTime)\n\n\(e.description)"
         alert.addButtonWithTitle("Ok")
         alert.show()

@@ -45,9 +45,10 @@ class GalleryViewController: UICollectionViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "FullImageView") {
             var destinationView:ImageViewController = segue.destinationViewController as ImageViewController
+            
             var indexPath:NSIndexPath = self.picsCollectionView.indexPathForCell(sender as UICollectionViewCell)!
             
-            destinationView.imgId = galleryMgr.pics[indexPath.row].id
+            destinationView.image = galleryMgr.pics[indexPath.row]
         }
     }
     

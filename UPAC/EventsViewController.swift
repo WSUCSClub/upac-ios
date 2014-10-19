@@ -29,27 +29,36 @@ class EventsViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("TableViewEventCell", forIndexPath: indexPath) as UITableViewCell
 
-        //TODO: Manage image retrieve with URLs; override constructor? Update data model?
-        (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(named: eventMgr.events[indexPath.row].image)
-        (cell.contentView.viewWithTag(2) as UILabel).text = eventMgr.events[indexPath.row].title
-        (cell.contentView.viewWithTag(3) as UILabel).text = eventMgr.events[indexPath.row].location
-        (cell.contentView.viewWithTag(4) as UILabel).text = eventMgr.events[indexPath.row].dateStr.day
+        var e = eventMgr.events[indexPath.row]
+        
+        (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(named: e.image)
+        (cell.contentView.viewWithTag(2) as UILabel).text = e.name
+        (cell.contentView.viewWithTag(3) as UILabel).text = e.location
+        (cell.contentView.viewWithTag(4) as UILabel).text = e.dateStr.day
         
         return cell
     }
     
-    // On selection
-    //TODO: Better method for showing details; accordion?
+    // On selection functionality
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        /*
         let alert: UIAlertView = UIAlertView()
-        
         let e = eventMgr.events[indexPath.row]
-
         alert.title = e.title
         alert.message = "\(e.location)\n\(e.dateStr.day)\n\(e.dateStr.startTime) - \(e.dateStr.endTime)\n\n\(e.description)"
         alert.addButtonWithTitle("Ok")
         alert.show()
+        */
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "EventDetailView") {
+            var destinationView:EventDetailViewController = segue.destinationViewController as EventDetailViewController
+            
+            var indexPath:NSIndexPath = self.eventsTableView.indexPathForCell(sender as UITableViewCell)!
+            
+            destinationView.event = eventMgr.events[indexPath.row]
+        }
     }
 
 }
-
