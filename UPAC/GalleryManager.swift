@@ -11,6 +11,7 @@ import Foundation
 var galleryMgr = GalleryManager();
 
 struct Picture {
+    var id: Int
     var description: String
     var date: NSDate
     var url: NSURL
@@ -50,7 +51,7 @@ class GalleryManager {
     }
     
     private func addPicture(description: String, date: NSDate, url: NSURL, src: String) {
-        pics.append(Picture(description: description, date: date, url: url, src: src))
+        pics.append(Picture(id: pics.count, description: description, date: date, url: url, src: src))
     }
     
 }

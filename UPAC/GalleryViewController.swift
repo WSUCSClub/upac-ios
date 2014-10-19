@@ -22,7 +22,7 @@ class GalleryViewController: UICollectionViewController {
         return 1
     }
     
-    // Size of list
+    // Size of sections
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return galleryMgr.pics.count
     }
@@ -38,7 +38,18 @@ class GalleryViewController: UICollectionViewController {
     
     // On-selection functionality
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        //self.presentViewController(AboutViewController(), animated: true, completion: nil)
+        //self.presentViewController(ImageViewController(), animated: true, completion: nil)
     }
 
+    // Pass data to next view
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "FullImageView") {
+            var destinationView:ImageViewController = segue.destinationViewController as ImageViewController
+            var indexPath:NSIndexPath = self.picsCollectionView.indexPathForCell(sender as UICollectionViewCell)!
+            
+            destinationView.imgId = galleryMgr.pics[indexPath.row].id
+        }
+    }
+    
+    
 }

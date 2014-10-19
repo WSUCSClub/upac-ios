@@ -12,12 +12,13 @@ import UIKit
 
 class ImageViewController: UIViewController {
     @IBOutlet var fullImage: UIImageView!
+    var imgId = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //TODO: get image from presented view controller
-        fullImage.image = UIImage(named: "spin")
+        fullImage.image = UIImage(named: galleryMgr.pics[imgId].src)
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,4 +26,7 @@ class ImageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func backAction(sender:AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
