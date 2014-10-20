@@ -51,7 +51,7 @@ class EventManager {
             description: "Lorem ipsum dolor sit amet",
             startDate: NSDate(),
             endDate: NSDate(),
-            raffle: Raffle())
+            raffle: Raffle(startTime: NSDate(), endTime: NSDate()))
         addEvent("jf8929",
             name: "ValleyScare",
             image: "scare",
@@ -59,7 +59,7 @@ class EventManager {
             description: "Lorem ipsum dolor sit amet",
             startDate: NSDate(),
             endDate: NSDate(),
-            raffle: Raffle())
+            raffle: Raffle(startTime: NSDate(), endTime: NSDate()))
         addEvent("klj298",
             name: "$3 Bowling Night",
             image: "scare",
@@ -67,7 +67,7 @@ class EventManager {
             description: "Lorem ipsum dolor sit amet",
             startDate: NSDate(),
             endDate: NSDate(),
-            raffle: Raffle())
+            raffle: Raffle(startTime: NSDate(), endTime: NSDate()))
         addEvent("owii8201",
             name: "Spin Magic",
             image: "spin",
@@ -75,7 +75,7 @@ class EventManager {
             description: "Lorem ipsum dolor sit amet",
             startDate: NSDate(),
             endDate: NSDate(),
-            raffle: Raffle())
+            raffle: Raffle(startTime: NSDate(), endTime: NSDate()))
     }
     
     private func addEvent(id: String, name: String, image: String, location: String, description: String, startDate: NSDate, endDate: NSDate, raffle: Raffle) {

@@ -10,42 +10,34 @@
 import Foundation
 
 struct Entry {
-    var code = Int()
+    var code = Double()
     
     init() {
         code = generateCode()
     }
 
-    func generateCode() -> Int {
-        //generate random code
-        return 1
+    func generateCode() -> Double {
+        //generate RANDOM code
+        return NSDate().timeIntervalSince1970
     }
 }
 
 class Raffle {
-    var entries = [Entry]()
-    var startTime = NSDate()
-    var endTime = NSDate()
+    var timeRemaining = String()
     
-    init() {
-        //
+    init(startTime: NSDate, endTime:NSDate) {
+        timeRemaining = findTimeRemaining(startTime, endTime: endTime)
     }
     
-    func addEntry(entry:Entry) {
-        //generate code
+    func addEntry() -> Entry{
+        var entry = Entry()
+        
         //push to parse
+        
+        return entry
     }
     
-    func generateCode() {
-        // generate a unique code
-    }
-    
-    func pickWinner() {
-        //pull entries from parse
-        //pick entry from list
-    }
-    
-    func timeRemaining() -> String{
+    private func findTimeRemaining(startTime: NSDate, endTime:NSDate) -> String{
         return "endTime - startTime"
     }
 }

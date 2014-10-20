@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 wsu-cs-club. All rights reserved.
 //
 
-//TODO: Implement
-
 import UIKit
 
 class RaffleViewController: UITableViewController {
@@ -32,14 +30,13 @@ class RaffleViewController: UITableViewController {
         var cell = tableView.dequeueReusableCellWithIdentifier("TableViewRaffleCell", forIndexPath: indexPath) as UITableViewCell
         
         (cell.contentView.viewWithTag(1) as UILabel).text = eventMgr.events[indexPath.row].name
-        (cell.contentView.viewWithTag(2) as UILabel).text = eventMgr.events[indexPath.row].raffle.timeRemaining()
+        (cell.contentView.viewWithTag(2) as UILabel).text = eventMgr.events[indexPath.row].raffle.timeRemaining
         (cell.contentView.viewWithTag(3) as UIButton).setTitle("Enter", forState: .Normal)
         
         return cell
     }
     
     // On selection
-    //TODO: Better method for showing details; accordion?
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let alert: UIAlertView = UIAlertView()
         

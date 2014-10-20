@@ -1,0 +1,60 @@
+UI
+----
+* make it not terrible ("iOS Human Interface Guidelines")
+* resolve all auto-layout warnings
+* implement color scheme
+* create tab bar icons (events, raffle, gallery, about) (flat black png's)
+* new app icon set with UPAC logo (Photoshop smart template; makeappicon.com)
+
+
+Events
+----
+* fetch from Facebook
+* fetch raffles from Parse
+* cache with Core Data
+* connect "enter raffle" button in detail view w/ a Raffle IBAction
+* changle bg color of table cell if raffle exists
+* only show button in event detail view if raffle exist
+* event notifications
+
+
+Raffles
+----
+* separate page needed???
+* random code generator
+* push raffle entries to Parse
+
+
+Gallery
+----
+* fetch from Facebook
+* cache with Core Data
+* overlay image description, date
+* make image use entire view
+* pinch-zoom
+
+
+About
+----
+* use real description
+* add staff directory
+
+
+Settings
+----
+* Create page in iOS Settings app
+* event notifications
+
+
+Administration
+----
+* separate, unpublished app??
+
+
+Miscellaneous
+----
+* ERROR CHECKING!!!!
+* FBHelper object for managing connections/sessions
+* ParseHelper object for managing connections/sessions
+* add ability to swipe between main views
+

@@ -279,7 +279,7 @@ Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sod
                     </view>
                     <connections>
                         <outlet property="date" destination="Vhe-a1-88q" id="zdi-pU-ZJw"/>
-                        <outlet property="desc" destination="bfG-Y6-3er" id="1aq-mh-cWj"/>
+                        <outlet property="desc" destination="bfG-Y6-3er" id="Lva-mN-J3m"/>
                         <outlet property="image" destination="KbK-KM-QGY" id="dcD-lo-Mff"/>
                         <outlet property="location" destination="sJ3-n9-SA4" id="Bt7-fM-OUL"/>
                         <outlet property="name" destination="hjR-4F-Zj6" id="j1v-eE-gPA"/>
