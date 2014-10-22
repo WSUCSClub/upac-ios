@@ -23,15 +23,13 @@ class EventDetailViewController: UIViewController {
         image.image = UIImage(named: event.image) //TODO: Update for URLs
         name.text = event.name
         location.text = event.location
-        date.text = "\(event.dateStr.day) @ \(event.dateStr.startTime) - \(event.dateStr.endTime)"
+        date.text = "\(event.startDate.dayStr()) @ \(event.startDate.timeStr()) - \(event.endDate.timeStr())"
         desc.text = event.description
-
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated
     }
-
     
 }

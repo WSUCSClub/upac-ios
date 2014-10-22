@@ -10,8 +10,7 @@
 import UIKit
 
 class GalleryViewController: UICollectionViewController {
-    
-    @IBOutlet var picsCollectionView: UICollectionView!
+    @IBOutlet var picturesCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +23,14 @@ class GalleryViewController: UICollectionViewController {
     
     // Size of sections
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return galleryMgr.pics.count
+        return galleryMgr.pictures.count
     }
     
     // Set cell content
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewImageCell", forIndexPath: indexPath) as UICollectionViewCell
         
-        (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(named: galleryMgr.pics[indexPath.row].src)
+        (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(named: galleryMgr.pictures[indexPath.row].src)
         
         return cell
     }
@@ -46,9 +45,9 @@ class GalleryViewController: UICollectionViewController {
         if (segue.identifier == "FullImageView") {
             var destinationView:ImageViewController = segue.destinationViewController as ImageViewController
             
-            var indexPath:NSIndexPath = self.picsCollectionView.indexPathForCell(sender as UICollectionViewCell)!
+            var indexPath:NSIndexPath = self.picturesCollectionView.indexPathForCell(sender as UICollectionViewCell)!
             
-            destinationView.image = galleryMgr.pics[indexPath.row]
+            destinationView.picture = galleryMgr.pictures[indexPath.row]
         }
     }
     

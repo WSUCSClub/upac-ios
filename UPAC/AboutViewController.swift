@@ -6,12 +6,11 @@
 //  Copyright (c) 2014 wsu-cs-club. All rights reserved.
 //
 
-//TODO: Add TableCollectionView of staff? Google Docs spreadsheet?
+//TODO: Add staff directory
 
 import UIKit
 
 class AboutViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

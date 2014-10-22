@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 wsu-cs-club. All rights reserved.
 //
 
-//TODO: implement
 import Foundation
 
 struct Entry {
@@ -17,19 +16,24 @@ struct Entry {
     }
 
     func generateCode() -> Double {
-        //generate RANDOM code
+        //TODO: generate RANDOM code
         return NSDate().timeIntervalSince1970
     }
 }
 
 class Raffle {
+    var startTime: NSDate
+    var endTime: NSDate
     var timeRemaining = String()
     
     init(startTime: NSDate, endTime:NSDate) {
+        self.startTime = startTime
+        self.endTime = endTime
+        
         timeRemaining = findTimeRemaining(startTime, endTime: endTime)
     }
     
-    func addEntry() -> Entry{
+    func addEntry() -> Entry {
         var entry = Entry()
         
         //push to parse
@@ -37,6 +41,7 @@ class Raffle {
         return entry
     }
     
+    //TODO: implement
     private func findTimeRemaining(startTime: NSDate, endTime:NSDate) -> String{
         return "endTime - startTime"
     }

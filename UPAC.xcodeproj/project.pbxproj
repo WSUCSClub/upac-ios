@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		201EDC2919F77A4F00B278D0 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201EDC2819F77A4F00B278D0 /* NSDateExtension.swift */; };
 		205F54B119F1E71E00284E05 /* Raffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205F54B019F1E71E00284E05 /* Raffle.swift */; };
 		206D4B2E19F34AD600C25FCB /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206D4B2D19F34AD600C25FCB /* EventDetailViewController.swift */; };
 		206D4B3119F4239700C25FCB /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 206D4B2F19F4239700C25FCB /* TODO */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		201EDC2819F77A4F00B278D0 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
 		205F54B019F1E71E00284E05 /* Raffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Raffle.swift; sourceTree = "<group>"; };
 		206D4B2D19F34AD600C25FCB /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		206D4B2F19F4239700C25FCB /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				20F50F4619E77D8200DBED9A /* AppDelegate.swift */,
 				20F50F4C19E77D8200DBED9A /* Main.storyboard */,
 				20F50F5119E77D8200DBED9A /* LaunchScreen.xib */,
+				201EDC2819F77A4F00B278D0 /* NSDateExtension.swift */,
 				20D647B319ED967B007E8D1C /* UPAC-Bridging-Header.h */,
 				20D647B119ED9607007E8D1C /* FacebookSDK.framework */,
 				20F50F4F19E77D8200DBED9A /* Images.xcassets */,
@@ -270,6 +273,7 @@
 				208DF0E019EA132E00847186 /* GalleryViewController.swift in Sources */,
 				206D4B2E19F34AD600C25FCB /* EventDetailViewController.swift in Sources */,
 				208DF0E219EA143000847186 /* RaffleViewController.swift in Sources */,
+				201EDC2919F77A4F00B278D0 /* NSDateExtension.swift in Sources */,
 				208BBF1619E99FF600BC8F51 /* EventManager.swift in Sources */,
 				20F50F4919E77D8200DBED9A /* AboutViewController.swift in Sources */,
 			);

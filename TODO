@@ -29,9 +29,11 @@ Gallery
 ----
 * fetch from Facebook
 * cache with Core Data
-* overlay image description, date
-* make image use entire view
-* pinch-zoom
+* ImageView
+    * overlay image description, date??
+    * make image use entire view
+    * pinch-zoom
+    * swipe through photos
 
 
 About
@@ -53,7 +55,9 @@ Administration
 
 Miscellaneous
 ----
+* app fails upon exit
 * ERROR CHECKING!!!!
+* write tests
 * FBHelper object for managing connections/sessions
 * ParseHelper object for managing connections/sessions
 * add ability to swipe between main views

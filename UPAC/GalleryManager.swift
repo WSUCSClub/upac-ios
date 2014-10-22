@@ -19,46 +19,45 @@ struct Picture {
 }
 
 class GalleryManager {
-    
-    var pics = [Picture]()
+    var pictures = [Picture]()
     
     init() {
         repopulateList()
     }
     
     func repopulateList() {
-        pics.removeAll(keepCapacity: false)
+        pictures = []
         
         //TODO: Populate list using Facebook Graph API
         addPicture("oem291982",
             description: "Lorem ipsum",
             date: NSDate(),
-            url: NSURL(string: "http://google.com"),
+            url: NSURL(string: "http://google.com")!,
             src: "spin")
         addPicture("ldjf892jf8egrg",
             description: "Dolor sit amet",
             date: NSDate(),
-            url: NSURL(string: "http://yahoo.com"),
+            url: NSURL(string: "http://yahoo.com")!,
             src: "spin")
         addPicture("jfj320",
             description: "Lorem ipsum",
             date: NSDate(),
-            url: NSURL(string: "http://google.com"),
+            url: NSURL(string: "http://google.com")!,
             src: "spin")
         addPicture("0238jg",
             description: "Dolor sit amet",
             date: NSDate(),
-            url: NSURL(string: "http://yahoo.com"),
+            url: NSURL(string: "http://yahoo.com")!,
             src: "scare")
         addPicture("02989489jf",
             description: "Lorem ipsum",
             date: NSDate(),
-            url: NSURL(string: "http://google.com"),
+            url: NSURL(string: "http://google.com")!,
             src: "scare")
     }
     
     private func addPicture(id: String, description: String, date: NSDate, url: NSURL, src: String) {
-        pics.append(Picture(id: id, description: description, date: date, url: url, src: src))
+        pictures.append(Picture(id: id, description: description, date: date, url: url, src: src))
     }
     
 }

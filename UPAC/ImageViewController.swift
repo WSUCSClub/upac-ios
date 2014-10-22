@@ -6,20 +6,18 @@
 //  Copyright (c) 2014 wsu-cs-club. All rights reserved.
 //
 
-//TODO: Seque from GalleryViewController; show full-sized image view and back button
 
 import UIKit
 
 class ImageViewController: UIViewController {
-    @IBOutlet var fullImage: UIImageView!
+    @IBOutlet var fullImageView: UIImageView!
     
-    var image:Picture!
+    var picture:Picture!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //TODO: get image from presented view controller
-        fullImage.image = UIImage(named: image.src)
+        fullImageView.image = UIImage(named: picture.src)
     }
 
     override func didReceiveMemoryWarning() {

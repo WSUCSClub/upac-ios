@@ -6,19 +6,10 @@
 //  Copyright (c) 2014 wsu-cs-club. All rights reserved.
 //
 
-//TODO: Add notifications for upcoming events
-
 import Foundation
 
 var eventMgr = EventManager();
 
-struct DateStr {
-    var day: String
-    var startTime: String
-    var endTime: String
-}
-
-//TODO: Add picture prop (:NSURL) if exists in FB API
 struct Event {
     var id: String
     var name: String
@@ -27,12 +18,10 @@ struct Event {
     var description: String
     var startDate: NSDate
     var endDate: NSDate
-    var dateStr: DateStr
-    var raffle: Raffle
+    var raffle: Raffle?
 }
 
 class EventManager {
-    
     var events = [Event]()
     
     init() {
@@ -40,7 +29,6 @@ class EventManager {
     }
     
     func repopulateList() {
-        //events.removeAll(keepCapacity: false)
         events = []
 
         //TODO: Populate events list using Facebook Graph API
@@ -79,14 +67,7 @@ class EventManager {
     }
     
     private func addEvent(id: String, name: String, image: String, location: String, description: String, startDate: NSDate, endDate: NSDate, raffle: Raffle) {
-        // Format dates
-        let day = NSDateFormatter.localizedStringFromDate(startDate, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.NoStyle)
-        let startTime = NSDateFormatter.localizedStringFromDate(startDate, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        let endTime = NSDateFormatter.localizedStringFromDate(endDate, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
-        
-        let dateStr = DateStr(day: day, startTime: startTime, endTime: endTime)
-        
-        events.append(Event(id: id, name: name, image: image, location: location, description: description, startDate: startDate, endDate: endDate, dateStr: dateStr, raffle: raffle))
+        events.append(Event(id: id, name: name, image: image, location: location, description: description, startDate: startDate, endDate: endDate, raffle: raffle))
     }
     
 }

@@ -9,7 +9,6 @@
 import UIKit
 
 class EventsViewController: UITableViewController {
-    
     @IBOutlet var eventsTableView: UITableView!
     
     override func viewDidLoad() {
@@ -34,7 +33,7 @@ class EventsViewController: UITableViewController {
         (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(named: e.image)
         (cell.contentView.viewWithTag(2) as UILabel).text = e.name
         (cell.contentView.viewWithTag(3) as UILabel).text = e.location
-        (cell.contentView.viewWithTag(4) as UILabel).text = e.dateStr.day
+        (cell.contentView.viewWithTag(4) as UILabel).text = e.startDate.dayStr()
         
         return cell
     }
@@ -46,7 +45,7 @@ class EventsViewController: UITableViewController {
         let e = eventMgr.events[indexPath.row]
         alert.title = e.title
         alert.message = "\(e.location)\n\(e.dateStr.day)\n\(e.dateStr.startTime) - \(e.dateStr.endTime)\n\n\(e.description)"
-        alert.addButtonWithTitle("Ok")
+        alert.addButtonWithTitle("OK")
         alert.show()
         */
     }
