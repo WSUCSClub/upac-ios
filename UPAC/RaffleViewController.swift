@@ -21,17 +21,17 @@ class RaffleViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventMgr.events.count
+        return raffleMgr.list.count
     }
     
     // Set cell content
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("TableViewRaffleCell", forIndexPath: indexPath) as UITableViewCell
         
-        let e = eventMgr.events[indexPath.row]
+        let raffle = raffleMgr.list[indexPath.row] as Raffle
         
-        (cell.contentView.viewWithTag(1) as UILabel).text = e.name
-        (cell.contentView.viewWithTag(2) as UILabel).text = e.raffle?.timeRemaining
+        (cell.contentView.viewWithTag(1) as UILabel).text = raffle.id
+        (cell.contentView.viewWithTag(2) as UILabel).text = raffle.timeRemaining
         (cell.contentView.viewWithTag(3) as UIButton).setTitle("Enter", forState: .Normal)
         
         return cell
@@ -41,10 +41,10 @@ class RaffleViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let alert: UIAlertView = UIAlertView()
         
-        let e = eventMgr.events[indexPath.row]
+        let e = eventMgr.list[indexPath.row] as Event
         
         alert.title = e.name
-        alert.message = "\(e.location)\n\(e.startDate.dayStr())\n\(e.startDate.timeStr()) - \(e.endDate.timeStr())\n\n\(e.description)"
+        alert.message = "\(e.location)\n\(e.date.dayStr())\n\(e.date.timeStr()) - \(e.endDate.timeStr())\n\n\(e.desc)"
         alert.addButtonWithTitle("OK")
         alert.show()
     }

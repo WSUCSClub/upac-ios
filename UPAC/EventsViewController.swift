@@ -21,19 +21,19 @@ class EventsViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventMgr.events.count
+        return eventMgr.list.count
     }
 
     // Set cell content
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("TableViewEventCell", forIndexPath: indexPath) as UITableViewCell
 
-        var e = eventMgr.events[indexPath.row]
+        var e = eventMgr.list[indexPath.row] as Event
         
         (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(named: e.image)
         (cell.contentView.viewWithTag(2) as UILabel).text = e.name
         (cell.contentView.viewWithTag(3) as UILabel).text = e.location
-        (cell.contentView.viewWithTag(4) as UILabel).text = e.startDate.dayStr()
+        (cell.contentView.viewWithTag(4) as UILabel).text = e.date.dayStr()
         
         return cell
     }
@@ -56,7 +56,7 @@ class EventsViewController: UITableViewController {
             
             var indexPath:NSIndexPath = self.eventsTableView.indexPathForCell(sender as UITableViewCell)!
             
-            destinationView.event = eventMgr.events[indexPath.row]
+            destinationView.event = eventMgr.list[indexPath.row] as Event
         }
     }
 

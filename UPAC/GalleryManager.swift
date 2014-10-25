@@ -7,57 +7,67 @@
 //
 
 import Foundation
+import CoreData
 
-var galleryMgr = GalleryManager();
+let galleryMgr = GalleryManager()
 
-struct Picture {
-    var id: String
-    var description: String
-    var date: NSDate
-    var url: NSURL
-    var src: String
+class Picture: NSManagedObject {
+    @NSManaged var id: String
+    @NSManaged var desc: String
+    @NSManaged var date: NSDate
+    @NSManaged var url: String
+    @NSManaged var src: String
 }
 
-class GalleryManager {
-    var pictures = [Picture]()
-    
+class GalleryManager: ContentManager {
     init() {
-        repopulateList()
+        super.init(contentType: "Picture")
     }
     
-    func repopulateList() {
-        pictures = []
+    override func populateList() {
+        clearLocalStorage()
         
         //TODO: Populate list using Facebook Graph API
         addPicture("oem291982",
-            description: "Lorem ipsum",
+            desc: "Lorem ipsum",
             date: NSDate(),
-            url: NSURL(string: "http://google.com")!,
+            //url: NSURL(string: "http://google.com")!,
+            url: "http://google.com",
             src: "spin")
         addPicture("ldjf892jf8egrg",
-            description: "Dolor sit amet",
+            desc: "Dolor sit amet",
             date: NSDate(),
-            url: NSURL(string: "http://yahoo.com")!,
+            //url: NSURL(string: "http://yahoo.com")!,
+            url: "http://yahoo.com",
             src: "spin")
         addPicture("jfj320",
-            description: "Lorem ipsum",
+            desc: "Lorem ipsum",
             date: NSDate(),
-            url: NSURL(string: "http://google.com")!,
+            //url: NSURL(string: "http://google.com")!,
+            url: "http://google.com",
             src: "spin")
         addPicture("0238jg",
-            description: "Dolor sit amet",
+            desc: "Dolor sit amet",
             date: NSDate(),
-            url: NSURL(string: "http://yahoo.com")!,
+            //url: NSURL(string: "http://yahoo.com")!,
+            url: "http://yahoo.com",
             src: "scare")
         addPicture("02989489jf",
-            description: "Lorem ipsum",
+            desc: "Lorem ipsum",
             date: NSDate(),
-            url: NSURL(string: "http://google.com")!,
+            //url: NSURL(string: "http://yahoo.com")!,
+            url: "http://yahoo.com",
             src: "scare")
     }
     
-    private func addPicture(id: String, description: String, date: NSDate, url: NSURL, src: String) {
-        pictures.append(Picture(id: id, description: description, date: date, url: url, src: src))
+    func addPicture(id: String, desc: String, date: NSDate, url: String, src: String) {
+        let newPicture = NSEntityDescription.insertNewObjectForEntityForName("Picture", inManagedObjectContext: coreDataHelper.managedObjectContext!) as Picture
+        
+        newPicture.id = id
+        newPicture.desc = desc
+        newPicture.date = date
+        newPicture.url = url
+        newPicture.src = src
     }
     
 }

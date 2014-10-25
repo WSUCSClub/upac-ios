@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		201EDC2919F77A4F00B278D0 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201EDC2819F77A4F00B278D0 /* NSDateExtension.swift */; };
-		205F54B119F1E71E00284E05 /* Raffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205F54B019F1E71E00284E05 /* Raffle.swift */; };
+		205F54B119F1E71E00284E05 /* RaffleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205F54B019F1E71E00284E05 /* RaffleManager.swift */; };
 		206D4B2E19F34AD600C25FCB /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206D4B2D19F34AD600C25FCB /* EventDetailViewController.swift */; };
 		206D4B3119F4239700C25FCB /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 206D4B2F19F4239700C25FCB /* TODO */; };
 		208BBF1619E99FF600BC8F51 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208BBF1519E99FF600BC8F51 /* EventManager.swift */; };
@@ -17,6 +17,9 @@
 		208DF0E419EA2D4000847186 /* GalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DF0E319EA2D4000847186 /* GalleryManager.swift */; };
 		20D0446B19EB0C6A00A7795E /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D0446A19EB0C6A00A7795E /* ImageViewController.swift */; };
 		20D647B219ED9607007E8D1C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D647B119ED9607007E8D1C /* FacebookSDK.framework */; };
+		20EF822C19F9B33B00CC7BD0 /* UPAC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20EF822A19F9B33B00CC7BD0 /* UPAC.xcdatamodeld */; };
+		20EF825419FB463200CC7BD0 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EF825319FB463200CC7BD0 /* CoreDataHelper.swift */; };
+		20EF825619FB564300CC7BD0 /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EF825519FB564300CC7BD0 /* ContentManager.swift */; };
 		20F50F4719E77D8200DBED9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50F4619E77D8200DBED9A /* AppDelegate.swift */; };
 		20F50F4919E77D8200DBED9A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50F4819E77D8200DBED9A /* AboutViewController.swift */; };
 		20F50F4B19E77D8200DBED9A /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50F4A19E77D8200DBED9A /* EventsViewController.swift */; };
@@ -38,7 +41,7 @@
 
 /* Begin PBXFileReference section */
 		201EDC2819F77A4F00B278D0 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
-		205F54B019F1E71E00284E05 /* Raffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Raffle.swift; sourceTree = "<group>"; };
+		205F54B019F1E71E00284E05 /* RaffleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaffleManager.swift; sourceTree = "<group>"; };
 		206D4B2D19F34AD600C25FCB /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		206D4B2F19F4239700C25FCB /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO; sourceTree = "<group>"; };
 		208BBF1519E99FF600BC8F51 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
@@ -48,6 +51,9 @@
 		20D0446A19EB0C6A00A7795E /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		20D647B119ED9607007E8D1C /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		20D647B319ED967B007E8D1C /* UPAC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UPAC-Bridging-Header.h"; sourceTree = "<group>"; };
+		20EF822B19F9B33B00CC7BD0 /* UPAC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UPAC.xcdatamodel; sourceTree = "<group>"; };
+		20EF825319FB463200CC7BD0 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		20EF825519FB564300CC7BD0 /* ContentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
 		20F50F4119E77D8200DBED9A /* UPAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UPAC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F50F4519E77D8200DBED9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20F50F4619E77D8200DBED9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,9 +150,12 @@
 		20FD4B2419EB16F000F8E049 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				20EF825319FB463200CC7BD0 /* CoreDataHelper.swift */,
+				20EF825519FB564300CC7BD0 /* ContentManager.swift */,
 				208BBF1519E99FF600BC8F51 /* EventManager.swift */,
+				205F54B019F1E71E00284E05 /* RaffleManager.swift */,
 				208DF0E319EA2D4000847186 /* GalleryManager.swift */,
-				205F54B019F1E71E00284E05 /* Raffle.swift */,
+				20EF822A19F9B33B00CC7BD0 /* UPAC.xcdatamodeld */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -269,13 +278,16 @@
 				20F50F4B19E77D8200DBED9A /* EventsViewController.swift in Sources */,
 				20D0446B19EB0C6A00A7795E /* ImageViewController.swift in Sources */,
 				20F50F4719E77D8200DBED9A /* AppDelegate.swift in Sources */,
-				205F54B119F1E71E00284E05 /* Raffle.swift in Sources */,
+				205F54B119F1E71E00284E05 /* RaffleManager.swift in Sources */,
 				208DF0E019EA132E00847186 /* GalleryViewController.swift in Sources */,
 				206D4B2E19F34AD600C25FCB /* EventDetailViewController.swift in Sources */,
 				208DF0E219EA143000847186 /* RaffleViewController.swift in Sources */,
+				20EF825419FB463200CC7BD0 /* CoreDataHelper.swift in Sources */,
 				201EDC2919F77A4F00B278D0 /* NSDateExtension.swift in Sources */,
 				208BBF1619E99FF600BC8F51 /* EventManager.swift in Sources */,
+				20EF822C19F9B33B00CC7BD0 /* UPAC.xcdatamodeld in Sources */,
 				20F50F4919E77D8200DBED9A /* AboutViewController.swift in Sources */,
+				20EF825619FB564300CC7BD0 /* ContentManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +508,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		20EF822A19F9B33B00CC7BD0 /* UPAC.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				20EF822B19F9B33B00CC7BD0 /* UPAC.xcdatamodel */,
+			);
+			currentVersion = 20EF822B19F9B33B00CC7BD0 /* UPAC.xcdatamodel */;
+			path = UPAC.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 20F50F3919E77D8200DBED9A /* Project object */;
 }

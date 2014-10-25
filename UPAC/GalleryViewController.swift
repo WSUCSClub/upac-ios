@@ -23,14 +23,14 @@ class GalleryViewController: UICollectionViewController {
     
     // Size of sections
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return galleryMgr.pictures.count
+        return galleryMgr.list.count
     }
     
     // Set cell content
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewImageCell", forIndexPath: indexPath) as UICollectionViewCell
         
-        (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(named: galleryMgr.pictures[indexPath.row].src)
+        (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(named: (galleryMgr.list[indexPath.row] as Picture).src)
         
         return cell
     }
@@ -47,7 +47,7 @@ class GalleryViewController: UICollectionViewController {
             
             var indexPath:NSIndexPath = self.picturesCollectionView.indexPathForCell(sender as UICollectionViewCell)!
             
-            destinationView.picture = galleryMgr.pictures[indexPath.row]
+            destinationView.picture = galleryMgr.list[indexPath.row] as Picture
         }
     }
     

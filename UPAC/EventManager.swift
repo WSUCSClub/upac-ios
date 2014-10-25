@@ -7,67 +7,70 @@
 //
 
 import Foundation
+import CoreData
 
-var eventMgr = EventManager();
+let eventMgr = EventManager()
 
-struct Event {
-    var id: String
-    var name: String
-    var image: String //TODO: Update to use NSURL
-    var location: String
-    var description: String
-    var startDate: NSDate
-    var endDate: NSDate
-    var raffle: Raffle?
+class Event: NSManagedObject {
+    @NSManaged var id: String
+    @NSManaged var name: String
+    @NSManaged var image: String //TODO: Update to use NSURL
+    @NSManaged var location: String
+    @NSManaged var desc: String
+    @NSManaged var date: NSDate
+    @NSManaged var endDate: NSDate
 }
 
-class EventManager {
-    var events = [Event]()
-    
+class EventManager: ContentManager {
     init() {
-        repopulateList()
+        super.init(contentType: "Event")
     }
     
-    func repopulateList() {
-        events = []
-
+    override func populateList() {
+        clearLocalStorage()
+        
         //TODO: Populate events list using Facebook Graph API
         addEvent("134f21",
             name: "Dirty Dancing",
             image: "spin",
             location: "Orpheum Theater - Minneapolis",
-            description: "Lorem ipsum dolor sit amet",
-            startDate: NSDate(),
-            endDate: NSDate(),
-            raffle: Raffle(startTime: NSDate(), endTime: NSDate()))
+            desc: "Lorem ipsum dolor sit amet",
+            date: NSDate(),
+            endDate: NSDate())
         addEvent("jf8929",
             name: "ValleyScare",
             image: "scare",
             location: "ValleyFair - Shakopee",
-            description: "Lorem ipsum dolor sit amet",
-            startDate: NSDate(),
-            endDate: NSDate(),
-            raffle: Raffle(startTime: NSDate(), endTime: NSDate()))
+            desc: "Lorem ipsum dolor sit amet",
+            date: NSDate(),
+            endDate: NSDate())
         addEvent("klj298",
             name: "$3 Bowling Night",
             image: "scare",
             location: "Westgate Bowling Center",
-            description: "Lorem ipsum dolor sit amet",
-            startDate: NSDate(),
-            endDate: NSDate(),
-            raffle: Raffle(startTime: NSDate(), endTime: NSDate()))
+            desc: "Lorem ipsum dolor sit amet",
+            date: NSDate(),
+            endDate: NSDate())
         addEvent("owii8201",
             name: "Spin Magic",
             image: "spin",
             location: "Gazebo / SAC",
-            description: "Lorem ipsum dolor sit amet",
-            startDate: NSDate(),
-            endDate: NSDate(),
-            raffle: Raffle(startTime: NSDate(), endTime: NSDate()))
+            desc: "Lorem ipsum dolor sit amet",
+            date: NSDate(),
+            endDate: NSDate())
     }
     
-    private func addEvent(id: String, name: String, image: String, location: String, description: String, startDate: NSDate, endDate: NSDate, raffle: Raffle) {
-        events.append(Event(id: id, name: name, image: image, location: location, description: description, startDate: startDate, endDate: endDate, raffle: raffle))
+    func addEvent(id: String, name: String, image: String, location: String, desc: String, date: NSDate, endDate: NSDate) {
+        let newEvent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: coreDataHelper.managedObjectContext!) as Event
+        
+        newEvent.id = id
+        newEvent.name = name
+        newEvent.image = image
+        newEvent.location = location
+        newEvent.desc = desc
+        newEvent.date = date
+        newEvent.endDate = endDate
+
     }
     
 }

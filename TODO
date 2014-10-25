@@ -11,7 +11,6 @@ Events
 ----
 * fetch from Facebook
 * fetch raffles from Parse
-* cache with Core Data
 * connect "enter raffle" button in detail view w/ a Raffle IBAction
 * changle bg color of table cell if raffle exists
 * only show button in event detail view if raffle exist
@@ -28,7 +27,6 @@ Raffles
 Gallery
 ----
 * fetch from Facebook
-* cache with Core Data
 * ImageView
     * overlay image description, date??
     * make image use entire view
@@ -39,6 +37,7 @@ Gallery
 About
 ----
 * use real description
+* add social media links
 * add staff directory
 
 
@@ -55,7 +54,6 @@ Administration
 
 Miscellaneous
 ----
-* app fails upon exit
 * ERROR CHECKING!!!!
 * write tests
 * FBHelper object for managing connections/sessions
