@@ -14,17 +14,29 @@ class ImageViewController: UIViewController {
     @IBOutlet var backButton: UIButton!
     @IBOutlet var dateLabel: UILabel!
     
-    var picture:Picture!
+    var picture: Picture!
+    var index: Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fullImageView.image = UIImage(named: picture.src)
-        dateLabel.text = picture.date.dayStr()
+        updateView()
         
         var tapGesture = UITapGestureRecognizer(target: self, action: Selector("toggleUI"))
         fullImageView.addGestureRecognizer(tapGesture)
-
+        
+        var swipeLeft = UISwipeGestureRecognizer(target: self, action: Selector("moveToNextPicture"))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        var swipeRight = UISwipeGestureRecognizer(target: self, action: Selector("moveToPreviousPicture"))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(swipeRight)
+    }
+    
+    func updateView() {
+        fullImageView.image = UIImage(named: picture.src)
+        dateLabel.text = picture.date.dayStr()
     }
 
     func toggleUI() {
@@ -34,6 +46,25 @@ class ImageViewController: UIViewController {
         } else {
             dateLabel.hidden = true
             backButton.hidden = true
+        }
+    }
+    
+    func moveToNextPicture() {
+        if index + 1 < galleryMgr.list.count {
+            index?++
+            picture = galleryMgr.list[index] as Picture
+            
+            updateView()
+        }
+
+    }
+    
+    func moveToPreviousPicture() {
+        if index - 1 >= 0 {
+            index?--
+            picture = galleryMgr.list[index] as Picture
+            
+            updateView()
         }
     }
 

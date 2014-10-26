@@ -48,6 +48,7 @@ class GalleryViewController: UICollectionViewController {
             var indexPath:NSIndexPath = self.picturesCollectionView.indexPathForCell(sender as UICollectionViewCell)!
             
             destinationView.picture = galleryMgr.list[indexPath.row] as Picture
+            destinationView.index = indexPath.row
         }
     }
     

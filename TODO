@@ -13,6 +13,7 @@ Events
 * fetch from Facebook
 * pull-down refresh
     * add "last updated" label
+* detail view swipe animation
 
 
 Raffles
@@ -28,7 +29,7 @@ Gallery
 * fetch from Facebook
 * ImageView
     * pinch-zoom
-    * swipe through photos
+    * swipe animation
 
 
 About
@@ -42,7 +43,8 @@ Administration
 * event listing tableview
     * detail view
         * button to add a raffle (need start and end date)
-        * view all codes that have been generated already
+        * label showing how many entries
+        * button to show N random codes (alert)
 
 
 Settings

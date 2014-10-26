@@ -58,6 +58,7 @@ class EventsViewController: UITableViewController {
             var indexPath:NSIndexPath = self.eventsTableView.indexPathForCell(sender as UITableViewCell)!
             
             destinationView.event = eventMgr.list[indexPath.row] as Event
+            destinationView.index = indexPath.row
         }
     }
 
