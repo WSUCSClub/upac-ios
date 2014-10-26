@@ -21,5 +21,9 @@ class AboutViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func linkToFacebook() {
+        // Open browser to UPAC Facebook group page
+        UIApplication.sharedApplication().openURL(NSURL(string: "https://www.facebook.com/WSU.UPAC")!)
+    }
 }
 

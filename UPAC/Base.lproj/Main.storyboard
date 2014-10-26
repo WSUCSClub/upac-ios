@@ -17,22 +17,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ri-yn-YAN">
-                                <rect key="frame" x="34" y="20" width="532" height="523"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbj-TD-GD6">
+                                <rect key="frame" x="35" y="0.0" width="530" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam et lectus sagittis, maximus lorem sit amet, fermentum arcu. Nam nec neque arcu. Praesent finibus neque id fermentum pellentesque. Curabitur rhoncus dictum suscipit. Curabitur fringilla nulla elit, vel bibendum urna tempus at.
+                                <mutableString key="text">University Programming Activities Committee (UPAC) provides on- and off-campus activities for students. You can become a member by stopping at the UPAC office in the Lower Hyphen in Kryzsko commons and picking up a "new member folder." You'll find it right between the Smaug and the Student Union. A UPAC member will be there during office hours to assist you with any questions, comments or suggestions. 
 
-Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sodales suscipit facilisis. Duis luctus ex quis enim aliquet.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+Please note that UPAC provides special accommodations for those with disabilities. We offer translators for students who are hearing impaired and seat reservations for those with physical disabilities at our on-campus events upon request.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOZ-ig-Gye">
+                                <rect key="frame" x="200" y="501" width="200" height="42"/>
+                                <state key="normal" backgroundImage="facebook - like us">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="linkToFacebook" destination="8rJ-Kc-sve" eventType="touchUpInside" id="zPg-7Y-hDe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2Ri-yn-YAN" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="20" symbolic="YES" id="Eca-kf-yWP"/>
-                            <constraint firstItem="2Ri-yn-YAN" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="WhA-3h-jw0"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="2Ri-yn-YAN" secondAttribute="bottom" constant="8" symbolic="YES" id="aPb-5V-N53"/>
-                            <constraint firstItem="2Ri-yn-YAN" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="18" id="zAy-nd-ieJ"/>
+                            <constraint firstItem="wOZ-ig-Gye" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="9vQ-uM-Xhx"/>
+                            <constraint firstItem="wOZ-ig-Gye" firstAttribute="centerX" secondItem="tbj-TD-GD6" secondAttribute="centerX" id="IaO-kX-zoJ"/>
+                            <constraint firstItem="tbj-TD-GD6" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="NAw-EE-mof"/>
+                            <constraint firstAttribute="bottom" secondItem="tbj-TD-GD6" secondAttribute="bottom" id="XoC-tf-PFc"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="wOZ-ig-Gye" secondAttribute="bottom" constant="8" symbolic="YES" id="llp-WT-JT6"/>
+                            <constraint firstItem="tbj-TD-GD6" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="19" id="rLk-Mn-7qL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="1wA-ZJ-c9Y"/>
@@ -522,6 +533,7 @@ Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sod
         </scene>
     </scenes>
     <resources>
+        <image name="facebook - like us" width="200" height="42"/>
         <image name="first" width="30" height="30"/>
         <image name="scare" width="80" height="80"/>
         <image name="second" width="30" height="30"/>
