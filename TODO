@@ -3,7 +3,7 @@ UI
 * make it not terrible ("iOS Human Interface Guidelines")
 * resolve all auto-layout warnings
 * implement color scheme
-* create tab bar icons (events, raffle, gallery, about) (flat black png's)
+* create tab bar icons (events, raffles, gallery, about) (flat black png's)
 * new app icon set with UPAC logo (Photoshop smart template; makeappicon.com)
 
 
@@ -11,17 +11,15 @@ Events
 ----
 * fetch from Facebook
 * fetch raffles from Parse
-* connect "enter raffle" button in detail view w/ a Raffle IBAction
-* changle bg color of table cell if raffle exists
-* only show button in event detail view if raffle exist
 * event notifications
+* add "last updated" label
 
 
 Raffles
 ----
-* separate page needed???
 * random code generator
 * push raffle entries to Parse
+* can only enter raffle if at location
 
 
 Gallery

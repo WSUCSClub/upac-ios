@@ -15,7 +15,7 @@ class ContentManager {
     
     init(contentType: String) {
         self.contentType = contentType
-                
+
         populateList()
         coreDataHelper.saveData()
         
@@ -40,8 +40,8 @@ class ContentManager {
     func fetchStored() -> [NSManagedObject] {
         let fetchRequest = NSFetchRequest(entityName: contentType)
         
-        let sortDescriptor = NSSortDescriptor(key: "startDate", ascending: true)
-        //fetchRequest.sortDescriptors = [ sortDescriptor ]
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [ sortDescriptor ]
         
         return coreDataHelper.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as [NSManagedObject]!
     }

@@ -25,34 +25,60 @@ class RaffleManager: ContentManager {
     }
     
     override func populateList() {
-        //TODO: Populate events list using Facebook Graph API
-        addRaffle("134f21",
-            date: NSDate(),
-            endDate: NSDate())
-        addRaffle("jf8929",
+        //clearLocalStorage()
+        list = fetchStored()
+        
+        var parseList = list    //TODO: Populate with Parse data
+        
+        // Only add to local storage if does not already exist
+        for raffle in parseList as [Raffle] {
+            var alreadyExists = false
+            
+            for localRaffle in list as [Raffle] {
+                if raffle.id == localRaffle.id {
+                    // Raffle already exists locally, don't add another
+                    alreadyExists = true
+                    break
+                }
+            }
+            
+            if !alreadyExists {
+                addRaffle(raffle.id, date: raffle.date, endDate: raffle.endDate)
+            }
+        }
+        
+        // Uncomment and run once (then re-comment) if test data needed
+        /*addRaffle("134f21",
             date: NSDate(),
             endDate: NSDate())
         addRaffle("owii8201",
             date: NSDate(),
-            endDate: NSDate())
+            endDate: NSDate())*/
     }
     
     func addRaffle(id: String, date: NSDate, endDate: NSDate) {
         let newRaffle = NSEntityDescription.insertNewObjectForEntityForName("Raffle", inManagedObjectContext: coreDataHelper.managedObjectContext!) as Raffle
         
-        //store locally
-        //update localEntry
-        //push to parse
-        
         newRaffle.id = id
         newRaffle.date = date
         newRaffle.endDate = endDate
-        newRaffle.localEntry = generateCode()
-        
+        newRaffle.localEntry = ""
     }
     
-    //TODO: implement
-    private func generateCode() -> String {
+    func getForID(id: String) -> Raffle? {
+        var result: Raffle? = nil
+        
+        for r in self.list {
+            if (r as Raffle).id == id {
+                result = r as? Raffle
+            }
+        }
+        
+        return result
+    }
+    
+    //TODO: implement (5 char alpha-numeric)
+    func generateCode() -> String {
         return String(Int(NSDate().timeIntervalSince1970))
     }
     

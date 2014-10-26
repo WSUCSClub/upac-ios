@@ -26,9 +26,18 @@ class EventsViewController: UITableViewController {
 
     // Set cell content
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("TableViewEventCell", forIndexPath: indexPath) as UITableViewCell
-
         var e = eventMgr.list[indexPath.row] as Event
+        
+        // Use different layout if event has a raffle
+        var cellIdentifier: String
+        if e.hasRaffle() {
+            cellIdentifier = "TableViewEventRaffleCell"
+        } else {
+            cellIdentifier = "TableViewEventCell"
+        }
+        
+        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as UITableViewCell
+
         
         (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(named: e.image)
         (cell.contentView.viewWithTag(2) as UILabel).text = e.name
@@ -38,16 +47,8 @@ class EventsViewController: UITableViewController {
         return cell
     }
     
-    // On selection functionality
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        /*
-        let alert: UIAlertView = UIAlertView()
-        let e = eventMgr.events[indexPath.row]
-        alert.title = e.title
-        alert.message = "\(e.location)\n\(e.dateStr.day)\n\(e.dateStr.startTime) - \(e.dateStr.endTime)\n\n\(e.description)"
-        alert.addButtonWithTitle("OK")
-        alert.show()
-        */
+        // On selection functionality
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

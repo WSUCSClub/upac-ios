@@ -19,6 +19,19 @@ class Event: NSManagedObject {
     @NSManaged var desc: String
     @NSManaged var date: NSDate
     @NSManaged var endDate: NSDate
+    
+    func hasRaffle() -> Bool {
+        var result = false
+        
+        for r in raffleMgr.list {
+            if (r as Raffle).id == self.id {
+                result = true
+                break
+            }
+        }
+        
+        return result
+    }
 }
 
 class EventManager: ContentManager {

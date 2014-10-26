@@ -98,7 +98,6 @@ Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sod
                     </tabBar>
                     <connections>
                         <segue destination="cb9-yU-vyN" kind="relationship" relationship="viewControllers" id="LMX-8H-YfF"/>
-                        <segue destination="aQ6-Gd-BDm" kind="relationship" relationship="viewControllers" id="a5U-8L-FC5"/>
                         <segue destination="XhP-u6-YSv" kind="relationship" relationship="viewControllers" id="4YE-eV-mpk"/>
                         <segue destination="vmX-Jw-M4G" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                     </connections>
@@ -187,6 +186,59 @@ Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sod
                                     <segue destination="jgo-nt-g9O" kind="show" identifier="EventDetailView" id="AdI-BY-8Dk"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewEventRaffleCell" rowHeight="85" id="7uf-e9-ZUZ">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7uf-e9-ZUZ" id="wfN-Lr-17g">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wsu_text" translatesAutoresizingMaskIntoConstraints="NO" id="EKf-pa-nFx">
+                                            <rect key="frame" x="13" y="7" width="75" height="75"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="75" id="SSS-fP-d6R"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMu-cR-78g">
+                                            <rect key="frame" x="105" y="7" width="416" height="25"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKJ-dq-s5w">
+                                            <rect key="frame" x="105" y="32" width="483" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oY9-vH-jmW">
+                                            <rect key="frame" x="105" y="51" width="483" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="oY9-vH-jmW" firstAttribute="top" secondItem="KMu-cR-78g" secondAttribute="bottom" constant="19" id="09D-n3-hVC"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="zKJ-dq-s5w" secondAttribute="trailing" constant="4" id="2Fn-us-rrT"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="EKf-pa-nFx" secondAttribute="bottom" constant="-6" id="6W5-Tb-xzd"/>
+                                        <constraint firstItem="oY9-vH-jmW" firstAttribute="trailing" secondItem="zKJ-dq-s5w" secondAttribute="trailing" id="AxW-Pq-EnN"/>
+                                        <constraint firstItem="KMu-cR-78g" firstAttribute="leading" secondItem="zKJ-dq-s5w" secondAttribute="leading" id="Mha-4D-mZD"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="zKJ-dq-s5w" secondAttribute="bottom" constant="24" id="NQ2-JN-ZAq"/>
+                                        <constraint firstItem="zKJ-dq-s5w" firstAttribute="centerY" secondItem="wfN-Lr-17g" secondAttribute="centerY" id="PO5-zG-Cew"/>
+                                        <constraint firstItem="EKf-pa-nFx" firstAttribute="top" secondItem="wfN-Lr-17g" secondAttribute="topMargin" constant="-1" id="R0D-ZZ-Ux8"/>
+                                        <constraint firstItem="EKf-pa-nFx" firstAttribute="leading" secondItem="wfN-Lr-17g" secondAttribute="leadingMargin" constant="5" id="dmo-eJ-4C0"/>
+                                        <constraint firstItem="EKf-pa-nFx" firstAttribute="top" secondItem="KMu-cR-78g" secondAttribute="top" id="g6T-9g-8QZ"/>
+                                        <constraint firstItem="oY9-vH-jmW" firstAttribute="leading" secondItem="zKJ-dq-s5w" secondAttribute="leading" id="jNX-rK-xfe"/>
+                                        <constraint firstItem="KMu-cR-78g" firstAttribute="leading" secondItem="EKf-pa-nFx" secondAttribute="trailing" constant="17" id="l4p-Mh-kPP"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="oY9-vH-jmW" secondAttribute="bottom" constant="5" id="qki-ic-TzK"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="KMu-cR-78g" secondAttribute="trailing" constant="71" id="rt2-bv-2ep"/>
+                                        <constraint firstItem="zKJ-dq-s5w" firstAttribute="top" secondItem="KMu-cR-78g" secondAttribute="bottom" id="tKN-QV-cxz"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.79938514118851212" green="0.52101621213666649" blue="0.80877130679999998" alpha="0.16" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="jgo-nt-g9O" kind="show" identifier="EventDetailView" id="7Sg-c0-fRt"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="kla-ku-gim" id="Ik2-ap-9so"/>
@@ -232,8 +284,8 @@ Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sod
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfG-Y6-3er">
-                                <rect key="frame" x="49" y="342" width="502" height="201"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfG-Y6-3er">
+                                <rect key="frame" x="49" y="342" width="502" height="136"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -248,14 +300,24 @@ Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sod
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDt-6l-X7C">
-                                <rect key="frame" x="505" y="140" width="79" height="30"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDt-6l-X7C">
+                                <rect key="frame" x="16" y="80" width="79" height="30"/>
                                 <color key="backgroundColor" red="0.80877130681818188" green="0.0" blue="0.080998526682017902" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Enter raffle!">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="enterRaffleButtonTapped:" destination="jgo-nt-g9O" eventType="touchUpInside" id="3we-vJ-oag"/>
+                                </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMR-cI-0nd">
+                                <rect key="frame" x="16" y="80" width="176" height="30"/>
+                                <color key="backgroundColor" red="0.44334982648826471" green="0.80877130679999998" blue="0.29022356206524569" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -269,8 +331,6 @@ Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sod
                             <constraint firstAttribute="trailingMargin" secondItem="bfG-Y6-3er" secondAttribute="trailing" constant="33" id="CMt-VC-SXE"/>
                             <constraint firstItem="hjR-4F-Zj6" firstAttribute="trailing" secondItem="TFV-gV-Weu" secondAttribute="trailingMargin" id="I3L-Wy-8CF"/>
                             <constraint firstItem="Vhe-a1-88q" firstAttribute="leading" secondItem="TFV-gV-Weu" secondAttribute="leadingMargin" id="VDh-4W-BA1"/>
-                            <constraint firstItem="QDt-6l-X7C" firstAttribute="top" secondItem="IDU-Bn-7G1" secondAttribute="bottom" constant="76" id="Z5S-t7-Z1V"/>
-                            <constraint firstItem="QDt-6l-X7C" firstAttribute="trailing" secondItem="TFV-gV-Weu" secondAttribute="trailingMargin" id="khQ-OQ-pmD"/>
                             <constraint firstItem="sJ3-n9-SA4" firstAttribute="top" secondItem="IDU-Bn-7G1" secondAttribute="bottom" constant="219" id="nKA-0u-Sm3"/>
                             <constraint firstItem="hjR-4F-Zj6" firstAttribute="top" secondItem="IDU-Bn-7G1" secondAttribute="bottom" constant="179" id="pLi-OJ-p14"/>
                             <constraint firstItem="bfG-Y6-3er" firstAttribute="leading" secondItem="TFV-gV-Weu" secondAttribute="leadingMargin" constant="33" id="qm6-NF-zUh"/>
@@ -280,9 +340,11 @@ Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sod
                     <connections>
                         <outlet property="date" destination="Vhe-a1-88q" id="zdi-pU-ZJw"/>
                         <outlet property="desc" destination="bfG-Y6-3er" id="Lva-mN-J3m"/>
+                        <outlet property="enterRaffleButton" destination="QDt-6l-X7C" id="vbh-u6-4JN"/>
                         <outlet property="image" destination="KbK-KM-QGY" id="dcD-lo-Mff"/>
                         <outlet property="location" destination="sJ3-n9-SA4" id="Bt7-fM-OUL"/>
                         <outlet property="name" destination="hjR-4F-Zj6" id="j1v-eE-gPA"/>
+                        <outlet property="raffleCodeLabel" destination="QMR-cI-0nd" id="zYc-xz-eKz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NIo-Ys-cNN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -466,4 +528,7 @@ Quisque quam libero, vulputate in arcu eu, eleifend blandit massa. Phasellus sod
         <image name="spin" width="80" height="80"/>
         <image name="wsu_text" width="211" height="67"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="AdI-BY-8Dk"/>
+    </inferredMetricsTieBreakers>
 </document>
