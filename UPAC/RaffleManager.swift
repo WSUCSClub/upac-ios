@@ -24,7 +24,7 @@ class Raffle: NSManagedObject {
         localEntry = code
         //coreDataHelper.saveData()     // Uncomment to save raffle entries
         
-        //push to parse
+        //TODO: push to parse
         
         return code
     }

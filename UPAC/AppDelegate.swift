@@ -48,8 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     
-    // MARK: - Core Data stack
-    
+    // Core Data stack
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "wsu-cs-club.MyLog" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
@@ -97,8 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return managedObjectContext
         }()
     
-    // MARK: - Core Data Saving support
-    
+    // Core Data Saving support
     func saveContext () {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil

@@ -11,6 +11,8 @@ import UIKit
 
 class ImageViewController: UIViewController {
     @IBOutlet var fullImageView: UIImageView!
+    @IBOutlet var backButton: UIButton!
+    @IBOutlet var dateLabel: UILabel!
     
     var picture:Picture!
 
@@ -18,6 +20,21 @@ class ImageViewController: UIViewController {
         super.viewDidLoad()
 
         fullImageView.image = UIImage(named: picture.src)
+        dateLabel.text = picture.date.dayStr()
+        
+        var tapGesture = UITapGestureRecognizer(target: self, action: Selector("toggleUI"))
+        fullImageView.addGestureRecognizer(tapGesture)
+
+    }
+
+    func toggleUI() {
+        if dateLabel.hidden {
+            dateLabel.hidden = false
+            backButton.hidden = false
+        } else {
+            dateLabel.hidden = true
+            backButton.hidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {

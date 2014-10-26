@@ -20,9 +20,9 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbj-TD-GD6">
                                 <rect key="frame" x="35" y="0.0" width="530" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">University Programming Activities Committee (UPAC) provides on- and off-campus activities for students. You can become a member by stopping at the UPAC office in the Lower Hyphen in Kryzsko commons and picking up a "new member folder." You'll find it right between the Smaug and the Student Union. A UPAC member will be there during office hours to assist you with any questions, comments or suggestions. 
+                                <string key="text">University Programming Activities Committee (UPAC) provides on- and off-campus activities for students. You can become a member by stopping at the UPAC office in the Lower Hyphen in Kryzsko commons and picking up a "new member folder." You'll find it right between the Smaug and the Student Union. A UPAC member will be there during office hours to assist you with any questions, comments or suggestions. 
 
-Please note that UPAC provides special accommodations for those with disabilities. We offer translators for students who are hearing impaired and seat reservations for those with physical disabilities at our on-campus events upon request.</mutableString>
+Please note that UPAC provides special accommodations for those with disabilities. We offer translators for students who are hearing impaired and seat reservations for those with physical disabilities at our on-campus events upon request.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -64,15 +64,12 @@ Please note that UPAC provides special accommodations for those with disabilitie
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scare" translatesAutoresizingMaskIntoConstraints="NO" id="e8R-Pa-l92">
-                                <rect key="frame" x="168" y="186" width="264" height="228"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="264" id="fGd-Hj-0AV"/>
-                                </constraints>
+                            <imageView tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scare" translatesAutoresizingMaskIntoConstraints="NO" id="e8R-Pa-l92">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8a-c9-mgd">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8a-c9-mgd">
                                 <rect key="frame" x="16" y="20" width="35" height="30"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" title="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -80,16 +77,31 @@ Please note that UPAC provides special accommodations for those with disabilitie
                                     <action selector="backAction:" destination="hdR-DC-j2h" eventType="touchUpInside" id="7qi-Y9-tdT"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WvH-V6-8tN">
+                                <rect key="frame" x="279" y="512" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.97780994744163141" green="0.97646244234210744" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="e8R-Pa-l92" firstAttribute="top" secondItem="JW2-Yr-xcA" secondAttribute="bottom" constant="166" id="UFj-Lt-Jpa"/>
-                            <constraint firstItem="e8R-Pa-l92" firstAttribute="centerX" secondItem="BdX-KC-xfo" secondAttribute="centerX" id="gUu-ND-gJT"/>
-                            <constraint firstItem="e8R-Pa-l92" firstAttribute="centerY" secondItem="BdX-KC-xfo" secondAttribute="centerY" id="xzC-c8-JTl"/>
+                            <constraint firstItem="rBL-2w-5vz" firstAttribute="top" secondItem="WvH-V6-8tN" secondAttribute="bottom" constant="67" id="5Sx-Zz-Hif"/>
+                            <constraint firstItem="e8R-Pa-l92" firstAttribute="bottom" secondItem="rBL-2w-5vz" secondAttribute="top" id="HEM-6w-jUo"/>
+                            <constraint firstItem="X8a-c9-mgd" firstAttribute="top" secondItem="JW2-Yr-xcA" secondAttribute="bottom" id="IpI-CN-u0y"/>
+                            <constraint firstItem="X8a-c9-mgd" firstAttribute="leading" secondItem="BdX-KC-xfo" secondAttribute="leadingMargin" id="Oa0-o1-I33"/>
+                            <constraint firstItem="e8R-Pa-l92" firstAttribute="centerX" secondItem="WvH-V6-8tN" secondAttribute="centerX" id="PSd-69-gk9"/>
+                            <constraint firstItem="e8R-Pa-l92" firstAttribute="top" secondItem="BdX-KC-xfo" secondAttribute="top" id="V9n-4s-mat"/>
+                            <constraint firstItem="e8R-Pa-l92" firstAttribute="leading" secondItem="BdX-KC-xfo" secondAttribute="leading" id="gpm-zX-vbf"/>
+                            <constraint firstItem="WvH-V6-8tN" firstAttribute="top" secondItem="JW2-Yr-xcA" secondAttribute="bottom" constant="492" id="hHG-Ft-VfL"/>
+                            <constraint firstAttribute="trailing" secondItem="e8R-Pa-l92" secondAttribute="trailing" id="urR-rd-vq6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Date" id="5pR-ah-wma"/>
                     <connections>
+                        <outlet property="backButton" destination="X8a-c9-mgd" id="PSx-ea-BGU"/>
+                        <outlet property="dateLabel" destination="WvH-V6-8tN" id="SQ0-Yq-Krn"/>
                         <outlet property="fullImageView" destination="e8R-Pa-l92" id="S9T-m8-HTZ"/>
                     </connections>
                 </viewController>

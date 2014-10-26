@@ -27,8 +27,6 @@ Gallery
 ----
 * fetch from Facebook
 * ImageView
-    * overlay image description, date??
-    * make image use entire view
     * pinch-zoom
     * swipe through photos
 
@@ -36,16 +34,20 @@ Gallery
 About
 ----
 * add staff directory
-
-
-Settings
-----
-* 
+* copyright notice -> long press -> password dialog -> segue -> admin page
 
 
 Administration
 ----
-* separate, unpublished app??
+* event listing tableview
+    * detail view
+        * button to add a raffle (need start and end date)
+        * view all codes that have been generated already
+
+
+Settings
+----
+*
 
 
 Miscellaneous
