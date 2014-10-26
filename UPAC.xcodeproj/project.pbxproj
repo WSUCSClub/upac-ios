@@ -108,11 +108,11 @@
 		20F50F4319E77D8200DBED9A /* UPAC */ = {
 			isa = PBXGroup;
 			children = (
-				20FD4B2519EB170400F8E049 /* View Controllers */,
-				20FD4B2419EB16F000F8E049 /* Models */,
 				20F50F4619E77D8200DBED9A /* AppDelegate.swift */,
 				20F50F4C19E77D8200DBED9A /* Main.storyboard */,
 				20F50F5119E77D8200DBED9A /* LaunchScreen.xib */,
+				20FD4B2519EB170400F8E049 /* View Controllers */,
+				20FD4B2419EB16F000F8E049 /* Models */,
 				201EDC2819F77A4F00B278D0 /* NSDateExtension.swift */,
 				20D647B319ED967B007E8D1C /* UPAC-Bridging-Header.h */,
 				20D647B119ED9607007E8D1C /* FacebookSDK.framework */,

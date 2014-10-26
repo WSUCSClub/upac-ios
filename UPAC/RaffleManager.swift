@@ -16,7 +16,24 @@ class Raffle: NSManagedObject {
     @NSManaged var date: NSDate
     @NSManaged var endDate: NSDate
     @NSManaged var localEntry: String
-    var timeRemaining: String = { return "endDate - date" }()
+    var timeRemaining: String = { return "endDate - date" }()   //TODO: it
+    
+    func addEntry() -> String {
+        var code = generateCode()
+        
+        localEntry = code
+        //coreDataHelper.saveData()     // Uncomment to save raffle entries
+        
+        //push to parse
+        
+        return code
+    }
+    
+    //TODO: implement (5 char alpha-numeric)
+    private func generateCode() -> String {
+        return String(Int(NSDate().timeIntervalSince1970))
+    }
+
 }
 
 class RaffleManager: ContentManager {
@@ -75,16 +92,6 @@ class RaffleManager: ContentManager {
         }
         
         return result
-    }
-    
-    //TODO: implement (5 char alpha-numeric)
-    func generateCode() -> String {
-        return String(Int(NSDate().timeIntervalSince1970))
-    }
-    
-    //TODO: implement
-    private func findTimeRemaining(date: NSDate, endDate:NSDate) -> String {
-        return "endDate - date"
     }
     
 }

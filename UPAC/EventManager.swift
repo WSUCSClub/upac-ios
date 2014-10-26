@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 let eventMgr = EventManager()
 
@@ -40,10 +41,37 @@ class EventManager: ContentManager {
     }
     
     override func populateList() {
-        clearLocalStorage()
+        //clearLocalStorage()
         
-        //TODO: Populate events list using Facebook Graph API
-        addEvent("134f21",
+        list = fetchStored()
+        
+        var FBList = list    //TODO: Populate using FB Graph API
+        
+        // Only add to local storage if does not already exist
+        for event in FBList as [Event] {
+            var alreadyExists = false
+            
+            for localEvent in list as [Event] {
+                if event.id == localEvent.id {
+                    // Event already exists locally, don't add another
+                    alreadyExists = true
+                    break
+                }
+            }
+            
+            if !alreadyExists {
+                addEvent(event.id,
+                    name: event.name,
+                    image: event.image,
+                    location: event.location,
+                    desc: event.desc,
+                    date: event.date,
+                    endDate: event.endDate)
+            }
+        }
+        
+        // Uncomment and run once (then re-comment) if test data needed
+        /*addEvent("134f21",
             name: "Dirty Dancing",
             image: "spin",
             location: "Orpheum Theater - Minneapolis",
@@ -70,12 +98,12 @@ class EventManager: ContentManager {
             location: "Gazebo / SAC",
             desc: "Lorem ipsum dolor sit amet",
             date: NSDate(),
-            endDate: NSDate())
+            endDate: NSDate())*/
     }
     
     func addEvent(id: String, name: String, image: String, location: String, desc: String, date: NSDate, endDate: NSDate) {
+        // Add to Core Data
         let newEvent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: coreDataHelper.managedObjectContext!) as Event
-        
         newEvent.id = id
         newEvent.name = name
         newEvent.image = image
@@ -83,7 +111,12 @@ class EventManager: ContentManager {
         newEvent.desc = desc
         newEvent.date = date
         newEvent.endDate = endDate
-
+        
+        // Insert notification
+        var localNotification = UILocalNotification()
+        localNotification.alertBody = "\(name) @ \(location)\n\(date)"
+        localNotification.fireDate = date
+        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }
     
 }

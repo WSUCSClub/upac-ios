@@ -44,10 +44,7 @@ class EventDetailViewController: UIViewController {
     
     @IBAction func enterRaffleButtonTapped(sender: UIButton!) {
         // Add entry
-        var entryCode = raffleMgr.generateCode()
-        raffleMgr.getForID(event.id)?.localEntry = entryCode
-        
-        //coreDataHelper.saveData() // Uncomment to save raffle entries
+        var entryCode = raffleMgr.getForID(event.id)?.addEntry()
         
         // Update view
         raffleCodeLabel.text = entryCode

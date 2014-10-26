@@ -1,25 +1,26 @@
 UI
 ----
-* make it not terrible ("iOS Human Interface Guidelines")
+* make it not suck ("iOS Human Interface Guidelines")
 * resolve all auto-layout warnings
 * implement color scheme
 * create tab bar icons (events, raffles, gallery, about) (flat black png's)
 * new app icon set with UPAC logo (Photoshop smart template; makeappicon.com)
+* custom iPad interface
 
 
 Events
 ----
 * fetch from Facebook
-* fetch raffles from Parse
-* event notifications
-* add "last updated" label
+* pull-down refresh
+    * add "last updated" label
 
 
 Raffles
 ----
-* random code generator
+* fetch from Parse
 * push raffle entries to Parse
 * can only enter raffle if at location
+* random code generator
 
 
 Gallery
@@ -41,8 +42,7 @@ About
 
 Settings
 ----
-* Create page in iOS Settings app
-* event notifications
+* 
 
 
 Administration
