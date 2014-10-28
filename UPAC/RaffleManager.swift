@@ -16,6 +16,7 @@ class Raffle: NSManagedObject {
     @NSManaged var date: NSDate
     @NSManaged var endDate: NSDate
     @NSManaged var localEntry: String
+    var entries = [String]()
     var timeRemaining: String = { return "endDate - date" }()   //TODO: it
     
     func addEntry() -> String {
@@ -29,6 +30,46 @@ class Raffle: NSManagedObject {
         return code
     }
     
+    func drawWinners(numberOfWinners: Int) -> [String] {
+        var winners = [String]()
+        
+        var i = 0
+        while i < numberOfWinners && i < entries.count {
+            ++i
+            
+            println(entries.count)
+            if entries.count < 1 {
+                break
+            }
+            
+            var random = Int(arc4random()) % entries.count
+            var possibleWinner = entries[random]
+            
+            // Make sure entry isn't already a winner
+            var alreadyWon = false
+            for winner in winners {
+                if possibleWinner == winner {
+                    alreadyWon = true
+                    --i
+                    break
+                }
+            }
+            
+            if !alreadyWon {
+                winners.append(possibleWinner)
+            }
+        }
+        
+        return winners
+    }
+    
+    //TODO: pull from parse
+    func getEntries() {
+        entries.append("asldk")
+        entries.append("49tgl")
+        //entries.append("39t02jf")
+    }
+    
     //TODO: implement (5 char alpha-numeric)
     private func generateCode() -> String {
         return String(Int(NSDate().timeIntervalSince1970))
@@ -37,12 +78,14 @@ class Raffle: NSManagedObject {
 }
 
 class RaffleManager: ContentManager {
+    var adminPrivileges = true
+    
     init() {
         super.init(contentType: "Raffle")
     }
     
     override func populateList() {
-        //clearLocalStorage()
+        //clearLocalStorage()     // Comment out for persistence
         list = fetchStored()
         
         var parseList = list    //TODO: Populate with Parse data
@@ -52,6 +95,11 @@ class RaffleManager: ContentManager {
             var alreadyExists = false
             
             for localRaffle in list as [Raffle] {
+                localRaffle.entries = []
+                //TODO: add all entries to localRaffle no matter what because they are not being stored w/ Core Data
+                // localRaffle.entries = raffle.entries // from parse
+                localRaffle.getEntries()
+                
                 if raffle.id == localRaffle.id {
                     // Raffle already exists locally, don't add another
                     alreadyExists = true

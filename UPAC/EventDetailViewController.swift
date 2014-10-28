@@ -9,16 +9,20 @@
 import UIKit
 
 class EventDetailViewController: UIViewController {
-    @IBOutlet var image:UIImageView!
-    @IBOutlet var name:UILabel!
-    @IBOutlet var location:UILabel!
-    @IBOutlet var date:UILabel!
-    @IBOutlet var desc:UITextView!
+    @IBOutlet var image: UIImageView!
+    @IBOutlet var name: UILabel!
+    @IBOutlet var location: UILabel!
+    @IBOutlet var date: UILabel!
+    @IBOutlet var desc: UITextView!
     
     @IBOutlet var enterRaffleButton: UIButton!
     @IBOutlet var raffleCodeLabel: UILabel!
     
-    var event:Event!
+    @IBOutlet var createRaffleButton: UIButton!
+    @IBOutlet var drawWinnersButton: UIButton!
+    @IBOutlet var numberOfParticipantsLabel: UILabel!
+    
+    var event: Event!
     var index: Int!
     
     override func viewDidLoad() {
@@ -37,7 +41,7 @@ class EventDetailViewController: UIViewController {
     
     func updateView() {
         // Raffle view
-        if event.hasRaffle() {
+        if event.hasRaffle() && !raffleMgr.adminPrivileges {
             if raffleMgr.getForID(event.id)?.localEntry == "" {
                 enterRaffleButton.hidden = false
                 raffleCodeLabel.hidden = true
@@ -47,9 +51,21 @@ class EventDetailViewController: UIViewController {
             }
             
             //show view
-        } else {
+        } else if !event.hasRaffle() && !raffleMgr.adminPrivileges {
             enterRaffleButton.hidden = true
             raffleCodeLabel.hidden = true
+        } else if event.hasRaffle() && raffleMgr.adminPrivileges {
+            createRaffleButton.hidden = true
+            
+            drawWinnersButton.hidden = false
+            
+            numberOfParticipantsLabel.hidden = false
+            numberOfParticipantsLabel.text = String(raffleMgr.getForID(event.id)!.entries.count)
+            var testEntries = raffleMgr.getForID(event.id)!.entries
+        } else if !event.hasRaffle() && raffleMgr.adminPrivileges {
+            createRaffleButton.hidden = false
+            drawWinnersButton.hidden = true
+            numberOfParticipantsLabel.hidden = true
         }
         
         image.image = UIImage(named: event.image) //TODO: Update for URLs
@@ -69,6 +85,56 @@ class EventDetailViewController: UIViewController {
         enterRaffleButton.hidden = true
     }
     
+    @IBAction func drawWinnersButtonTapped(sender: UIButton!) {
+        var winners = [String]()
+        var pickWinnersAlert = UIAlertController(title: "", message: "How many winners will there be?", preferredStyle: .Alert)
+        
+        var inputNumberField = UITextField()
+        pickWinnersAlert.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            textField.placeholder = "#"
+            inputNumberField = textField
+        }
+        
+        var cancel = UIAlertAction(title: "Cancel", style: .Default) { (action) -> Void in }
+        pickWinnersAlert.addAction(cancel)
+        
+        var ok = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in
+            var number: Int? = inputNumberField.text.toInt()
+            
+            if let number = number {     // Validating input
+                winners = raffleMgr.getForID(self.event.id)!.drawWinners(number)
+                
+                var showWinnersAlert = UIAlertController(title: "Winners", message: "", preferredStyle: .Alert)
+                
+                for w in winners {
+                    showWinnersAlert.message! += "\(w)\n"
+                }
+                
+                var dismiss = UIAlertAction(title: "Got 'em!", style: .Default) { (action) -> Void in }
+                showWinnersAlert.addAction(dismiss)
+                
+                // Need to wrap presentation to prevent warning
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.presentViewController(showWinnersAlert, animated: true, completion: nil)
+                }
+            }
+            
+        }
+        pickWinnersAlert.addAction(ok)
+        
+        // Need to wrap presentation to prevent warning
+        dispatch_async(dispatch_get_main_queue()) {
+            self.presentViewController(pickWinnersAlert, animated: true, completion: nil)
+        }
+
+    }
+    
+    @IBAction func createRaffleButtonTapped(sender: UIButton!) {
+        println("timePicker popup for start and end date")
+        
+        updateView()
+    }
+    
     func moveToNextEvent() {
         if index + 1 < eventMgr.list.count {
             index?++
@@ -76,7 +142,6 @@ class EventDetailViewController: UIViewController {
             
             updateView()
         }
-        
     }
     
     func moveToPreviousEvent() {

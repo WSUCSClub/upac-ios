@@ -27,26 +27,52 @@ Please note that UPAC provides special accommodations for those with disabilitie
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOZ-ig-Gye">
-                                <rect key="frame" x="200" y="501" width="200" height="42"/>
-                                <state key="normal" backgroundImage="facebook - like us">
+                                <rect key="frame" x="209" y="417" width="182" height="32"/>
+                                <state key="normal" backgroundImage="facebook">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="linkToFacebook" destination="8rJ-Kc-sve" eventType="touchUpInside" id="zPg-7Y-hDe"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winona State University. All rights reserved (c) 2014" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTA-jS-qAX">
+                                <rect key="frame" x="16" y="522" width="568" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="zga-Hl-Hz7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHb-jz-fsI">
+                                <rect key="frame" x="209" y="457" width="182" height="32"/>
+                                <state key="normal" backgroundImage="twitter">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="linkToTwitter" destination="8rJ-Kc-sve" eventType="touchUpInside" id="se8-3o-xT3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wOZ-ig-Gye" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="9vQ-uM-Xhx"/>
-                            <constraint firstItem="wOZ-ig-Gye" firstAttribute="centerX" secondItem="tbj-TD-GD6" secondAttribute="centerX" id="IaO-kX-zoJ"/>
-                            <constraint firstItem="tbj-TD-GD6" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="NAw-EE-mof"/>
-                            <constraint firstAttribute="bottom" secondItem="tbj-TD-GD6" secondAttribute="bottom" id="XoC-tf-PFc"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="wOZ-ig-Gye" secondAttribute="bottom" constant="8" symbolic="YES" id="llp-WT-JT6"/>
-                            <constraint firstItem="tbj-TD-GD6" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="19" id="rLk-Mn-7qL"/>
+                            <constraint firstItem="DHb-jz-fsI" firstAttribute="leading" secondItem="wOZ-ig-Gye" secondAttribute="leading" id="4Zn-WI-2zZ"/>
+                            <constraint firstItem="QTA-jS-qAX" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="6gU-0J-PZp"/>
+                            <constraint firstItem="QTA-jS-qAX" firstAttribute="top" secondItem="DHb-jz-fsI" secondAttribute="bottom" constant="33" id="786-hq-BYT"/>
+                            <constraint firstAttribute="bottom" secondItem="tbj-TD-GD6" secondAttribute="bottom" id="DI0-VZ-TtH"/>
+                            <constraint firstItem="DHb-jz-fsI" firstAttribute="centerX" secondItem="QTA-jS-qAX" secondAttribute="centerX" id="LOF-1w-a53"/>
+                            <constraint firstItem="tbj-TD-GD6" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="Vp0-2Y-829"/>
+                            <constraint firstItem="tbj-TD-GD6" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="dbZ-1G-exx"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="QTA-jS-qAX" secondAttribute="bottom" constant="8" symbolic="YES" id="eFs-gV-LqS"/>
+                            <constraint firstItem="DHb-jz-fsI" firstAttribute="top" secondItem="wOZ-ig-Gye" secondAttribute="bottom" constant="8" symbolic="YES" id="eR1-dZ-o4C"/>
+                            <constraint firstItem="DHb-jz-fsI" firstAttribute="centerX" secondItem="tbj-TD-GD6" secondAttribute="centerX" id="jmu-qh-7ge"/>
+                            <constraint firstItem="tbj-TD-GD6" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="19" id="zDG-ma-8aG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="1wA-ZJ-c9Y"/>
+                    <connections>
+                        <outlet property="copyrightLabel" destination="QTA-jS-qAX" id="keg-Nt-A5a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -341,6 +367,34 @@ Please note that UPAC provides special accommodations for those with disabilitie
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPi-eT-3sc">
+                                <rect key="frame" x="16" y="151" width="66" height="30"/>
+                                <color key="backgroundColor" red="0.80877130679999998" green="0.0" blue="0.080998526680000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Create raffle">
+                                    <color key="titleColor" red="0.96204682867932645" green="0.96438099142929923" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createRaffleButtonTapped:" destination="jgo-nt-g9O" eventType="touchUpInside" id="mQS-ey-mba"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeD-yq-hpK">
+                                <rect key="frame" x="16" y="151" width="97" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.87434895833333337" blue="0.13166985485044541" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Draw winners!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="drawWinnersButtonTapped:" destination="jgo-nt-g9O" eventType="touchUpInside" id="Pov-AH-sWr"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(From &lt;X&gt; participants)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ep-CF-LzQ">
+                                <rect key="frame" x="16" y="189" width="180" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -361,12 +415,15 @@ Please note that UPAC provides special accommodations for those with disabilitie
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="createRaffleButton" destination="uPi-eT-3sc" id="Dg1-zc-Pp6"/>
                         <outlet property="date" destination="Vhe-a1-88q" id="zdi-pU-ZJw"/>
                         <outlet property="desc" destination="bfG-Y6-3er" id="Lva-mN-J3m"/>
+                        <outlet property="drawWinnersButton" destination="AeD-yq-hpK" id="TL7-5a-DOq"/>
                         <outlet property="enterRaffleButton" destination="QDt-6l-X7C" id="vbh-u6-4JN"/>
                         <outlet property="image" destination="KbK-KM-QGY" id="dcD-lo-Mff"/>
                         <outlet property="location" destination="sJ3-n9-SA4" id="Bt7-fM-OUL"/>
                         <outlet property="name" destination="hjR-4F-Zj6" id="j1v-eE-gPA"/>
+                        <outlet property="numberOfParticipantsLabel" destination="8ep-CF-LzQ" id="D3E-T4-0GL"/>
                         <outlet property="raffleCodeLabel" destination="QMR-cI-0nd" id="zYc-xz-eKz"/>
                     </connections>
                 </viewController>
@@ -545,11 +602,12 @@ Please note that UPAC provides special accommodations for those with disabilitie
         </scene>
     </scenes>
     <resources>
-        <image name="facebook - like us" width="200" height="42"/>
+        <image name="facebook" width="182" height="32"/>
         <image name="first" width="30" height="30"/>
         <image name="scare" width="80" height="80"/>
         <image name="second" width="30" height="30"/>
         <image name="spin" width="80" height="80"/>
+        <image name="twitter" width="182" height="32"/>
         <image name="wsu_text" width="211" height="67"/>
     </resources>
     <inferredMetricsTieBreakers>

@@ -13,7 +13,6 @@ Events
 * fetch from Facebook
 * pull-down refresh
     * add "last updated" label
-* detail view swipe animation
 
 
 Raffles
@@ -29,22 +28,19 @@ Gallery
 * fetch from Facebook
 * ImageView
     * pinch-zoom
-    * swipe animation
 
 
 About
 ----
 * add staff directory
-* copyright notice -> long press -> password dialog -> segue -> admin page
+* login validation
 
 
 Administration
 ----
-* event listing tableview
-    * detail view
-        * button to add a raffle (need start and end date)
-        * label showing how many entries
-        * button to show N random codes (alert)
+* system for setting password???
+* detail view
+    * button to add a raffle (need start and end date)
 
 
 Settings
@@ -58,5 +54,4 @@ Miscellaneous
 * write tests
 * FBHelper object for managing connections/sessions
 * ParseHelper object for managing connections/sessions
-* add ability to swipe between main views
 

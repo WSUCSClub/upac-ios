@@ -26,7 +26,7 @@ class EventsViewController: UITableViewController {
 
     // Set cell content
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var e = eventMgr.list[indexPath.row] as Event
+        let e = eventMgr.list[indexPath.row] as Event
         
         // Use different layout if event has a raffle
         var cellIdentifier: String
@@ -36,7 +36,7 @@ class EventsViewController: UITableViewController {
             cellIdentifier = "TableViewEventCell"
         }
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as UITableViewCell
 
         
         (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(named: e.image)
@@ -53,9 +53,9 @@ class EventsViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "EventDetailView") {
-            var destinationView:EventDetailViewController = segue.destinationViewController as EventDetailViewController
+            let destinationView:EventDetailViewController = segue.destinationViewController as EventDetailViewController
             
-            var indexPath:NSIndexPath = self.eventsTableView.indexPathForCell(sender as UITableViewCell)!
+            let indexPath:NSIndexPath = self.eventsTableView.indexPathForCell(sender as UITableViewCell)!
             
             destinationView.event = eventMgr.list[indexPath.row] as Event
             destinationView.index = indexPath.row

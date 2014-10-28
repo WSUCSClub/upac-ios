@@ -35,7 +35,7 @@ class Event: NSManagedObject {
     }
 }
 
-class EventManager: ContentManager {
+class EventManager: ContentManager {    
     init() {
         super.init(contentType: "Event")
     }
