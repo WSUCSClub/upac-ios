@@ -15,7 +15,7 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
         
         var longPressRecognizer = UILongPressGestureRecognizer(target: self, action: Selector("showLogin:"))
-        //longPressRecognizer.minimumPressDuration = 3
+        longPressRecognizer.minimumPressDuration = 3
         copyrightLabel.addGestureRecognizer(longPressRecognizer)
     }
 

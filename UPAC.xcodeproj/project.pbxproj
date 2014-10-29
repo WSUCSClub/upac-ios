@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		201EDC2919F77A4F00B278D0 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201EDC2819F77A4F00B278D0 /* NSDateExtension.swift */; };
+		203DC31E1A009BA20056E4A5 /* NewRaffleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203DC31D1A009BA20056E4A5 /* NewRaffleViewController.swift */; };
 		205F54B119F1E71E00284E05 /* RaffleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205F54B019F1E71E00284E05 /* RaffleManager.swift */; };
 		206D4B2E19F34AD600C25FCB /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206D4B2D19F34AD600C25FCB /* EventDetailViewController.swift */; };
 		206D4B3119F4239700C25FCB /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 206D4B2F19F4239700C25FCB /* TODO.md */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		201EDC2819F77A4F00B278D0 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
+		203DC31D1A009BA20056E4A5 /* NewRaffleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRaffleViewController.swift; sourceTree = "<group>"; };
 		205F54B019F1E71E00284E05 /* RaffleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaffleManager.swift; sourceTree = "<group>"; };
 		206D4B2D19F34AD600C25FCB /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		206D4B2F19F4239700C25FCB /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				20F50F4A19E77D8200DBED9A /* EventsViewController.swift */,
 				206D4B2D19F34AD600C25FCB /* EventDetailViewController.swift */,
+				203DC31D1A009BA20056E4A5 /* NewRaffleViewController.swift */,
 				208DF0E119EA143000847186 /* RaffleViewController.swift */,
 				208DF0DF19EA132E00847186 /* GalleryViewController.swift */,
 				20D0446A19EB0C6A00A7795E /* ImageViewController.swift */,
@@ -282,6 +285,7 @@
 				208DF0E019EA132E00847186 /* GalleryViewController.swift in Sources */,
 				206D4B2E19F34AD600C25FCB /* EventDetailViewController.swift in Sources */,
 				208DF0E219EA143000847186 /* RaffleViewController.swift in Sources */,
+				203DC31E1A009BA20056E4A5 /* NewRaffleViewController.swift in Sources */,
 				20EF825419FB463200CC7BD0 /* CoreDataHelper.swift in Sources */,
 				201EDC2919F77A4F00B278D0 /* NSDateExtension.swift in Sources */,
 				208BBF1619E99FF600BC8F51 /* EventManager.swift in Sources */,

@@ -22,7 +22,6 @@
 * push raffle entries to Parse
 * can only enter raffle if at location
 * random code generator
-* show dates in event detail view
 
 
 ## Gallery
@@ -33,13 +32,13 @@
 
 ## About
 * add staff directory
-* login validation
+* login validation (from Parse hash)
 
 
 ## Administration
 * system for setting password??
 * detail view
-    * button to add a raffle (need start and end date)
+    * button to delete raffle
 
 
 ## Settings

@@ -18,15 +18,24 @@ class EventDetailViewController: UIViewController {
     @IBOutlet var enterRaffleButton: UIButton!
     @IBOutlet var raffleCodeLabel: UILabel!
     
+    @IBOutlet var raffleStartDateLabel: UILabel!
+    @IBOutlet var raffleEndDateLabel: UILabel!
+    
     @IBOutlet var createRaffleButton: UIButton!
     @IBOutlet var drawWinnersButton: UIButton!
     @IBOutlet var numberOfParticipantsLabel: UILabel!
     
     var event: Event!
+    var raffle: Raffle?
     var index: Int!
+    var delegate: EventsViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if event.hasRaffle() {
+            raffle = raffleMgr.getForID(event.id)?
+        }
         
         updateView()
         
@@ -41,6 +50,17 @@ class EventDetailViewController: UIViewController {
     
     func updateView() {
         // Raffle view
+        if event.hasRaffle() {
+            raffleStartDateLabel.hidden = false
+            raffleStartDateLabel.text = "\(raffle!.date.dayStr()) \(raffle!.date.timeStr())"
+            
+            raffleEndDateLabel.hidden = false
+            raffleEndDateLabel.text = "\(raffle!.endDate.dayStr()) \(raffle!.endDate.timeStr())"
+        } else {
+            raffleStartDateLabel.hidden = true
+            raffleEndDateLabel.hidden = true
+        }
+        
         if event.hasRaffle() && !raffleMgr.adminPrivileges {
             if raffleMgr.getForID(event.id)?.localEntry == "" {
                 //TODO: only show "Enter raffle" button if at event location
@@ -53,8 +73,6 @@ class EventDetailViewController: UIViewController {
                 raffleCodeLabel.hidden = false
                 raffleCodeLabel.text = raffleMgr.getForID(event.id)?.localEntry
             }
-            
-            //show view
         } else if !event.hasRaffle() && !raffleMgr.adminPrivileges {
             enterRaffleButton.hidden = true
             raffleCodeLabel.hidden = true
@@ -134,14 +152,7 @@ class EventDetailViewController: UIViewController {
     }
     
     @IBAction func createRaffleButtonTapped(sender: UIButton!) {
-        var startDate = NSDate()
-        var endDate = NSDate()
-        
-        println("timePicker popup for start and end date")
-        //
-        
-        raffleMgr.addRaffle(event.id, date: startDate, endDate: endDate)
-        coreDataHelper.saveData()
+
         
         updateView()
     }
@@ -150,6 +161,7 @@ class EventDetailViewController: UIViewController {
         if index + 1 < eventMgr.list.count {
             index?++
             event = eventMgr.list[index] as Event
+            raffle = raffleMgr.getForID(event.id)?
             
             updateView()
         }
@@ -159,6 +171,7 @@ class EventDetailViewController: UIViewController {
         if index - 1 >= 0 {
             index?--
             event = eventMgr.list[index] as Event
+            raffle = raffleMgr.getForID(event.id)?
             
             updateView()
         }
@@ -169,4 +182,18 @@ class EventDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "NewRaffleView") {
+            let destinationView: NewRaffleViewController = segue.destinationViewController as NewRaffleViewController
+            
+            destinationView.delegate = self
+            destinationView.event = event
+        }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.delegate.tableView.reloadData()
+        })
+    }
 }

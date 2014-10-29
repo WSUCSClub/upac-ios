@@ -66,7 +66,6 @@ class Raffle: NSManagedObject {
     func getEntries() {
         entries.append("asldk")
         entries.append("49tgl")
-        //entries.append("39t02jf")
     }
     
     //TODO: implement (5 char alpha-numeric)
@@ -77,7 +76,7 @@ class Raffle: NSManagedObject {
 }
 
 class RaffleManager: ContentManager {
-    var adminPrivileges = true
+    var adminPrivileges = false
     
     init() {
         super.init(contentType: "Raffle")
@@ -110,14 +109,7 @@ class RaffleManager: ContentManager {
                 addRaffle(raffle.id, date: raffle.date, endDate: raffle.endDate)
             }
         }
-        
-        // Uncomment and run once (then re-comment) if test data needed
-        /*addRaffle("134f21",
-            date: NSDate(),
-            endDate: NSDate())
-        addRaffle("owii8201",
-            date: NSDate(),
-            endDate: NSDate())*/
+
     }
     
     func addRaffle(id: String, date: NSDate, endDate: NSDate) {
@@ -129,6 +121,9 @@ class RaffleManager: ContentManager {
         newRaffle.localEntry = ""
         
         //TODO: push to parse
+        
+        coreDataHelper.saveData()
+        list.append(newRaffle)
     }
     
     func getForID(id: String) -> Raffle? {
