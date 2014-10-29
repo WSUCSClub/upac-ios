@@ -43,8 +43,12 @@ class EventDetailViewController: UIViewController {
         // Raffle view
         if event.hasRaffle() && !raffleMgr.adminPrivileges {
             if raffleMgr.getForID(event.id)?.localEntry == "" {
-                enterRaffleButton.hidden = false
-                raffleCodeLabel.hidden = true
+                //TODO: only show "Enter raffle" button if at event location
+                // Only show "Enter raffle" button if raffle is still open
+                if raffleMgr.getForID(event.id)?.endDate.compare(NSDate()) == NSComparisonResult.OrderedDescending {
+                    enterRaffleButton.hidden = false
+                    raffleCodeLabel.hidden = true
+                }
             } else {
                 raffleCodeLabel.hidden = false
                 raffleCodeLabel.text = raffleMgr.getForID(event.id)?.localEntry
@@ -130,7 +134,14 @@ class EventDetailViewController: UIViewController {
     }
     
     @IBAction func createRaffleButtonTapped(sender: UIButton!) {
+        var startDate = NSDate()
+        var endDate = NSDate()
+        
         println("timePicker popup for start and end date")
+        //
+        
+        raffleMgr.addRaffle(event.id, date: startDate, endDate: endDate)
+        coreDataHelper.saveData()
         
         updateView()
     }

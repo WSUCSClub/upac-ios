@@ -37,7 +37,6 @@ class Raffle: NSManagedObject {
         while i < numberOfWinners && i < entries.count {
             ++i
             
-            println(entries.count)
             if entries.count < 1 {
                 break
             }
@@ -128,6 +127,8 @@ class RaffleManager: ContentManager {
         newRaffle.date = date
         newRaffle.endDate = endDate
         newRaffle.localEntry = ""
+        
+        //TODO: push to parse
     }
     
     func getForID(id: String) -> Raffle? {
