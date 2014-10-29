@@ -407,6 +407,17 @@ Please note that UPAC provides special accommodations for those with disabilitie
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8SN-O4-Bb1">
+                                <rect key="frame" x="16" y="275" width="82" height="30"/>
+                                <color key="backgroundColor" red="0.80877130679999998" green="0.0" blue="0.080998526680000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Delete raffle">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteRaffleButtonTapped:" destination="jgo-nt-g9O" eventType="touchUpInside" id="N6m-ED-XSR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -429,6 +440,7 @@ Please note that UPAC provides special accommodations for those with disabilitie
                     <connections>
                         <outlet property="createRaffleButton" destination="uPi-eT-3sc" id="Dg1-zc-Pp6"/>
                         <outlet property="date" destination="Vhe-a1-88q" id="zdi-pU-ZJw"/>
+                        <outlet property="deleteRaffleButton" destination="8SN-O4-Bb1" id="gSb-LQ-1QF"/>
                         <outlet property="desc" destination="bfG-Y6-3er" id="Lva-mN-J3m"/>
                         <outlet property="drawWinnersButton" destination="AeD-yq-hpK" id="TL7-5a-DOq"/>
                         <outlet property="enterRaffleButton" destination="QDt-6l-X7C" id="vbh-u6-4JN"/>

@@ -22,6 +22,7 @@ class EventDetailViewController: UIViewController {
     @IBOutlet var raffleEndDateLabel: UILabel!
     
     @IBOutlet var createRaffleButton: UIButton!
+    @IBOutlet var deleteRaffleButton: UIButton!
     @IBOutlet var drawWinnersButton: UIButton!
     @IBOutlet var numberOfParticipantsLabel: UILabel!
     
@@ -73,11 +74,15 @@ class EventDetailViewController: UIViewController {
                 raffleCodeLabel.hidden = false
                 raffleCodeLabel.text = raffleMgr.getForID(event.id)?.localEntry
             }
+            
+            deleteRaffleButton.hidden = true
         } else if !event.hasRaffle() && !raffleMgr.adminPrivileges {
             enterRaffleButton.hidden = true
             raffleCodeLabel.hidden = true
+            deleteRaffleButton.hidden = true
         } else if event.hasRaffle() && raffleMgr.adminPrivileges {
             createRaffleButton.hidden = true
+            deleteRaffleButton.hidden = false
             
             drawWinnersButton.hidden = false
             
@@ -86,6 +91,7 @@ class EventDetailViewController: UIViewController {
             var testEntries = raffleMgr.getForID(event.id)!.entries
         } else if !event.hasRaffle() && raffleMgr.adminPrivileges {
             createRaffleButton.hidden = false
+            deleteRaffleButton.hidden = true
             drawWinnersButton.hidden = true
             numberOfParticipantsLabel.hidden = true
         }
@@ -151,8 +157,8 @@ class EventDetailViewController: UIViewController {
 
     }
     
-    @IBAction func createRaffleButtonTapped(sender: UIButton!) {
-
+    @IBAction func deleteRaffleButtonTapped(sender: UIButton!) {
+        raffleMgr.deleteRaffle(raffle!)
         
         updateView()
     }

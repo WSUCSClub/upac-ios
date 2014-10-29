@@ -15,6 +15,7 @@
 * fetch from Facebook
 * pull-down refresh
     * add "last updated" label
+* add map to detail view
 
 
 ## Raffles
@@ -37,8 +38,6 @@
 
 ## Administration
 * system for setting password??
-* detail view
-    * button to delete raffle
 
 
 ## Settings

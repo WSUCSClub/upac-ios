@@ -126,6 +126,13 @@ class RaffleManager: ContentManager {
         list.append(newRaffle)
     }
     
+    func deleteRaffle(raffle: Raffle) {
+        println(raffle.id)
+        coreDataHelper.managedObjectContext!.deleteObject(raffle)
+        coreDataHelper.saveData()
+        populateList()
+    }
+    
     func getForID(id: String) -> Raffle? {
         var result: Raffle? = nil
         
