@@ -127,7 +127,6 @@ class RaffleManager: ContentManager {
     }
     
     func deleteRaffle(raffle: Raffle) {
-        println(raffle.id)
         coreDataHelper.managedObjectContext!.deleteObject(raffle)
         coreDataHelper.saveData()
         populateList()

@@ -38,8 +38,13 @@ class EventsViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as UITableViewCell
 
+        var image = (cell.contentView.viewWithTag(1) as UIImageView)
+        image.image = UIImage(named: e.image)
+        // Apply circle mask
+        //var mask = image.layer
+        //mask.cornerRadius = image.frame.size.width / 2
+        //mask.masksToBounds = true
         
-        (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(named: e.image)
         (cell.contentView.viewWithTag(2) as UILabel).text = e.name
         (cell.contentView.viewWithTag(3) as UILabel).text = e.location
         (cell.contentView.viewWithTag(4) as UILabel).text = e.date.dayStr()
@@ -52,7 +57,7 @@ class EventsViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "EventDetailView") {
+        if segue.identifier == "EventDetailView" || segue.identifier == "EventDetailRaffleView" {
             let destinationView:EventDetailViewController = segue.destinationViewController as EventDetailViewController
             
             let indexPath:NSIndexPath = self.eventsTableView.indexPathForCell(sender as UITableViewCell)!

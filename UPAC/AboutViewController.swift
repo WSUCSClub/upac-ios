@@ -29,6 +29,11 @@ class AboutViewController: UIViewController {
         UIApplication.sharedApplication().openURL(NSURL(string: "https://twitter.com/UPACWSU")!)
     }
     
+    @IBAction func linkToEmail() {
+        // Open mail app
+        UIApplication.sharedApplication().openURL(NSURL(string: "mailto:upac@winona.edu")!)
+    }
+    
     func showLogin(sender: UILongPressGestureRecognizer) {
         if sender.state == .Began {
             var loginAlert = UIAlertController(title: "Login", message: "Enter your password", preferredStyle: .Alert)

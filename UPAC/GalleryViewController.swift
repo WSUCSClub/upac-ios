@@ -18,7 +18,7 @@ class GalleryViewController: UICollectionViewController {
     
     // Number of sections
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     // Size of sections

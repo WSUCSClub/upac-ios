@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MapKit
+import QuartzCore
 
 class EventDetailViewController: UIViewController {
     @IBOutlet var image: UIImageView!
@@ -18,13 +20,14 @@ class EventDetailViewController: UIViewController {
     @IBOutlet var enterRaffleButton: UIButton!
     @IBOutlet var raffleCodeLabel: UILabel!
     
-    @IBOutlet var raffleStartDateLabel: UILabel!
-    @IBOutlet var raffleEndDateLabel: UILabel!
+    @IBOutlet var raffleDateLabel: UILabel!
     
     @IBOutlet var createRaffleButton: UIButton!
     @IBOutlet var deleteRaffleButton: UIButton!
     @IBOutlet var drawWinnersButton: UIButton!
     @IBOutlet var numberOfParticipantsLabel: UILabel!
+    
+    @IBOutlet var raffleBar: UIImageView!
     
     var event: Event!
     var raffle: Raffle?
@@ -52,14 +55,12 @@ class EventDetailViewController: UIViewController {
     func updateView() {
         // Raffle view
         if event.hasRaffle() {
-            raffleStartDateLabel.hidden = false
-            raffleStartDateLabel.text = "\(raffle!.date.dayStr()) \(raffle!.date.timeStr())"
-            
-            raffleEndDateLabel.hidden = false
-            raffleEndDateLabel.text = "\(raffle!.endDate.dayStr()) \(raffle!.endDate.timeStr())"
+            raffleBar.hidden = false
+            raffleDateLabel.hidden = false
+            raffleDateLabel.text = "\(raffle!.date.timeStr()) - \(raffle!.endDate.timeStr())"
         } else {
-            raffleStartDateLabel.hidden = true
-            raffleEndDateLabel.hidden = true
+            raffleBar.hidden = true
+            raffleDateLabel.hidden = true
         }
         
         if event.hasRaffle() && !raffleMgr.adminPrivileges {
@@ -97,10 +98,13 @@ class EventDetailViewController: UIViewController {
         }
         
         image.image = UIImage(named: event.image) //TODO: Update for URLs
+        
         name.text = event.name
         location.text = event.location
         date.text = "\(event.date.dayStr()) @ \(event.date.timeStr()) - \(event.endDate.timeStr())"
         desc.text = event.desc
+        
+        // set map view to event.location
     }
     
     @IBAction func enterRaffleButtonTapped(sender: UIButton!) {

@@ -8,6 +8,7 @@
 
 
 import UIKit
+import QuartzCore
 
 class ImageViewController: UIViewController {
     @IBOutlet var fullImageView: UIImageView!
@@ -21,6 +22,13 @@ class ImageViewController: UIViewController {
         super.viewDidLoad()
 
         updateView()
+        
+        // Create rounded border around back button
+        backButton.layer.borderWidth = 1.5
+        backButton.layer.borderColor = UIColor.whiteColor().CGColor
+        backButton.layer.cornerRadius = 3.0
+        backButton.layer.masksToBounds = true
+        
         
         var tapGesture = UITapGestureRecognizer(target: self, action: Selector("toggleUI"))
         fullImageView.addGestureRecognizer(tapGesture)
