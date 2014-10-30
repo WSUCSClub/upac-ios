@@ -104,7 +104,7 @@ class EventDetailViewController: UIViewController {
         date.text = "\(event.date.dayStr()) @ \(event.date.timeStr()) - \(event.endDate.timeStr())"
         desc.text = event.desc
         
-        // set map view to event.location
+        //TODO: set map view to event.location
     }
     
     @IBAction func enterRaffleButtonTapped(sender: UIButton!) {

@@ -41,7 +41,7 @@
 
 
 ## Settings
-*
+* fire notifications _prior_ to event
 
 
 ## Miscellaneous

@@ -37,17 +37,17 @@ class EventsViewController: UITableViewController {
         }
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as UITableViewCell
-
-        var image = (cell.contentView.viewWithTag(1) as UIImageView)
-        image.image = UIImage(named: e.image)
-        // Apply circle mask
-        //var mask = image.layer
-        //mask.cornerRadius = image.frame.size.width / 2
-        //mask.masksToBounds = true
         
-        (cell.contentView.viewWithTag(2) as UILabel).text = e.name
-        (cell.contentView.viewWithTag(3) as UILabel).text = e.location
-        (cell.contentView.viewWithTag(4) as UILabel).text = e.date.dayStr()
+        // Format date circle
+        var image = (cell.contentView.viewWithTag(1) as UIImageView)
+        var mask = image.layer
+        mask.cornerRadius = image.frame.size.width / 2
+        mask.masksToBounds = true
+        (cell.contentView.viewWithTag(2) as UILabel).text = e.date.weekdayStr()
+        (cell.contentView.viewWithTag(3) as UILabel).text = e.date.dayNumStr()
+        
+        (cell.contentView.viewWithTag(4) as UILabel).text = e.name
+        (cell.contentView.viewWithTag(5) as UILabel).text = e.location
         
         return cell
     }

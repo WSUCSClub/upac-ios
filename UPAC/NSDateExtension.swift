@@ -16,5 +16,17 @@ extension NSDate {
     func timeStr() -> String {
         return NSDateFormatter.localizedStringFromDate(self, dateStyle: NSDateFormatterStyle.NoStyle, timeStyle: NSDateFormatterStyle.ShortStyle)
     }
+    
+    func weekdayStr() -> String {
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "EEE"
+        return dateFormatter.stringFromDate(self)
+    }
+    
+    func dayNumStr() -> String {
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "d"
+        return dateFormatter.stringFromDate(self)
+    }
 
 }

@@ -130,6 +130,8 @@ class RaffleManager: ContentManager {
         coreDataHelper.managedObjectContext!.deleteObject(raffle)
         coreDataHelper.saveData()
         populateList()
+        
+        //TODO: push to parse
     }
     
     func getForID(id: String) -> Raffle? {

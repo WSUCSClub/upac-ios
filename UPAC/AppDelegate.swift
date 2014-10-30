@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Allow notifications
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
         
+        // Set navbar text to white across entire app
+        //self.window!.tintColor = UIColor.whiteColor()
+        
         // Override point for customization after application launch.
         
         return true

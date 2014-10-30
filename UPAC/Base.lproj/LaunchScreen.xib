@@ -10,36 +10,18 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2014 wsu-cs-club. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
-                    <rect key="frame" x="20" y="439" width="441" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPAC" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
-                    <rect key="frame" x="20" y="140" width="441" height="43"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wsu_logo" translatesAutoresizingMaskIntoConstraints="NO" id="PkK-0O-e87">
-                    <rect key="frame" x="120" y="191" width="240" height="128"/>
+                <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wsu_logo white" translatesAutoresizingMaskIntoConstraints="NO" id="PkK-0O-e87">
+                    <rect key="frame" x="207" y="183" width="66" height="113"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="240" id="fCI-jE-IN7"/>
-                        <constraint firstAttribute="height" constant="128" id="jL4-gG-9RL"/>
+                        <constraint firstAttribute="height" constant="113" id="2h3-BP-E7h"/>
+                        <constraint firstAttribute="width" constant="66" id="HSo-ta-QJU"/>
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.36862745098039218" green="0.25882352941176473" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="kId-c2-rCX" secondAttribute="leading" id="Aec-Xr-Xge"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="140" id="Cm4-qF-iB2"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="trailing" secondItem="8ie-xW-0ye" secondAttribute="trailing" id="FdW-qf-7CW"/>
-                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Khr-Vx-hQY"/>
-                <constraint firstItem="8ie-xW-0ye" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Nkn-Pv-QWF"/>
-                <constraint firstItem="PkK-0O-e87" firstAttribute="top" secondItem="kId-c2-rCX" secondAttribute="bottom" constant="8" symbolic="YES" id="Ukf-9v-OhA"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="glz-Dv-ZA9"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="centerX" secondItem="PkK-0O-e87" secondAttribute="centerX" id="ktq-kb-BT3"/>
+                <constraint firstItem="PkK-0O-e87" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CZW-ON-wSy"/>
+                <constraint firstItem="PkK-0O-e87" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="183" id="EWm-6t-D8g"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -47,6 +29,6 @@
         </view>
     </objects>
     <resources>
-        <image name="wsu_logo" width="35" height="55"/>
+        <image name="wsu_logo white" width="106" height="106"/>
     </resources>
 </document>
