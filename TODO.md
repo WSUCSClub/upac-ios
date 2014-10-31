@@ -3,17 +3,19 @@
 ---
 
 ## UI
-* make it not suck ("iOS Human Interface Guidelines")
-* implement color scheme
-* create tab bar icons (events, raffles, gallery, about) (flat black png's)
-* new app icon set with UPAC logo (Photoshop smart template; [icon generator](http://makeappicon.com)) needed?
+* tab bar
+    * find right bg color
+    * create tab bar icons (events, raffles, gallery, about) (flat black png's)
+    * color tab bar icons to correspond w/ bg color
+* adhere to "iOS Human Interface Guidelines"
+* new app icon set with UPAC logo needed? (Photoshop smart template; [icon generator](http://makeappicon.com))
 * custom iPad interface
 
 
 ## Events
 * fetch from Facebook
 * pull-down refresh
-    * add "last updated" label
+    * w/ "last updated" label
 * add map to detail view?
 
 
@@ -31,8 +33,8 @@
 
 
 ## About
-* add staff directory
-* login validation (from Parse hash)
+* login validation (from Parse hash) (AboutViewController.loginAttemt())
+* add staff directory (separate view?)
 
 
 ## Administration
@@ -40,7 +42,8 @@
 
 
 ## Settings
-* fire notifications _prior_ to event
+* fire notifications _prior_ to event (EventManager.addEvent())
+    * add setting option for how far prior
 
 
 ## Miscellaneous
