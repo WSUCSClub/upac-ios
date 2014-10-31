@@ -4,10 +4,9 @@
 
 ## UI
 * make it not suck ("iOS Human Interface Guidelines")
-* resolve all auto-layout warnings
 * implement color scheme
 * create tab bar icons (events, raffles, gallery, about) (flat black png's)
-* new app icon set with UPAC logo (Photoshop smart template; [icon generator](http://makeappicon.com))
+* new app icon set with UPAC logo (Photoshop smart template; [icon generator](http://makeappicon.com)) needed?
 * custom iPad interface
 
 
@@ -15,7 +14,7 @@
 * fetch from Facebook
 * pull-down refresh
     * add "last updated" label
-* add map to detail view
+* add map to detail view?
 
 
 ## Raffles

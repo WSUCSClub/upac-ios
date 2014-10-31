@@ -69,11 +69,11 @@ class EventDetailViewController: UIViewController {
                 // Only show "Enter raffle" button if raffle is still open
                 if raffleMgr.getForID(event.id)?.endDate.compare(NSDate()) == NSComparisonResult.OrderedDescending {
                     enterRaffleButton.hidden = false
-                    raffleCodeLabel.hidden = true
                 }
+                raffleCodeLabel.hidden = true
             } else {
                 raffleCodeLabel.hidden = false
-                raffleCodeLabel.text = raffleMgr.getForID(event.id)?.localEntry
+                raffleCodeLabel.text = "# \((raffleMgr.getForID(event.id)?.localEntry)!)"
             }
             
             deleteRaffleButton.hidden = true
