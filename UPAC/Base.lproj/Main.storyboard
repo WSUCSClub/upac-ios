@@ -201,7 +201,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="TabBarController" customModule="UPAC" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
@@ -225,7 +225,7 @@
         <scene sceneID="Gzg-kP-4GD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vmX-Jw-M4G" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="About" image="first" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="About" image="upac" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gbf-M4-Sy3">
@@ -745,7 +745,9 @@
         <scene sceneID="Hyv-Cq-U2A">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cb9-yU-vyN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" image="first" id="0pf-U1-xAi"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="events" id="0pf-U1-xAi">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="K0x-sx-kS7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -769,7 +771,7 @@
         <scene sceneID="2rt-kP-xC6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XhP-u6-YSv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Gallery" image="second" id="5eA-i5-gcX"/>
+                    <tabBarItem key="tabBarItem" title="Gallery" image="photos" id="5eA-i5-gcX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gMV-Ia-RlI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -791,13 +793,14 @@
     </scenes>
     <resources>
         <image name="dirty dancing" width="490" height="267"/>
+        <image name="events" width="30" height="30"/>
         <image name="facebook" width="300" height="300"/>
-        <image name="first" width="30" height="30"/>
         <image name="mail" width="300" height="300"/>
+        <image name="photos" width="30" height="30"/>
         <image name="scare" width="80" height="80"/>
-        <image name="second" width="30" height="30"/>
         <image name="tickets-small" width="30" height="23"/>
         <image name="twitter" width="300" height="300"/>
+        <image name="upac" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7Sg-c0-fRt"/>

@@ -28,6 +28,7 @@
 
 ## Gallery
 * fetch from Facebook
+* divide by albums
 * ImageView
     * pinch-zoom
 

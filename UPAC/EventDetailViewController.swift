@@ -112,7 +112,7 @@ class EventDetailViewController: UIViewController {
         var entryCode = raffleMgr.getForID(event.id)?.addEntry()
         
         // Update view
-        raffleCodeLabel.text = entryCode
+        raffleCodeLabel.text = "# \(entryCode!)"
         raffleCodeLabel.hidden = false
         enterRaffleButton.hidden = true
     }
