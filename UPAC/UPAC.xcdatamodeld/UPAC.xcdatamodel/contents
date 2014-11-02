@@ -9,6 +9,13 @@
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Member" representedClassName="UPAC.Member" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picture" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="position" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Picture" representedClassName="UPAC.Picture" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
@@ -26,5 +33,6 @@
         <element name="Event" positionX="-63" positionY="-18" width="128" height="148"/>
         <element name="Picture" positionX="-63" positionY="45" width="128" height="118"/>
         <element name="Raffle" positionX="-54" positionY="63" width="128" height="105"/>
+        <element name="Member" positionX="-54" positionY="54" width="128" height="118"/>
     </elements>
 </model>

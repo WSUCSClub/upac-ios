@@ -11,6 +11,8 @@
 		202CA9A01A0450BD00CD1A54 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CA99F1A0450BD00CD1A54 /* UIImageExtension.swift */; };
 		202CA9A21A04511B00CD1A54 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CA9A11A04511B00CD1A54 /* TabBarController.swift */; };
 		202CA9A41A05429B00CD1A54 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CA9A31A05429A00CD1A54 /* UIColorExtension.swift */; };
+		202CA9A61A05C69500CD1A54 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CA9A51A05C69500CD1A54 /* ContactViewController.swift */; };
+		202CA9A81A05D35C00CD1A54 /* BoardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CA9A71A05D35C00CD1A54 /* BoardManager.swift */; };
 		203DC31E1A009BA20056E4A5 /* NewRaffleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203DC31D1A009BA20056E4A5 /* NewRaffleViewController.swift */; };
 		205F54B119F1E71E00284E05 /* RaffleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205F54B019F1E71E00284E05 /* RaffleManager.swift */; };
 		206D4B2E19F34AD600C25FCB /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206D4B2D19F34AD600C25FCB /* EventDetailViewController.swift */; };
@@ -47,6 +49,8 @@
 		202CA99F1A0450BD00CD1A54 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		202CA9A11A04511B00CD1A54 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		202CA9A31A05429A00CD1A54 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		202CA9A51A05C69500CD1A54 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		202CA9A71A05D35C00CD1A54 /* BoardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardManager.swift; sourceTree = "<group>"; };
 		203DC31D1A009BA20056E4A5 /* NewRaffleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRaffleViewController.swift; sourceTree = "<group>"; };
 		205F54B019F1E71E00284E05 /* RaffleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaffleManager.swift; sourceTree = "<group>"; };
 		206D4B2D19F34AD600C25FCB /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				208BBF1519E99FF600BC8F51 /* EventManager.swift */,
 				205F54B019F1E71E00284E05 /* RaffleManager.swift */,
 				208DF0E319EA2D4000847186 /* GalleryManager.swift */,
+				202CA9A71A05D35C00CD1A54 /* BoardManager.swift */,
 				20EF822A19F9B33B00CC7BD0 /* UPAC.xcdatamodeld */,
 			);
 			name = Models;
@@ -178,6 +183,7 @@
 				208DF0DF19EA132E00847186 /* GalleryViewController.swift */,
 				20D0446A19EB0C6A00A7795E /* ImageViewController.swift */,
 				20F50F4819E77D8200DBED9A /* AboutViewController.swift */,
+				202CA9A51A05C69500CD1A54 /* ContactViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -288,6 +294,7 @@
 				208DF0E419EA2D4000847186 /* GalleryManager.swift in Sources */,
 				20F50F4B19E77D8200DBED9A /* EventsViewController.swift in Sources */,
 				20D0446B19EB0C6A00A7795E /* ImageViewController.swift in Sources */,
+				202CA9A61A05C69500CD1A54 /* ContactViewController.swift in Sources */,
 				20F50F4719E77D8200DBED9A /* AppDelegate.swift in Sources */,
 				205F54B119F1E71E00284E05 /* RaffleManager.swift in Sources */,
 				208DF0E019EA132E00847186 /* GalleryViewController.swift in Sources */,
@@ -298,6 +305,7 @@
 				201EDC2919F77A4F00B278D0 /* NSDateExtension.swift in Sources */,
 				208BBF1619E99FF600BC8F51 /* EventManager.swift in Sources */,
 				20EF822C19F9B33B00CC7BD0 /* UPAC.xcdatamodeld in Sources */,
+				202CA9A81A05D35C00CD1A54 /* BoardManager.swift in Sources */,
 				20F50F4919E77D8200DBED9A /* AboutViewController.swift in Sources */,
 				20EF825619FB564300CC7BD0 /* ContentManager.swift in Sources */,
 			);

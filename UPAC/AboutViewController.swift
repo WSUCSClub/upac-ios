@@ -8,35 +8,72 @@
 
 import UIKit
 
-class AboutViewController: UIViewController {
-    @IBOutlet var copyrightLabel: UILabel!
+class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet var secretButton: UITextView!
+    @IBOutlet var boardTable: UITableView!
+    @IBOutlet var addMemberButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         var longPressRecognizer = UILongPressGestureRecognizer(target: self, action: Selector("showLogin:"))
         longPressRecognizer.minimumPressDuration = 3
-        copyrightLabel.addGestureRecognizer(longPressRecognizer)
-    }
-
-    @IBAction func linkToFacebook() {
-        // Open browser to UPAC Facebook group page
-        UIApplication.sharedApplication().openURL(NSURL(string: "https://www.facebook.com/WSU.UPAC")!)
+        secretButton.addGestureRecognizer(longPressRecognizer)
     }
     
-    @IBAction func linkToTwitter() {
-        // Open browser to UPAC Twitter page
-        UIApplication.sharedApplication().openURL(NSURL(string: "https://twitter.com/UPACWSU")!)
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return boardMgr.list.count
     }
     
-    @IBAction func linkToEmail() {
-        // Open mail app
-        UIApplication.sharedApplication().openURL(NSURL(string: "mailto:upac@winona.edu")!)
+    // Need to set row height explicitly or else collapses on table reload
+    // FIXED: Interface Builder -> tableView -> rowHeight
+    //func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    //    return 75
+    //}
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = boardTable.dequeueReusableCellWithIdentifier("boardMemberCell", forIndexPath:indexPath) as UITableViewCell
+        
+        var m = boardMgr.list[indexPath.row] as Member
+        
+        if raffleMgr.adminPrivileges == true {
+            (cell.contentView.viewWithTag(5) as UIButton).hidden = false
+        } else {
+            (cell.contentView.viewWithTag(5) as UIButton).hidden = true
+        }
+        
+        // Format img circle
+        var image: UIImageView = (cell.contentView.viewWithTag(1) as UIImageView)
+        image.image = UIImage(named: m.picture)
+        var mask = image.layer
+        mask.cornerRadius = image.frame.size.width / 2
+        mask.masksToBounds = true
+        (cell.contentView.viewWithTag(2) as UILabel).text = m.name
+        (cell.contentView.viewWithTag(3) as UILabel).text = m.position
+        (cell.contentView.viewWithTag(4) as UILabel).text = m.email
+        
+        return cell
     }
+    
+    // Allow cell swiping
+    /*func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            //add code here for when you hit delete
+            println("delete member at list[indexpath.row]")
+        }
+    }*/
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("selected member")
+    }
+    
     
     func showLogin(sender: UILongPressGestureRecognizer) {
         if sender.state == .Began {
             var loginAlert = UIAlertController(title: "Login", message: "Enter your password", preferredStyle: .Alert)
+            loginAlert.view.tintColor = UIColor.blueColor()
+
             
             var inputPasswordField = UITextField()
             loginAlert.addTextFieldWithConfigurationHandler { (textField) -> Void in
@@ -52,6 +89,8 @@ class AboutViewController: UIViewController {
                 if self.attemptLogin(inputPasswordField.text) {
                     // Enable admin controls
                     raffleMgr.adminPrivileges = true
+                    self.boardTable.reloadData()
+                    self.addMemberButton.hidden = false
                 }
                 }
             loginAlert.addAction(ok)
@@ -78,6 +117,10 @@ class AboutViewController: UIViewController {
         }
         
         return loginSuccess
+    }
+    
+    @IBAction func addMember() {
+        println("add member")
     }
     
     override func didReceiveMemoryWarning() {

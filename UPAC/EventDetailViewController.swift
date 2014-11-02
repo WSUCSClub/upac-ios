@@ -126,6 +126,7 @@ class EventDetailViewController: UIViewController {
             textField.placeholder = "#"
             inputNumberField = textField
         }
+        pickWinnersAlert.view.tintColor = UIColor.blueColor()
         
         var cancel = UIAlertAction(title: "Cancel", style: .Default) { (action) -> Void in }
         pickWinnersAlert.addAction(cancel)
@@ -137,6 +138,7 @@ class EventDetailViewController: UIViewController {
                 winners = raffleMgr.getForID(self.event.id)!.drawWinners(number)
                 
                 var showWinnersAlert = UIAlertController(title: "Winners", message: "", preferredStyle: .Alert)
+                showWinnersAlert.view.tintColor = UIColor.blueColor()
                 
                 for w in winners {
                     showWinnersAlert.message! += "\(w)\n"

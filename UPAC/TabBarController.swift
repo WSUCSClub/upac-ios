@@ -32,26 +32,6 @@ class TabBarController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-    // Creates a UIColor from a Hex string.
-//    func colorWithHexString (hex:String) -> UIColor {
-//        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
-//
-//        if (countElements(cString) != 6) {
-//            return UIColor.grayColor()
-//        }
-//        
-//        var rString = cString.substringToIndex(2)
-//        var gString = cString.substringFromIndex(2).substringToIndex(2)
-//        var bString = cString.substringFromIndex(4).substringToIndex(2)
-//        
-//        var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
-//        NSScanner.scannerWithString(rString).scanHexInt(&r)
-//        NSScanner.scannerWithString(gString).scanHexInt(&g)
-//        NSScanner.scannerWithString(bString).scanHexInt(&b)
-//        
-//        return UIColor(red: Float(r) / 255.0, green: Float(g) / 255.0, blue: Float(b) / 255.0, alpha: Float(1))
-//    }
-    
 
     /*
     // MARK: - Navigation

@@ -3,10 +3,9 @@
 ---
 
 ## UI
-* tab bar
-    * find right bg color
-    * create tab bar icons (events, raffles, gallery, about) (flat black png's)
-    * color tab bar icons to correspond w/ bg color
+* sharper "wsu_logo white"
+* GalleryView
+* NewRaffleView
 * adhere to "iOS Human Interface Guidelines"
 * new app icon set with UPAC logo needed? (Photoshop smart template; [icon generator](http://makeappicon.com))
 * custom iPad interface

@@ -40,9 +40,12 @@ class ContentManager {
     func fetchStored() -> [NSManagedObject] {
         let fetchRequest = NSFetchRequest(entityName: contentType)
         
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
-        fetchRequest.sortDescriptors = [ sortDescriptor ]
-        
+        // Members do not have an associated date
+        if contentType != "Member" {
+            let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+            fetchRequest.sortDescriptors = [ sortDescriptor ]
+        }
+            
         return coreDataHelper.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as [NSManagedObject]!
     }
 
