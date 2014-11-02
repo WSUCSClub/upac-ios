@@ -10,18 +10,18 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wsu_logo white" translatesAutoresizingMaskIntoConstraints="NO" id="PkK-0O-e87">
-                    <rect key="frame" x="207" y="183" width="66" height="113"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wsu logo - white" translatesAutoresizingMaskIntoConstraints="NO" id="PkK-0O-e87">
+                    <rect key="frame" x="191" y="156" width="98" height="168"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="113" id="2h3-BP-E7h"/>
-                        <constraint firstAttribute="width" constant="66" id="HSo-ta-QJU"/>
+                        <constraint firstAttribute="width" constant="98" id="CSV-ar-Uc5"/>
+                        <constraint firstAttribute="height" constant="168" id="Cci-8K-eWS"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.36862745098039218" green="0.25882352941176473" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="PkK-0O-e87" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CZW-ON-wSy"/>
-                <constraint firstItem="PkK-0O-e87" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="183" id="EWm-6t-D8g"/>
+                <constraint firstItem="PkK-0O-e87" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="k36-uN-FYI"/>
+                <constraint firstItem="PkK-0O-e87" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="m6s-NK-wnk"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -29,6 +29,6 @@
         </view>
     </objects>
     <resources>
-        <image name="wsu_logo white" width="106" height="106"/>
+        <image name="wsu logo - white" width="289" height="467"/>
     </resources>
 </document>

@@ -3,7 +3,6 @@
 ---
 
 ## UI
-* sharper "wsu_logo white"
 * GalleryView
 * adhere to "iOS Human Interface Guidelines"
 * new app icon set with UPAC logo needed? (Photoshop smart template; [icon generator](http://makeappicon.com))
@@ -36,7 +35,7 @@
 
 
 ## Administration
-* system for setting password??
+* 
 
 
 ## Settings

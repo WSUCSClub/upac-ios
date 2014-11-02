@@ -12,6 +12,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet var secretButton: UITextView!
     @IBOutlet var boardTable: UITableView!
     @IBOutlet var addMemberButton: UIButton!
+    @IBOutlet var changePasswordButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,10 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         if raffleMgr.adminPrivileges == true {
             addMemberButton.hidden = false
+            changePasswordButton.hidden = false
         } else {
             addMemberButton.hidden = true
+            changePasswordButton.hidden = true
         }
     }
     
@@ -77,7 +80,9 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //println("selected member")
+        // Send selected member an email
+        UIApplication.sharedApplication().openURL(NSURL(string: "mailto:\((boardMgr.list[indexPath.row] as Member).email)")!)
+
     }
     
     
@@ -98,11 +103,12 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
             loginAlert.addAction(cancel)
 
             var ok = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in
-                if self.attemptLogin(inputPasswordField.text) {
+                if AboutViewController.attemptLogin(inputPasswordField.text) {
                     // Enable admin controls
                     raffleMgr.adminPrivileges = true
                     self.boardTable.reloadData()
                     self.addMemberButton.hidden = false
+                    self.changePasswordButton.hidden = false
                 }
                 }
             loginAlert.addAction(ok)
@@ -114,11 +120,12 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    func attemptLogin(password: String) -> Bool {
+    //TODO: move somewhere more generic
+    class func attemptLogin(password: String) -> Bool {
         //TODO: hash password
         var passwordHash = password
         
-        //TODO: get valid password
+        //TODO: get valid password hash from Parse
         var validPasswordHash = "asdf"
         
         var loginSuccess: Bool
