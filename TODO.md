@@ -34,7 +34,6 @@
 
 ## About
 * login validation (from Parse hash) (AboutViewController.loginAttemt())
-* add staff directory (separate view?)
 
 
 ## Administration
