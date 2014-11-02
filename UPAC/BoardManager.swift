@@ -28,7 +28,7 @@ class BoardManager: ContentManager {
     }
     
     override func populateList() {
-        clearLocalStorage()     // Comment out for persistence
+        //clearLocalStorage()     // Comment out for persistence
         list = fetchStored()
         
         var parseList = list    //TODO: Populate with Parse data
@@ -55,7 +55,7 @@ class BoardManager: ContentManager {
             }
         }
         
-        addMember("oij7tb",
+        /*addMember("oij7tb",
             name: "Emily Meskan",
             position: "Director",
             email: "EMeskan11@winona.edu",
@@ -65,7 +65,7 @@ class BoardManager: ContentManager {
             name: "Brittany Bieber",
             position: "Assistant Director",
             email: "BBieber12@winona.edu",
-            picture: "dirty dancing")
+            picture: "dirty dancing")*/
         
     }
     

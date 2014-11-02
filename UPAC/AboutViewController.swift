@@ -19,6 +19,12 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var longPressRecognizer = UILongPressGestureRecognizer(target: self, action: Selector("showLogin:"))
         longPressRecognizer.minimumPressDuration = 3
         secretButton.addGestureRecognizer(longPressRecognizer)
+        
+        if raffleMgr.adminPrivileges == true {
+            addMemberButton.hidden = false
+        } else {
+            addMemberButton.hidden = true
+        }
     }
     
     
@@ -37,12 +43,6 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         var m = boardMgr.list[indexPath.row] as Member
         
-        if raffleMgr.adminPrivileges == true {
-            (cell.contentView.viewWithTag(5) as UIButton).hidden = false
-        } else {
-            (cell.contentView.viewWithTag(5) as UIButton).hidden = true
-        }
-        
         // Format img circle
         var image: UIImageView = (cell.contentView.viewWithTag(1) as UIImageView)
         image.image = UIImage(named: m.picture)
@@ -57,15 +57,27 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     // Allow cell swiping
-    /*func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        // On Delete
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            //add code here for when you hit delete
-            println("delete member at list[indexpath.row]")
+            boardMgr.deleteMember(boardMgr.list[indexPath.row] as Member)
+            boardTable.reloadData()
         }
-    }*/
+    }
+    
+    // Only allow cell swiping if admin
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        var canEdit = false
+        
+        if raffleMgr.adminPrivileges == true {
+            canEdit = true
+        }
+        
+        return canEdit
+    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("selected member")
+        //println("selected member")
     }
     
     
@@ -119,14 +131,19 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return loginSuccess
     }
     
-    @IBAction func addMember() {
-        println("add member")
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    // Pass data to next view
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "NewMemberView") {
+            var destinationView:NewMemberViewController = segue.destinationViewController as NewMemberViewController
+            
+            destinationView.boardTable = boardTable
+        }
+    }
+    
 }
 
