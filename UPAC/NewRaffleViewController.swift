@@ -30,8 +30,10 @@ class NewRaffleViewController: UIViewController {
     
     @IBAction func doneButtonTapped(sender: AnyObject) {
         saveRaffle()
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController!.popViewControllerAnimated(true)
     }
+    
+    
     
     override func viewDidDisappear(animated: Bool) {
         delegate.updateView()

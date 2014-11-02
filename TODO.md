@@ -5,7 +5,6 @@
 ## UI
 * sharper "wsu_logo white"
 * GalleryView
-* NewRaffleView
 * adhere to "iOS Human Interface Guidelines"
 * new app icon set with UPAC logo needed? (Photoshop smart template; [icon generator](http://makeappicon.com))
 * custom iPad interface
@@ -33,7 +32,7 @@
 
 
 ## About
-* login validation (from Parse hash) (AboutViewController.loginAttemt())
+* login validation (from Parse hash) (AboutViewController.loginAttempt())
 
 
 ## Administration
