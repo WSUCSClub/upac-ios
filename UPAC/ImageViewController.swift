@@ -43,7 +43,11 @@ class ImageViewController: UIViewController {
     }
     
     func updateView() {
-        fullImageView.image = UIImage(named: picture.src)
+        dispatch_async(dispatch_get_main_queue()) {
+            self.fullImageView.image = UIImage(data: self.picture.data)
+        }
+        
+        
         dateLabel.text = picture.date.dayStr()
     }
 

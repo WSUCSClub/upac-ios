@@ -47,7 +47,7 @@
 
 
 ## About
-* 
+* add ability to choose photo from library when adding new board member
 
 
 ## Administration
@@ -60,6 +60,7 @@
 
 
 ## Miscellaneous
+* Core Data unnecessary for events and board members
 * ___ERROR CHECKING___
 * write tests
 

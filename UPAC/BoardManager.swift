@@ -17,6 +17,7 @@ class Member: NSManagedObject {
     @NSManaged var position: String
     @NSManaged var email: String
     @NSManaged var picture: String
+    var pictureData = NSData()
     
 }
 
@@ -28,13 +29,13 @@ class BoardManager: ContentManager {
     }
     
     override func populateList() {
-        //clearLocalStorage()     // Comment out for persistence
+        clearLocalStorage()     // Comment out for persistence
         list = fetchStored()
         
         var parseList = pullParseMembers()
         
         // Only add to local storage if does not already exist
-        for member in parseList {
+        /*for member in parseList {
             var alreadyExists = false
             
             for localMember in list as [Member] {
@@ -53,19 +54,35 @@ class BoardManager: ContentManager {
                     email: member.email,
                     picture: member.picture)
             }
-        }
+        }*/
         
-        /*addMember("oij7tb",
-            name: "Emily Meskan",
-            position: "Director",
-            email: "EMeskan11@winona.edu",
-            picture: "facebook")
-        
-        addMember("f65",
-            name: "Brittany Bieber",
-            position: "Assistant Director",
-            email: "BBieber12@winona.edu",
-            picture: "dirty dancing")*/
+        //dispatch_async(dispatch_get_main_queue()) {
+            self.addMember("oij7tb",
+                name: "Emily Meskan",
+                position: "Director",
+                email: "EMeskan11@winona.edu",
+                picture: "http://www.winona.edu/upac/Images/UPAC-Emily_Meskan-profile.jpg")
+            self.addMember("f65",
+                name: "Brittany Bieber",
+                position: "Assistant Director",
+                email: "BBieber12@winona.edu",
+                picture: "http://www.winona.edu/upac/Images/UPAC-Brittany_Bieber-profile.jpg")
+            self.addMember("23424g4",
+                name: "Megan Derke",
+                position: "Accounts Director",
+                email: "MDerke11@winona.edu",
+                picture: "http://www.winona.edu/upac/Images/UPAC-Megan_Derke-profile.jpg")
+            self.addMember("23g213r",
+                name: "Chris Doffing",
+                position: "Concerts Director",
+                email: "CDoffing11@winona.edu",
+                picture: "http://www.winona.edu/upac/Images/UPAC-Chris_Doffing-profile.jpg")
+            self.addMember("bt2423",
+                name: "Brooke Maher",
+                position: "Special Events On-Campus Director",
+                email: "BBieber12@winona.edu",
+                picture: "http://www.winona.edu/upac/Images/UPAC-Brooke_Maher-profile.jpg")
+        //}
         
     }
     
@@ -83,7 +100,13 @@ class BoardManager: ContentManager {
         newMember.name = name
         newMember.position = position
         newMember.email = email
+        
         newMember.picture = picture
+        // Can only make one request at a time from winona.edu
+        //dispatch_async(dispatch_get_main_queue()) {
+            newMember.pictureData = NSData(contentsOfURL: NSURL(string: newMember.picture)!)!
+        //}
+        
         
         //TODO: push to parse
         

@@ -30,8 +30,11 @@ class GalleryViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewImageCell", forIndexPath: indexPath) as UICollectionViewCell
         
-        (cell.contentView.viewWithTag(1) as UIImageView).image = UIImage(named: (galleryMgr.list[indexPath.row] as Picture).src)
-        
+        dispatch_async(dispatch_get_main_queue()) {
+            (cell.contentView.viewWithTag(1) as UIImageView).image =  UIImage(data: (galleryMgr.list[indexPath.row] as Picture).data)
+
+        }
+                
         return cell
     }
     

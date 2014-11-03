@@ -17,6 +17,7 @@ class Picture: NSManagedObject {
     @NSManaged var date: NSDate
     @NSManaged var url: String
     @NSManaged var src: String
+    var data = NSData()
 }
 
 class GalleryManager: ContentManager {
@@ -31,27 +32,27 @@ class GalleryManager: ContentManager {
         addPicture("oem291982",
             desc: "Lorem ipsum",
             date: NSDate(),
-            url: "http://google.com",
+            url: "http://i.imgur.com/JM12Yfi.jpg",
             src: "scare")
         addPicture("ldjf892jf8egrg",
             desc: "Dolor sit amet",
             date: NSDate(),
-            url: "http://yahoo.com",
+            url: "http://i.imgur.com/o2r9SRd.jpg",
             src: "spin")
         addPicture("jfj320",
             desc: "Lorem ipsum",
             date: NSDate(),
-            url: "http://google.com",
+            url: "http://i.imgur.com/HNGSjNO.jpg",
             src: "spin")
         addPicture("0238jg",
             desc: "Dolor sit amet",
             date: NSDate(),
-            url: "http://yahoo.com",
+            url: "http://i.imgur.com/WDVsgVI.jpg",
             src: "scare")
         addPicture("02989489jf",
             desc: "Lorem ipsum",
             date: NSDate(),
-            url: "http://yahoo.com",
+            url: "http://i.imgur.com/cdaeELR.jpg",
             src: "scare")
     }
     
@@ -69,6 +70,12 @@ class GalleryManager: ContentManager {
         newPicture.date = date
         newPicture.url = url
         newPicture.src = src
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            //TODO: don't crash if can't reach image
+            newPicture.data = NSData(contentsOfURL: NSURL(string:newPicture.url)!)!
+        }
+
     }
     
 }

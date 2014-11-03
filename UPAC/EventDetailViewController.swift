@@ -97,7 +97,7 @@ class EventDetailViewController: UIViewController {
             numberOfParticipantsLabel.hidden = true
         }
         
-        image.image = UIImage(named: event.image) //TODO: Update for URLs
+        image.image = UIImage(data: event.imageData)
         
         name.text = event.name
         location.text = event.location

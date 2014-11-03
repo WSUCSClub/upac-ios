@@ -15,11 +15,12 @@ let eventMgr = EventManager()
 class Event: NSManagedObject {
     @NSManaged var id: String
     @NSManaged var name: String
-    @NSManaged var image: String //TODO: Update to use NSURL
     @NSManaged var location: String
     @NSManaged var desc: String
     @NSManaged var date: NSDate
     @NSManaged var endDate: NSDate
+    @NSManaged var image: String
+    var imageData = NSData()
     
     func hasRaffle() -> Bool {
         var result = false
@@ -41,14 +42,14 @@ class EventManager: ContentManager {
     }
     
     override func populateList() {
-        //clearLocalStorage()
+        clearLocalStorage()
         
         list = fetchStored()
         
         var FBList = pullFacebookEvents()
         
         // Only add to local storage if does not already exist
-        for event in FBList {
+        /*for event in FBList {
             var alreadyExists = false
             
             for localEvent in list as [Event] {
@@ -68,37 +69,37 @@ class EventManager: ContentManager {
                     date: event.date,
                     endDate: event.endDate)
             }
-        }
+        }*/
         
         // Uncomment and run once (then re-comment) if test data needed
-        /*addEvent("134f21",
+        addEvent("134f21",
             name: "Dirty Dancing",
-            image: "dirty dancing",
+            image: "http://i.imgur.com/NTPbZQm.jpg",
             location: "Orpheum Theater - Minneapolis",
             desc: "Lorem ipsum dolor sit amet",
             date: NSDate(),
             endDate: NSDate())
         addEvent("jf8929",
             name: "ValleyScare",
-            image: "valley scare",
+            image: "http://i.imgur.com/NMSHu3z.jpg",
             location: "ValleyFair - Shakopee",
             desc: "Lorem ipsum dolor sit amet",
             date: NSDate(),
             endDate: NSDate())
         addEvent("klj298",
             name: "$3 Bowling Night",
-            image: "bowling",
+            image: "http://i.imgur.com/eIviLU0.jpg",
             location: "Westgate Bowling Center",
             desc: "Lorem ipsum dolor sit amet",
             date: NSDate(),
             endDate: NSDate())
         addEvent("owii8201",
             name: "Spin Magic",
-            image: "spin magic",
+            image: "http://www.spinmagic.net/uploads/2/8/3/8/2838440/3239161_orig.jpg",
             location: "Gazebo / SAC",
             desc: "Lorem ipsum dolor sit amet",
             date: NSDate(),
-            endDate: NSDate())*/
+            endDate: NSDate())
     }
     
     func pullFacebookEvents() -> [Event] {
@@ -114,11 +115,16 @@ class EventManager: ContentManager {
         let newEvent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: coreDataHelper.managedObjectContext!) as Event
         newEvent.id = id
         newEvent.name = name
-        newEvent.image = image
         newEvent.location = location
         newEvent.desc = desc
         newEvent.date = date
         newEvent.endDate = endDate
+        
+        newEvent.image = image
+        dispatch_async(dispatch_get_main_queue()) {
+            //TODO: don't crash if can't reach image
+            newEvent.imageData = NSData(contentsOfURL: NSURL(string:newEvent.image)!)!
+        }
         
         // Insert notification
         var localNotification = UILocalNotification()

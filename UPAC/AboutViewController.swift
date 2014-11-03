@@ -48,7 +48,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         // Format img circle
         var image: UIImageView = (cell.contentView.viewWithTag(1) as UIImageView) //TODO: update for img URLs
-        image.image = UIImage(named: m.picture)
+        image.image = UIImage(data: m.pictureData)
         var mask = image.layer
         mask.cornerRadius = image.frame.size.width / 2
         mask.masksToBounds = true
