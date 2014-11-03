@@ -55,9 +55,11 @@ class ImageViewController: UIViewController {
         if dateLabel.hidden {
             dateLabel.hidden = false
             backButton.hidden = false
+            UIApplication.sharedApplication().statusBarHidden = false
         } else {
             dateLabel.hidden = true
             backButton.hidden = true
+            UIApplication.sharedApplication().statusBarHidden = true
         }
     }
     
