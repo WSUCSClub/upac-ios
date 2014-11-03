@@ -2,6 +2,27 @@
 
 ---
 
+## Parse
+* raffles
+    * RaffleManager.pullParseRaffles()
+    * RaffleManager.addRaffle()
+    * RaffleManager.deleteRaffle()
+    * Raffle.getEntries()
+    * Raffle.addEntry()
+* board members
+    * BoardManager.pullParseMembers()
+    * BoardManager.addMember()
+    * BoardManager.deleteMember()
+* login
+    * AboutViewController.attemptLogin()
+    * ChangePasswordViewController.savePassword()
+
+
+## Facebook
+* EventManager.pullFacebookEvents()
+* GalleryManager.pullFacebookPictures()
+
+
 ## UI
 * GalleryView
 * adhere to "iOS Human Interface Guidelines"
@@ -10,28 +31,23 @@
 
 
 ## Events
-* fetch from Facebook
 * pull-down refresh
-    * w/ "last updated" label
 * add map to detail view?
 
 
 ## Raffles
-* fetch from Parse
-* push raffle entries to Parse
 * can only enter raffle if at location
-* random code generator
+* Raffle.generateCode()
 
 
 ## Gallery
-* fetch from Facebook
 * divide by albums
 * ImageView
     * pinch-zoom
 
 
 ## About
-* login validation (from Parse hash) (AboutViewController.loginAttempt())
+* 
 
 
 ## Administration
@@ -46,6 +62,4 @@
 ## Miscellaneous
 * ___ERROR CHECKING___
 * write tests
-* FBHelper object for managing connections/sessions
-* ParseHelper object for managing connections/sessions
 

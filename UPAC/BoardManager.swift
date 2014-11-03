@@ -31,10 +31,10 @@ class BoardManager: ContentManager {
         //clearLocalStorage()     // Comment out for persistence
         list = fetchStored()
         
-        var parseList = list    //TODO: Populate with Parse data
+        var parseList = pullParseMembers()
         
         // Only add to local storage if does not already exist
-        for member in parseList as [Member] {
+        for member in parseList {
             var alreadyExists = false
             
             for localMember in list as [Member] {
@@ -67,6 +67,13 @@ class BoardManager: ContentManager {
             email: "BBieber12@winona.edu",
             picture: "dirty dancing")*/
         
+    }
+    
+    //TODO: it
+    func pullParseMembers() -> [Member] {
+        var parseMembers = list as [Member]
+        
+        return parseMembers
     }
     
     func addMember(id: String, name: String, position: String, email: String, picture: String) {

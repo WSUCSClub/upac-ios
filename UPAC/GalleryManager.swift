@@ -31,33 +31,34 @@ class GalleryManager: ContentManager {
         addPicture("oem291982",
             desc: "Lorem ipsum",
             date: NSDate(),
-            //url: NSURL(string: "http://google.com")!,
             url: "http://google.com",
-            src: "spin")
+            src: "scare")
         addPicture("ldjf892jf8egrg",
             desc: "Dolor sit amet",
             date: NSDate(),
-            //url: NSURL(string: "http://yahoo.com")!,
             url: "http://yahoo.com",
             src: "spin")
         addPicture("jfj320",
             desc: "Lorem ipsum",
             date: NSDate(),
-            //url: NSURL(string: "http://google.com")!,
             url: "http://google.com",
             src: "spin")
         addPicture("0238jg",
             desc: "Dolor sit amet",
             date: NSDate(),
-            //url: NSURL(string: "http://yahoo.com")!,
             url: "http://yahoo.com",
             src: "scare")
         addPicture("02989489jf",
             desc: "Lorem ipsum",
             date: NSDate(),
-            //url: NSURL(string: "http://yahoo.com")!,
             url: "http://yahoo.com",
             src: "scare")
+    }
+    
+    func pullFacebookPictures() -> [Picture] {
+        var fbPictures = [Picture]()
+        
+        return fbPictures
     }
     
     func addPicture(id: String, desc: String, date: NSDate, url: String, src: String) {

@@ -45,10 +45,10 @@ class EventManager: ContentManager {
         
         list = fetchStored()
         
-        var FBList = list    //TODO: Populate using FB Graph API
+        var FBList = pullFacebookEvents()
         
         // Only add to local storage if does not already exist
-        for event in FBList as [Event] {
+        for event in FBList {
             var alreadyExists = false
             
             for localEvent in list as [Event] {
@@ -99,6 +99,14 @@ class EventManager: ContentManager {
             desc: "Lorem ipsum dolor sit amet",
             date: NSDate(),
             endDate: NSDate())*/
+    }
+    
+    func pullFacebookEvents() -> [Event] {
+        var fbEvents = list as [Event]
+        
+        //TODO: it
+        
+        return fbEvents
     }
     
     func addEvent(id: String, name: String, image: String, location: String, desc: String, date: NSDate, endDate: NSDate) {

@@ -47,7 +47,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var m = boardMgr.list[indexPath.row] as Member
         
         // Format img circle
-        var image: UIImageView = (cell.contentView.viewWithTag(1) as UIImageView)
+        var image: UIImageView = (cell.contentView.viewWithTag(1) as UIImageView) //TODO: update for img URLs
         image.image = UIImage(named: m.picture)
         var mask = image.layer
         mask.cornerRadius = image.frame.size.width / 2
@@ -59,7 +59,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    // Allow cell swiping
+    // Allow cell swipe edits
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         // On Delete
         if editingStyle == UITableViewCellEditingStyle.Delete {
@@ -120,6 +120,21 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    // Pass data to next view
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "NewMemberView") {
+            var destinationView:NewMemberViewController = segue.destinationViewController as NewMemberViewController
+            
+            destinationView.boardTable = boardTable
+        }
+    }
+    
+    
     //TODO: move somewhere more generic
     class func attemptLogin(password: String) -> Bool {
         //TODO: hash password
@@ -136,20 +151,6 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         return loginSuccess
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // Pass data to next view
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "NewMemberView") {
-            var destinationView:NewMemberViewController = segue.destinationViewController as NewMemberViewController
-            
-            destinationView.boardTable = boardTable
-        }
     }
     
 }

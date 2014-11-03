@@ -23,7 +23,7 @@ class Raffle: NSManagedObject {
         var code = generateCode()
         
         localEntry = code
-        //coreDataHelper.saveData()     // Uncomment to save raffle entries
+        coreDataHelper.saveData()
         
         //TODO: push to parse
         
@@ -86,10 +86,10 @@ class RaffleManager: ContentManager {
         //clearLocalStorage()     // Comment out for persistence
         list = fetchStored()
         
-        var parseList = list    //TODO: Populate with Parse data
+        var parseList = pullParseRaffles()
         
         // Only add to local storage if does not already exist
-        for raffle in parseList as [Raffle] {
+        for raffle in parseList {
             var alreadyExists = false
             
             for localRaffle in list as [Raffle] {
@@ -110,6 +110,13 @@ class RaffleManager: ContentManager {
             }
         }
 
+    }
+    
+    //TODO: it
+    func pullParseRaffles() -> [Raffle] {
+        var parseRaffles = list as [Raffle]
+        
+        return parseRaffles
     }
     
     func addRaffle(id: String, date: NSDate, endDate: NSDate) {
