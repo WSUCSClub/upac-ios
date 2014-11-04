@@ -97,7 +97,9 @@ class EventDetailViewController: UIViewController {
             numberOfParticipantsLabel.hidden = true
         }
         
-        image.image = UIImage(data: event.imageData)
+        dispatch_async(dispatch_get_main_queue()) {
+            self.image.image = UIImage(data: self.event.imageData)
+        }
         
         name.text = event.name
         location.text = event.location

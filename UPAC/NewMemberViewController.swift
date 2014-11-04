@@ -9,17 +9,46 @@
 
 import UIKit
 
-class NewMemberViewController: UIViewController {
+class NewMemberViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     @IBOutlet var nameField: UITextField!
     @IBOutlet var positionField: UITextField!
     @IBOutlet var emailField: UITextField!
     @IBOutlet var pictureField: UITextField!
+    @IBOutlet var pictureView: UIImageView!
     
     var boardTable: UITableView!
+    
+    var imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+    }
+    
+    @IBAction func chooseMemberPicture() {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) {
+            println("i'm in...")
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+            imagePicker.allowsEditing = false
+            
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
+    }
+
+    // Show image picker for member photo
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in })
+        
+        //var imageData = UIImageJPEGRepresentation(image, 0.7)
+        //TODO: push imageData to parse
+        
+        var mask = pictureView.layer
+        mask.cornerRadius = pictureView.frame.size.width / 2
+        mask.masksToBounds = true
+        pictureView.image = image
+        
     }
     
     func saveMember() {

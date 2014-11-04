@@ -47,8 +47,10 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var m = boardMgr.list[indexPath.row] as Member
         
         // Format img circle
-        var image: UIImageView = (cell.contentView.viewWithTag(1) as UIImageView) //TODO: update for img URLs
-        image.image = UIImage(data: m.pictureData)
+        var image: UIImageView = (cell.contentView.viewWithTag(1) as UIImageView)
+        dispatch_async(dispatch_get_main_queue()) {
+            image.image = UIImage(data: m.pictureData)
+        }
         var mask = image.layer
         mask.cornerRadius = image.frame.size.width / 2
         mask.masksToBounds = true
