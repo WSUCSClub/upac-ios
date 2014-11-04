@@ -121,7 +121,8 @@ class EventManager: ContentManager {
         newEvent.endDate = endDate
         
         newEvent.image = image
-        dispatch_async(dispatch_get_main_queue()) {
+        //dispatch_async(dispatch_get_main_queue()) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             //TODO: don't crash if can't reach image
             newEvent.imageData = NSData(contentsOfURL: NSURL(string:newEvent.image)!)!
         }

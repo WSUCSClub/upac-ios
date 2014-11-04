@@ -72,6 +72,9 @@ class GalleryManager: ContentManager {
         newPicture.src = src
         
         dispatch_async(dispatch_get_main_queue()) {
+        // getting background priority from global queue fails to load some pictures
+        //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+
             //TODO: don't crash if can't reach image
             newPicture.data = NSData(contentsOfURL: NSURL(string:newPicture.url)!)!
         }

@@ -103,11 +103,11 @@ class BoardManager: ContentManager {
         
         newMember.picture = picture
         // Can only make one request at a time from winona.edu
-        //dispatch_async(dispatch_get_main_queue()) {
-            //TODO: don't fail if picture unavailable
-            //TODO: get pictureData from Parse
+        //TODO: don't fail if picture unavailable
+        //TODO: get pictureData from Parse
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             newMember.pictureData = NSData(contentsOfURL: NSURL(string: newMember.picture)!)!
-        //}
+        }
         
         
         //TODO: push to parse
