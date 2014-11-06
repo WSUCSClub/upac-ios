@@ -7,78 +7,69 @@
 //
 
 import Foundation
-import CoreData
 
 let galleryMgr = GalleryManager()
 
-class Picture: NSManagedObject {
-    @NSManaged var id: String
-    @NSManaged var desc: String
-    @NSManaged var date: NSDate
-    @NSManaged var url: String
-    @NSManaged var src: String
+class Picture {
+    var id   = String()
+    var desc = String()
+    var date = NSDate()
+    var src  = String()
     var data = NSData()
 }
 
-class GalleryManager: ContentManager {
+class GalleryManager {
+    var list = [Picture]()
+    
     init() {
-        super.init(contentType: "Picture")
+        list = getPictures()
     }
     
-    override func populateList() {
-        clearLocalStorage()
+    func getPictures() -> [Picture] {
+        var pictures = [Picture]()
         
         //TODO: Populate list using Facebook Graph API
-        addPicture("oem291982",
+        pictures.append(addPicture("oem291982",
             desc: "Lorem ipsum",
             date: NSDate(),
-            url: "http://i.imgur.com/JM12Yfi.jpg",
-            src: "scare")
-        addPicture("ldjf892jf8egrg",
+            src: "http://i.imgur.com/JM12Yfi.jpg"))
+        pictures.append(addPicture("ldjf892jf8egrg",
             desc: "Dolor sit amet",
             date: NSDate(),
-            url: "http://i.imgur.com/o2r9SRd.jpg",
-            src: "spin")
-        addPicture("jfj320",
+            src: "http://i.imgur.com/o2r9SRd.jpg"))
+        pictures.append(addPicture("jfj320",
             desc: "Lorem ipsum",
             date: NSDate(),
-            url: "http://i.imgur.com/HNGSjNO.jpg",
-            src: "spin")
-        addPicture("0238jg",
+            src: "http://i.imgur.com/HNGSjNO.jpg"))
+        pictures.append(addPicture("0238jg",
             desc: "Dolor sit amet",
             date: NSDate(),
-            url: "http://i.imgur.com/WDVsgVI.jpg",
-            src: "scare")
-        addPicture("02989489jf",
+            src: "http://i.imgur.com/WDVsgVI.jpg"))
+        pictures.append(addPicture("02989489jf",
             desc: "Lorem ipsum",
             date: NSDate(),
-            url: "http://i.imgur.com/cdaeELR.jpg",
-            src: "scare")
-    }
-    
-    func pullFacebookPictures() -> [Picture] {
-        var fbPictures = [Picture]()
+            src: "http://i.imgur.com/cdaeELR.jpg"))
         
-        return fbPictures
+        return pictures
     }
     
-    func addPicture(id: String, desc: String, date: NSDate, url: String, src: String) {
-        let newPicture = NSEntityDescription.insertNewObjectForEntityForName("Picture", inManagedObjectContext: coreDataHelper.managedObjectContext!) as Picture
+    func addPicture(id: String, desc: String, date: NSDate, src: String) -> Picture {
+        let newPicture = Picture()
         
         newPicture.id = id
         newPicture.desc = desc
         newPicture.date = date
-        newPicture.url = url
         newPicture.src = src
         
         dispatch_async(dispatch_get_main_queue()) {
         // getting background priority from global queue fails to load some pictures
         //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-
-            //TODO: don't crash if can't reach image
-            newPicture.data = NSData(contentsOfURL: NSURL(string:newPicture.url)!)!
+            if let data = NSData(contentsOfURL: NSURL(string:newPicture.src)!) {
+                newPicture.data = data
+            }
         }
 
+        return newPicture
     }
     
 }

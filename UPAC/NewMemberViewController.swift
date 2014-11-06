@@ -27,8 +27,6 @@ class NewMemberViewController: UIViewController, UINavigationControllerDelegate,
     
     @IBAction func chooseMemberPicture() {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) {
-            println("i'm in...")
-            
             imagePicker.delegate = self
             imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
             imagePicker.allowsEditing = false

@@ -10,7 +10,7 @@
     * Raffle.getEntries()
     * Raffle.addEntry()
 * board members
-    * BoardManager.pullParseMembers()
+    * BoardManager.getMembers()
     * BoardManager.addMember()
     * BoardManager.deleteMember()
     * NewMemberViewController.imagePickerController()
@@ -20,8 +20,8 @@
 
 
 ## Facebook
-* EventManager.pullFacebookEvents()
-* GalleryManager.pullFacebookPictures()
+* EventManager.getEvents()
+* GalleryManager.getPictures()
 
 
 ## UI
@@ -48,7 +48,7 @@
 
 
 ## Administration
-* add ability to choose photo from library when adding new board member
+* 
 
 
 ## Settings
