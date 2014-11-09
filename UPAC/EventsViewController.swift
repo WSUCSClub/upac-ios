@@ -8,13 +8,17 @@
 
 import UIKit
 
+var __eventsTableView: UITableView? = nil
+
 class EventsViewController: UITableViewController {
     @IBOutlet var eventsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        __eventsTableView = eventsTableView
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -26,6 +30,7 @@ class EventsViewController: UITableViewController {
 
     // Set cell content
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let e = eventMgr.list[indexPath.row] as Event
         
         // Use different layout if event has a raffle

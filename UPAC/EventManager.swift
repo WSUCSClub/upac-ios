@@ -36,87 +36,51 @@ class Event {
 
 class EventManager {
     var list = [Event]()
-    var fbSession = FBSession()
-    var accessToken = FBAccessTokenData()
-    //var pageRequest = FBRequest()
+    
     init() {
-        list = getEvents()
+        getFBEvents()
     }
     
-    func getFBEvents() -> [Event] {
-        var events = [Event]()
-        
-        //var session = FBSession()
-        fbSession.closeAndClearTokenInformation()
-
-        accessToken = FBAccessTokenData.createTokenFromString("***REMOVED***",
-        //accessToken = FBAccessTokenData.createTokenFromString("***REMOVED***",
-            permissions: [],
-            expirationDate: NSDate(timeIntervalSinceNow: NSTimeInterval(1000)),
+    func getFBEvents() {
+        var accessToken = FBAccessTokenData.createTokenFromString("***REMOVED***",
+            permissions: ["email"],
+            expirationDate: nil,
             loginType: FBSessionLoginType.None,
             refreshDate: nil)
-
-        FBSession.setActiveSession(fbSession)
         
-        FBSession.activeSession().openFromAccessTokenData(accessToken) { session, result, error in
-            if FBSession.activeSession().isOpen {
-                //var pageRequest = FBRequest(graphPath: "Page/322196472693", parameters: nil, HTTPMethod: nil)
-                var pageRequest = FBRequest(graphPath: "me", parameters: nil, HTTPMethod: nil)
-                pageRequest.session = FBSession.activeSession()
-                
-                pageRequest.startWithCompletionHandler { (connection: FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
-                    if FBSession.activeSession().isOpen {
-                        println(error)
-                        println("session still open")
+        FBSession.activeSession().closeAndClearTokenInformation()
+        FBSession.activeSession().openFromAccessTokenData(accessToken) { session, result, error in }
+        
+        if FBSession.activeSession().isOpen {
+            var pageRequest = FBRequest(graphPath: "322196472693/events", parameters: nil, HTTPMethod: nil)
+            
+            pageRequest.startWithCompletionHandler { connection, result, error in
+                if FBSession.activeSession().isOpen {
+                    println("error: \(error)")
+                    println("result: \(result)")
+                    
+                    // Load Facebook events into list[] from json result
+                    var data = result.objectForKey("data") as NSArray
+                    for e in data {
+                        let valueDic = e as NSDictionary
+                        
+                        let newEvent = self.addEvent(valueDic.objectForKey("id") as String,
+                            name: (valueDic.objectForKey("name") as String).stringByReplacingOccurrencesOfString("UPAC Presents: ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil),
+                            image: "http://i.imgur.com/NTPbZQm.jpg",
+                            location: valueDic.objectForKey("location") as String,
+                            desc: "Lorem ipsum dolor sit amet",
+                            date: NSDate(),
+                            endDate: NSDate())
+                        
+                        self.insertNotification(newEvent)
+                        self.list.append(newEvent)
                     }
+                    
+                    __eventsTableView!.reloadData()
+                    
                 }
             }
         }
-        
-
-        
-        //session.closeAndClearTokenInformation()
-        
-        return events
-    }
-    
-    func getEvents() -> [Event] {
-        var events = [Event]()
-        // Uncomment and run once (then re-comment) if test data needed
-        events.append(addEvent("134f21",
-            name: "Dirty Dancing",
-            image: "http://i.imgur.com/NTPbZQm.jpg",
-            location: "Orpheum Theater - Minneapolis",
-            desc: "Lorem ipsum dolor sit amet",
-            date: NSDate(),
-            endDate: NSDate()))
-        events.append(addEvent("jf8929",
-            name: "ValleyScare",
-            image: "http://i.imgur.com/NMSHu3z.jpg",
-            location: "ValleyFair - Shakopee",
-            desc: "Lorem ipsum dolor sit amet",
-            date: NSDate(),
-            endDate: NSDate()))
-        events.append(addEvent("klj298",
-            name: "$3 Bowling Night",
-            image: "http://i.imgur.com/eIviLU0.jpg",
-            location: "Westgate Bowling Center",
-            desc: "Lorem ipsum dolor sit amet",
-            date: NSDate(),
-            endDate: NSDate()))
-        events.append(addEvent("owii8201",
-            name: "Spin Magic",
-            image: "http://www.spinmagic.net/uploads/2/8/3/8/2838440/3239161_orig.jpg",
-            location: "Gazebo / SAC",
-            desc: "Lorem ipsum dolor sit amet",
-            date: NSDate(),
-            endDate: NSDate()))
-        
-        for event in events {
-            insertNotification(event)
-        }
-        
-        return events
     }
     
     func insertNotification(event: Event) {

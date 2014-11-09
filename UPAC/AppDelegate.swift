@@ -22,8 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set navbar text to white across entire app
         self.window!.tintColor = UIColor.whiteColor()
         
-        // Override point for customization after application launch.
-        
         return true
     }
     

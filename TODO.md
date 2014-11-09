@@ -20,7 +20,8 @@
 
 
 ## Facebook
-* EventManager.getEvents()
+* FBHelper to close+clear session after all pulls complete
+* pull more events: EventManager.getFBEvents()
 * GalleryManager.getPictures()
 
 
