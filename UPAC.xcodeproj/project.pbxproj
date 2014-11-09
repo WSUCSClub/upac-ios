@@ -54,6 +54,7 @@
 		202CA9A51A05C69500CD1A54 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		202CA9A71A05D35C00CD1A54 /* BoardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardManager.swift; sourceTree = "<group>"; };
 		203DC31D1A009BA20056E4A5 /* NewRaffleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRaffleViewController.swift; sourceTree = "<group>"; };
+		204684511A0D32EC00D99B23 /* UPAC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = UPAC.entitlements; sourceTree = "<group>"; };
 		205F54B019F1E71E00284E05 /* RaffleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaffleManager.swift; sourceTree = "<group>"; };
 		206D4B2D19F34AD600C25FCB /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		206D4B2F19F4239700C25FCB /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
@@ -122,6 +123,7 @@
 		20F50F4319E77D8200DBED9A /* UPAC */ = {
 			isa = PBXGroup;
 			children = (
+				204684511A0D32EC00D99B23 /* UPAC.entitlements */,
 				20F50F4619E77D8200DBED9A /* AppDelegate.swift */,
 				202CA9A11A04511B00CD1A54 /* TabBarController.swift */,
 				20F50F4C19E77D8200DBED9A /* Main.storyboard */,
@@ -243,6 +245,12 @@
 				TargetAttributes = {
 					20F50F4019E77D8200DBED9A = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 22NVW5GGDQ;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 					20F50F5719E77D8200DBED9A = {
 						CreatedOnToolsVersion = 6.0.1;

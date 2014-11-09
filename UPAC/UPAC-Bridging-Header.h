@@ -2,4 +2,4 @@
 //  Exposes Facebook API to Swift.
 //
 
-//#import <FacebookSDK/FacebookSDK.h>
+#import <FacebookSDK/FacebookSDK.h>

@@ -36,9 +36,48 @@ class Event {
 
 class EventManager {
     var list = [Event]()
-    
+    var fbSession = FBSession()
+    var accessToken = FBAccessTokenData()
+    //var pageRequest = FBRequest()
     init() {
         list = getEvents()
+    }
+    
+    func getFBEvents() -> [Event] {
+        var events = [Event]()
+        
+        //var session = FBSession()
+        fbSession.closeAndClearTokenInformation()
+
+        accessToken = FBAccessTokenData.createTokenFromString("***REMOVED***",
+        //accessToken = FBAccessTokenData.createTokenFromString("***REMOVED***",
+            permissions: [],
+            expirationDate: NSDate(timeIntervalSinceNow: NSTimeInterval(1000)),
+            loginType: FBSessionLoginType.None,
+            refreshDate: nil)
+
+        FBSession.setActiveSession(fbSession)
+        
+        FBSession.activeSession().openFromAccessTokenData(accessToken) { session, result, error in
+            if FBSession.activeSession().isOpen {
+                //var pageRequest = FBRequest(graphPath: "Page/322196472693", parameters: nil, HTTPMethod: nil)
+                var pageRequest = FBRequest(graphPath: "me", parameters: nil, HTTPMethod: nil)
+                pageRequest.session = FBSession.activeSession()
+                
+                pageRequest.startWithCompletionHandler { (connection: FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
+                    if FBSession.activeSession().isOpen {
+                        println(error)
+                        println("session still open")
+                    }
+                }
+            }
+        }
+        
+
+        
+        //session.closeAndClearTokenInformation()
+        
+        return events
     }
     
     func getEvents() -> [Event] {
@@ -84,7 +123,9 @@ class EventManager {
         let localNotification = UILocalNotification()
         
         localNotification.alertBody = "\(event.name) @ \(event.location)\n\(event.date)"
-        localNotification.fireDate = event.date
+        
+        var alertTime = NSTimeInterval(-3600)   // 1 hour prior
+        localNotification.fireDate = NSDate(timeInterval: alertTime, sinceDate: event.date)
         
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
     }

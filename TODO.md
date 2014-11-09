@@ -52,8 +52,7 @@
 
 
 ## Settings
-* fire notifications _prior_ to event (EventManager.addEvent())
-    * add setting option for how far prior
+* add setting option for how far prior to send event notifications
 
 
 ## Miscellaneous
