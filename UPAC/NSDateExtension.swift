@@ -28,5 +28,25 @@ extension NSDate {
         dateFormatter.dateFormat = "d"
         return dateFormatter.stringFromDate(self)
     }
+    
+    class func fromFBDate(fbDate: String) -> NSDate {
+        var date = NSDate()
+        
+        var dateFormatter = NSDateFormatter()
+        
+        let dateTimeFormat = "yyyy'-'MM'-'dd'T'HH:mm:ssZ"
+        let dateFormat = "yyyy'-'MM'-'dd"
+        
+        dateFormatter.dateFormat = dateTimeFormat
+        
+        if dateFormatter.dateFromString(fbDate) != nil {
+            date = dateFormatter.dateFromString(fbDate)!
+        } else {
+            dateFormatter.dateFormat = dateFormat
+            date = dateFormatter.dateFromString(fbDate)!
+        }
+        
+        return date
+    }
 
 }

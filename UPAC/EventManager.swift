@@ -42,42 +42,58 @@ class EventManager {
     }
     
     func getFBEvents() {
-        var accessToken = FBAccessTokenData.createTokenFromString("***REMOVED***",
-            permissions: ["email"],
-            expirationDate: nil,
-            loginType: FBSessionLoginType.None,
-            refreshDate: nil)
-        
-        FBSession.activeSession().closeAndClearTokenInformation()
-        FBSession.activeSession().openFromAccessTokenData(accessToken) { session, result, error in }
-        
         if FBSession.activeSession().isOpen {
-            var pageRequest = FBRequest(graphPath: "322196472693/events", parameters: nil, HTTPMethod: nil)
+            var twoMonthsAgo = NSDate(timeIntervalSinceNow: NSTimeInterval(-5000000))
+            var eventListRequest = FBRequest(graphPath: "322196472693/events", parameters: ["since":"\(twoMonthsAgo)"], HTTPMethod: nil)
             
-            pageRequest.startWithCompletionHandler { connection, result, error in
-                if FBSession.activeSession().isOpen {
-                    println("error: \(error)")
-                    println("result: \(result)")
+            eventListRequest.startWithCompletionHandler { connection, listResult, listError in
+                // Load Facebook event IDs  from json result
+                var eventIDs = [String]()
+                for eventDic in listResult.objectForKey("data") as [[String : String]] {
+                    eventIDs.append(eventDic["id"]!)
+                }
+                
+                // Load Facebook events into list[] from json result
+                var eventsLoaded = 0
+                for eventID in eventIDs {
+                    var eventRequest = FBRequest(graphPath: eventID, parameters: ["fields":"id,name,cover,location,description,start_time,end_time"], HTTPMethod: nil)
                     
-                    // Load Facebook events into list[] from json result
-                    var data = result.objectForKey("data") as NSArray
-                    for e in data {
-                        let valueDic = e as NSDictionary
+                    eventRequest.startWithCompletionHandler { connection, eventResult, eventError in                        
+                        let event = eventResult as [String : AnyObject]
                         
-                        let newEvent = self.addEvent(valueDic.objectForKey("id") as String,
-                            name: (valueDic.objectForKey("name") as String).stringByReplacingOccurrencesOfString("UPAC Presents: ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil),
-                            image: "http://i.imgur.com/NTPbZQm.jpg",
-                            location: valueDic.objectForKey("location") as String,
-                            desc: "Lorem ipsum dolor sit amet",
-                            date: NSDate(),
-                            endDate: NSDate())
+                        // Convert timestamps to NSDate
+                        let startTimestamp = event["start_time"]! as String
+                        
+                        // Events do not have to have a set end_time
+                        var endTimestamp: String
+                        if event["end_time"] != nil {
+                            endTimestamp = event["end_time"]! as String
+                        } else {
+                            endTimestamp = startTimestamp
+                        }
+                        
+                        
+                        let newEvent = self.addEvent(event["id"]! as String,
+                            name: (event["name"]! as String).stringByReplacingOccurrencesOfString("UPAC Presents: ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil),
+                            image: (event["cover"]! as NSDictionary).valueForKey("source") as String,
+                            location: event["location"]! as String,
+                            desc: event["description"]! as String,
+                            date: NSDate.fromFBDate(startTimestamp),
+                            endDate: NSDate.fromFBDate(endTimestamp))
                         
                         self.insertNotification(newEvent)
                         self.list.append(newEvent)
+                        
+                        // Once all the events have been loaded
+                        if ++eventsLoaded == eventIDs.count {
+                            // Sort list by date
+                            self.list.sort({$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow})
+                            
+                            // Refresh tableView
+                            __eventsTableView!.reloadData()
+                        }
+
                     }
-                    
-                    __eventsTableView!.reloadData()
-                    
                 }
             }
         }
@@ -88,6 +104,7 @@ class EventManager {
         
         localNotification.alertBody = "\(event.name) @ \(event.location)\n\(event.date)"
         
+        //TODO: get alert time from settings
         var alertTime = NSTimeInterval(-3600)   // 1 hour prior
         localNotification.fireDate = NSDate(timeInterval: alertTime, sinceDate: event.date)
         

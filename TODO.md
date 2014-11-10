@@ -20,8 +20,6 @@
 
 
 ## Facebook
-* FBHelper to close+clear session after all pulls complete
-* pull more events: EventManager.getFBEvents()
 * GalleryManager.getPictures()
 
 
@@ -58,7 +56,6 @@
 
 ## Miscellaneous
 * remote image retrieval failovers
-* Core Data unnecessary for events and board members
 * ___ERROR CHECKING___
 * write tests
 

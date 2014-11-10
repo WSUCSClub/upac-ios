@@ -22,7 +22,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set navbar text to white across entire app
         self.window!.tintColor = UIColor.whiteColor()
         
+        loadFBSession()
+        
         return true
+    }
+    
+    
+    //TODO: error checking
+    func loadFBSession() {
+        if FBSession.activeSession().state == FBSessionState.CreatedTokenLoaded {
+            FBSession.openActiveSessionWithReadPermissions(["user_photos", "user_events", "public_profile", "basic_info", "user_photo"], allowLoginUI: false) { session, result, error in }
+        } else {
+            var accessToken = FBAccessTokenData.createTokenFromString("***REMOVED***",
+                permissions: ["user_photos", "user_events", "public_profile", "basic_info", "user_photo"],
+                expirationDate: nil,
+                loginType: FBSessionLoginType.None,
+                refreshDate: nil)
+            
+            FBSession.activeSession().openFromAccessTokenData(accessToken) { session, result, error in }
+        }
     }
     
     func applicationWillResignActive(application: UIApplication) {
