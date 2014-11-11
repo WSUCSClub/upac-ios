@@ -11,60 +11,73 @@ import Foundation
 let galleryMgr = GalleryManager()
 
 class Picture {
-    var id   = String()
-    var desc = String()
-    var date = NSDate()
-    var src  = String()
-    var data = NSData()
+    var id    = String()
+    var date  = NSDate()
+    var thumb = String()
+    var src   = String()
+    var data  = NSData()
 }
 
 class GalleryManager {
     var list = [Picture]()
     
     init() {
-        list = getPictures()
+        getFBPictures()
     }
     
-    func getPictures() -> [Picture] {
-        var pictures = [Picture]()
-        
-        //TODO: Populate list using Facebook Graph API
-        pictures.append(addPicture("oem291982",
-            desc: "Lorem ipsum",
-            date: NSDate(),
-            src: "http://i.imgur.com/JM12Yfi.jpg"))
-        pictures.append(addPicture("ldjf892jf8egrg",
-            desc: "Dolor sit amet",
-            date: NSDate(),
-            src: "http://i.imgur.com/o2r9SRd.jpg"))
-        pictures.append(addPicture("jfj320",
-            desc: "Lorem ipsum",
-            date: NSDate(),
-            src: "http://i.imgur.com/HNGSjNO.jpg"))
-        pictures.append(addPicture("0238jg",
-            desc: "Dolor sit amet",
-            date: NSDate(),
-            src: "http://i.imgur.com/WDVsgVI.jpg"))
-        pictures.append(addPicture("02989489jf",
-            desc: "Lorem ipsum",
-            date: NSDate(),
-            src: "http://i.imgur.com/cdaeELR.jpg"))
-        
-        return pictures
+    //TODO: get only most recent photos; refresh __galleryCollectionView at the correct time
+    func getFBPictures() {
+        if FBSession.activeSession().isOpen {
+            var albumListRequest = FBRequest(graphPath: "322196472693/albums", parameters: nil, HTTPMethod: nil)
+            
+            albumListRequest.startWithCompletionHandler { albumListConnection, albumListResult, albumListError in
+                // Loop through all albums
+                for albumDic in albumListResult.objectForKey("data") as [[String : AnyObject]] {
+                    var albumID = albumDic["id"]! as String
+                    
+                    // Get each individual album
+                    var albumRequest = FBRequest(graphPath: "\(albumID)/photos", parameters: nil, HTTPMethod: nil)
+                    albumRequest.startWithCompletionHandler { albumConnection, albumResult, albumError in
+                        
+                        if let album = albumResult as? [String : AnyObject] {
+                            // Get each picture in album
+                            for pictureDic in album["data"] as [AnyObject] {
+                                self.list.append(self.addPicture(pictureDic.objectForKey("id") as String,
+                                    date: NSDate.fromFBDate(pictureDic.objectForKey("created_time") as String),
+                                    thumb: pictureDic.objectForKey("picture") as String,
+                                    src: pictureDic.objectForKey("source") as String))
+                            }
+                            
+                        }
+
+                        
+                        // Once all the events have been loaded
+                        //if ++Loaded == eventIDs.count {
+                        // Sort list by date
+                        self.list.sort({$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow})
+                        
+                        // Refresh tableView
+                        __galleryCollectionView!.reloadData()
+                        
+                    }
+                }
+            }
+        }
+
     }
     
-    func addPicture(id: String, desc: String, date: NSDate, src: String) -> Picture {
+    func addPicture(id: String, date: NSDate, thumb: String, src: String) -> Picture {
         let newPicture = Picture()
         
         newPicture.id = id
-        newPicture.desc = desc
         newPicture.date = date
+        newPicture.thumb = thumb
         newPicture.src = src
         
         dispatch_async(dispatch_get_main_queue()) {
         // getting background priority from global queue fails to load some pictures
         //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-            if let data = NSData(contentsOfURL: NSURL(string:newPicture.src)!) {
+            if let data = NSData(contentsOfURL: NSURL(string:newPicture.thumb)!) {
                 newPicture.data = data
             }
         }

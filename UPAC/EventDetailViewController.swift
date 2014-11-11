@@ -103,7 +103,12 @@ class EventDetailViewController: UIViewController {
         
         name.text = event.name
         location.text = event.location
-        date.text = "\(event.date.dayStr()) @ \(event.date.timeStr()) - \(event.endDate.timeStr())"
+        date.text = "\(event.date.dayStr()) @ \(event.date.timeStr())"
+        
+        // Only show end date if it is not the same as the start
+        if event.date != event.endDate {
+            date.text = "\(date.text!) - \(event.endDate.timeStr())"
+        }
         desc.text = event.desc
         
         //TODO: set map view to event.location

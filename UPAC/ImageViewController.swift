@@ -43,8 +43,13 @@ class ImageViewController: UIViewController {
     }
     
     func updateView() {
+        // Use full image if available, otherwise continue using thumbnail
         dispatch_async(dispatch_get_main_queue()) {
-            self.fullImageView.image = UIImage(data: self.picture.data)
+            if let data = NSData(contentsOfURL: NSURL(string:self.picture.src)!) {
+                self.fullImageView.image = UIImage(data: data)
+            } else {
+                self.fullImageView.image = UIImage(data: self.picture.data)
+            }
         }
         
         

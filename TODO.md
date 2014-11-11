@@ -20,7 +20,7 @@
 
 
 ## Facebook
-* GalleryManager.getPictures()
+* 
 
 
 ## UI
@@ -41,7 +41,6 @@
 
 
 ## Gallery
-* divide by albums
 * ImageView
     * pinch-zoom
 

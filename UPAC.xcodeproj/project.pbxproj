@@ -241,7 +241,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = "wsu-cs-club";
+				ORGANIZATIONNAME = wsu;
 				TargetAttributes = {
 					20F50F4019E77D8200DBED9A = {
 						CreatedOnToolsVersion = 6.0.1;

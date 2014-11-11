@@ -9,11 +9,15 @@
 
 import UIKit
 
+var __galleryCollectionView: UICollectionView? = nil
+
 class GalleryViewController: UICollectionViewController {
     @IBOutlet var picturesCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        __galleryCollectionView = picturesCollectionView
     }
     
     // Number of sections
