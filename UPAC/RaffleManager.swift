@@ -26,6 +26,15 @@ class Raffle: NSManagedObject {
         coreDataHelper.saveData()
         
         //TODO: push to parse
+        /*var testObject = PFObject(className: "TestttObject")
+        testObject["loon"] = "toon"
+        testObject.saveInBackgroundWithBlock{ success, error in
+            if success {
+                println("sent test object")
+            } else {
+                println("didn't send")
+            }
+        }*/
         
         return code
     }

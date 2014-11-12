@@ -1,5 +1,6 @@
 //
-//  Exposes Facebook API to Swift.
+//  Exposes Objective-C APIs to Swift
 //
 
 #import <FacebookSDK/FacebookSDK.h>
+#import <Parse/Parse.h>

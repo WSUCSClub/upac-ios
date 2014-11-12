@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.tintColor = UIColor.whiteColor()
         
         loadFBSession()
+        loadParseSession()
         
         return true
     }
@@ -41,6 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             FBSession.activeSession().openFromAccessTokenData(accessToken) { session, result, error in }
         }
+    }
+    
+    func loadParseSession() {
+        Parse.setApplicationId("***REMOVED***", clientKey: "***REMOVED***")
     }
     
     func applicationWillResignActive(application: UIApplication) {
