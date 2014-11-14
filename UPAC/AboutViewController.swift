@@ -18,7 +18,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         
         var longPressRecognizer = UILongPressGestureRecognizer(target: self, action: Selector("showLogin:"))
-        longPressRecognizer.minimumPressDuration = 3
+        longPressRecognizer.minimumPressDuration = 1
         secretButton.addGestureRecognizer(longPressRecognizer)
         
         if raffleMgr.adminPrivileges == true {

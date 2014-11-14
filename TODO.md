@@ -4,15 +4,15 @@
 
 ## Parse
 * raffles
-    * RaffleManager.pullParseRaffles()
     * RaffleManager.addRaffle()
     * RaffleManager.deleteRaffle()
-    * Raffle.getEntries()
     * Raffle.addEntry()
+    * RaffleManager.pullParseRaffles()
+    * Raffle.getEntries()
 * board members
-    * BoardManager.getMembers()
     * BoardManager.addMember()
     * BoardManager.deleteMember()
+    * BoardManager.getMembers()
     * NewMemberViewController.imagePickerController()
 * login
     * AboutViewController.attemptLogin()

@@ -26,13 +26,13 @@ class Raffle: NSManagedObject {
         coreDataHelper.saveData()
         
         //TODO: push to parse
-        /*var testObject = PFObject(className: "TestttObject")
-        testObject["loon"] = "toon"
-        testObject.saveInBackgroundWithBlock{ success, error in
+        /*var parseEntry = PFObject(className: "Raffle")
+        parseEntry["entries"] = parseEntry["entries"] + "asdf"
+        parseEntry.saveInBackgroundWithBlock{ success, error in
             if success {
-                println("sent test object")
+                println("sent raffleEntry")
             } else {
-                println("didn't send")
+                println("didn't send raffleEntry")
             }
         }*/
         
@@ -143,11 +143,10 @@ class RaffleManager: ContentManager {
     }
     
     func deleteRaffle(raffle: Raffle) {
-        coreDataHelper.managedObjectContext!.deleteObject(raffle)
-        coreDataHelper.saveData()
-        populateList()
-        
         //TODO: push to parse
+        
+        populateList()
+
     }
     
     func getForID(id: String) -> Raffle? {

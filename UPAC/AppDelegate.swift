@@ -32,10 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //TODO: error checking
     func loadFBSession() {
         if FBSession.activeSession().state == FBSessionState.CreatedTokenLoaded {
-            FBSession.openActiveSessionWithReadPermissions(["user_photos", "user_events", "public_profile", "basic_info", "user_photo"], allowLoginUI: false) { session, result, error in }
+            FBSession.openActiveSessionWithReadPermissions(nil, allowLoginUI: false) { session, result, error in }
         } else {
             var accessToken = FBAccessTokenData.createTokenFromString("***REMOVED***",
-                permissions: ["user_photos", "user_events", "public_profile", "basic_info", "user_photo"],
+                permissions: nil,
                 expirationDate: nil,
                 loginType: FBSessionLoginType.None,
                 refreshDate: nil)
