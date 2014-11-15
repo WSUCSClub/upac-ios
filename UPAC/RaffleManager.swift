@@ -22,19 +22,22 @@ class Raffle: NSManagedObject {
     func addEntry() -> String {
         var code = generateCode()
         
+        // Save to Core Data
         localEntry = code
         coreDataHelper.saveData()
         
-        //TODO: push to parse
-        /*var parseEntry = PFObject(className: "Raffle")
-        parseEntry["entries"] = parseEntry["entries"] + "asdf"
-        parseEntry.saveInBackgroundWithBlock{ success, error in
-            if success {
-                println("sent raffleEntry")
+        // Push to Parse
+        var query = PFQuery(className: "Raffle")
+        query.whereKey("eventId", equalTo: id)
+        
+        query.getFirstObjectInBackgroundWithBlock{ event, error in
+            if error == nil {
+                event.addObject(self.localEntry, forKey: "entries")
+                event.saveInBackgroundWithBlock{ void in }
             } else {
-                println("didn't send raffleEntry")
+                println(error)
             }
-        }*/
+        }
         
         return code
     }
@@ -85,7 +88,7 @@ class Raffle: NSManagedObject {
 }
 
 class RaffleManager: ContentManager {
-    var adminPrivileges = true
+    var adminPrivileges = false
     
     init() {
         super.init(contentType: "Raffle")

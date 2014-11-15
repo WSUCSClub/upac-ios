@@ -4,7 +4,6 @@
 
 ## Parse
 * raffles
-    * Raffle.addEntry()
     * RaffleManager.pullParseRaffles()
     * Raffle.getEntries()
 * board members

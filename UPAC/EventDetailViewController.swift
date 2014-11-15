@@ -72,6 +72,7 @@ class EventDetailViewController: UIViewController {
                 }
                 raffleCodeLabel.hidden = true
             } else {
+                enterRaffleButton.hidden = true
                 raffleCodeLabel.hidden = false
                 raffleCodeLabel.text = "# \((raffleMgr.getForID(event.id)?.localEntry)!)"
             }
