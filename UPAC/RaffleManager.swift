@@ -74,12 +74,6 @@ class Raffle: NSManagedObject {
         return winners
     }
     
-    //TODO: pull from parse
-    func getEntries() {
-        entries.append("asldk")
-        entries.append("49tgl")
-    }
-    
     //TODO: implement (5 char alpha-numeric)
     private func generateCode() -> String {
         return String(Int(NSDate().timeIntervalSince1970))
@@ -95,40 +89,39 @@ class RaffleManager: ContentManager {
     }
     
     override func populateList() {
-        //clearLocalStorage()     // Comment out for persistence
         list = fetchStored()
         
-        var parseList = pullParseRaffles()
+        var query = PFQuery(className: "Raffle")
+        var parseList = query.findObjects()
+        
         
         // Only add to local storage if does not already exist
-        for raffle in parseList {
-            var alreadyExists = false
-            
-            for localRaffle in list as [Raffle] {
-                localRaffle.entries = []
-                //TODO: add all entries to localRaffle no matter what because they are not being stored w/ Core Data
-                // localRaffle.entries = raffle.entries // from parse
-                localRaffle.getEntries()
+        for parseRaffle in parseList {
+            if getForID(parseRaffle["eventId"] as String) == nil {
+                // Add to Core Data
+                let newRaffle = NSEntityDescription.insertNewObjectForEntityForName("Raffle", inManagedObjectContext: coreDataHelper.managedObjectContext!) as Raffle
                 
-                if raffle.id == localRaffle.id {
-                    // Raffle already exists locally, don't add another
-                    alreadyExists = true
-                    break
+                newRaffle.id = parseRaffle["eventId"] as String
+                newRaffle.date = parseRaffle["date"] as NSDate
+                newRaffle.endDate = parseRaffle["endDate"] as NSDate
+                newRaffle.localEntry = ""
+                
+                coreDataHelper.saveData()
+                
+                list.append(newRaffle)
+            }
+            
+            if let localRaffle = getForID(parseRaffle["eventId"] as String) {
+                localRaffle.entries = []
+                // Add all entries to localRaffle no matter what because they are not being stored w/ Core Data
+                if parseRaffle.allKeys.contains("entries") {
+                    var entryCount = (parseRaffle["entries"] as [String]).count
+                    localRaffle.entries = parseRaffle["entries"] as [String] // from parse
                 }
             }
-            
-            if !alreadyExists {
-                addRaffle(raffle.id, date: raffle.date, endDate: raffle.endDate)
-            }
+
         }
 
-    }
-    
-    //TODO: it
-    func pullParseRaffles() -> [Raffle] {
-        var parseRaffles = list as [Raffle]
-        
-        return parseRaffles
     }
     
     func addRaffle(id: String, date: NSDate, endDate: NSDate) {
@@ -163,13 +156,7 @@ class RaffleManager: ContentManager {
         var query = PFQuery(className: "Raffle")
         query.whereKey("eventId", equalTo: raffle.id)
         
-        query.getFirstObjectInBackgroundWithBlock{ object, error in
-            if error == nil {
-                object.deleteInBackgroundWithBlock{ void in }
-            } else {
-                println(error)
-            }
-        }
+        query.getFirstObject().delete()
         
         // Delete from Core Data
         coreDataHelper.managedObjectContext!.deleteObject(raffle)

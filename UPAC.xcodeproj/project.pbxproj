@@ -46,6 +46,7 @@
 		20F50F5019E77D8200DBED9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20F50F4F19E77D8200DBED9A /* Images.xcassets */; };
 		20F50F5319E77D8200DBED9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20F50F5119E77D8200DBED9A /* LaunchScreen.xib */; };
 		20F50F5F19E77D8200DBED9A /* UPACTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50F5E19E77D8200DBED9A /* UPACTests.swift */; };
+		20F832EE1A1727DE0042A512 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F832ED1A1727DD0042A512 /* ArrayExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		20F50F5819E77D8200DBED9A /* UPACTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UPACTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F50F5D19E77D8200DBED9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20F50F5E19E77D8200DBED9A /* UPACTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPACTests.swift; sourceTree = "<group>"; };
+		20F832ED1A1727DD0042A512 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 				20FD4B2519EB170400F8E049 /* View Controllers */,
 				20FD4B2419EB16F000F8E049 /* Models */,
 				201EDC2819F77A4F00B278D0 /* NSDateExtension.swift */,
+				20F832ED1A1727DD0042A512 /* ArrayExtension.swift */,
 				202CA9A31A05429A00CD1A54 /* UIColorExtension.swift */,
 				202CA99F1A0450BD00CD1A54 /* UIImageExtension.swift */,
 				20D647B319ED967B007E8D1C /* UPAC-Bridging-Header.h */,
@@ -380,6 +383,7 @@
 				202CA9A81A05D35C00CD1A54 /* BoardManager.swift in Sources */,
 				20F50F4919E77D8200DBED9A /* AboutViewController.swift in Sources */,
 				20EF825619FB564300CC7BD0 /* ContentManager.swift in Sources */,
+				20F832EE1A1727DE0042A512 /* ArrayExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -90,7 +90,7 @@ class EventDetailViewController: UIViewController {
             
             numberOfParticipantsLabel.hidden = false
             numberOfParticipantsLabel.text = String(raffleMgr.getForID(event.id)!.entries.count)
-            var testEntries = raffleMgr.getForID(event.id)!.entries
+            //var testEntries = raffleMgr.getForID(event.id)!.entries
         } else if !event.hasRaffle() && raffleMgr.adminPrivileges {
             createRaffleButton.hidden = false
             deleteRaffleButton.hidden = true

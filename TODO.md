@@ -3,9 +3,6 @@
 ---
 
 ## Parse
-* raffles
-    * RaffleManager.pullParseRaffles()
-    * Raffle.getEntries()
 * board members
     * BoardManager.addMember()
     * BoardManager.deleteMember()
