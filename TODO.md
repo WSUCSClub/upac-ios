@@ -4,8 +4,6 @@
 
 ## Parse
 * raffles
-    * RaffleManager.addRaffle()
-    * RaffleManager.deleteRaffle()
     * Raffle.addEntry()
     * RaffleManager.pullParseRaffles()
     * Raffle.getEntries()

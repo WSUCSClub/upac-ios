@@ -85,7 +85,7 @@ class Raffle: NSManagedObject {
 }
 
 class RaffleManager: ContentManager {
-    var adminPrivileges = false
+    var adminPrivileges = true
     
     init() {
         super.init(contentType: "Raffle")
@@ -129,6 +129,7 @@ class RaffleManager: ContentManager {
     }
     
     func addRaffle(id: String, date: NSDate, endDate: NSDate) {
+        // Add to Core Data
         let newRaffle = NSEntityDescription.insertNewObjectForEntityForName("Raffle", inManagedObjectContext: coreDataHelper.managedObjectContext!) as Raffle
         
         newRaffle.id = id
@@ -136,14 +137,40 @@ class RaffleManager: ContentManager {
         newRaffle.endDate = endDate
         newRaffle.localEntry = ""
         
-        //TODO: push to parse
-        
         coreDataHelper.saveData()
+
+        
+        // Add to Parse
+        var parseRaffle = PFObject(className: "Raffle")
+        
+        parseRaffle["eventId"] = newRaffle.id
+        parseRaffle["date"] = newRaffle.date
+        parseRaffle["endDate"] = newRaffle.endDate
+        parseRaffle.saveInBackgroundWithBlock{ success, error in
+            if !success {
+                println(error)
+            }
+        }
+        
         list.append(newRaffle)
     }
     
     func deleteRaffle(raffle: Raffle) {
-        //TODO: push to parse
+        // Delete from parse
+        var query = PFQuery(className: "Raffle")
+        query.whereKey("eventId", equalTo: raffle.id)
+        
+        query.getFirstObjectInBackgroundWithBlock{ object, error in
+            if error == nil {
+                object.deleteInBackgroundWithBlock{ void in }
+            } else {
+                println(error)
+            }
+        }
+        
+        // Delete from Core Data
+        coreDataHelper.managedObjectContext!.deleteObject(raffle)
+        coreDataHelper.saveData()
         
         populateList()
 
