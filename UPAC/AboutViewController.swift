@@ -8,6 +8,8 @@
 
 import UIKit
 
+var __boardTableView: UITableView? = nil
+
 class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var secretButton: UITextView!
     @IBOutlet var boardTable: UITableView!
@@ -16,6 +18,9 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        __boardTableView = boardTable
+
         
         var longPressRecognizer = UILongPressGestureRecognizer(target: self, action: Selector("showLogin:"))
         longPressRecognizer.minimumPressDuration = 1

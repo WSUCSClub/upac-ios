@@ -3,8 +3,6 @@
 ---
 
 ## Parse
-* board members
-    * BoardManager.getMembers()
 * login
     * AboutViewController.attemptLogin()
     * ChangePasswordViewController.savePassword()

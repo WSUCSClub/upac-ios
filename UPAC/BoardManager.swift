@@ -23,12 +23,28 @@ class BoardManager {
     var list = [Member]()
     
     init() {
-        list = []
         populateList()
     }
     
     func populateList() {
-        //TODO: pull from Parse
+        list = []
+        
+        var query = PFQuery(className: "Member")
+        query.findObjectsInBackgroundWithBlock { parseList, error in
+            
+            for parseMember in parseList {
+                let newMember = Member()
+                
+                newMember.name = parseMember["name"] as String
+                newMember.position = parseMember["position"] as String
+                newMember.email = parseMember["email"] as String
+                newMember.picture = (parseMember["picture"] as PFFile).getData()
+                
+                self.list.append(newMember)
+            }
+            
+            __boardTableView!.reloadData()
+        }
     }
     
     func addMember(name: String, position: String, email: String, picture: NSData) {
@@ -56,9 +72,7 @@ class BoardManager {
                 pictureFile.saveInBackgroundWithBlock { success, error in
                     if error == nil {
                         parseMember["picture"] = pictureFile
-                        parseMember.saveInBackgroundWithBlock { sucess, error in
-                            println("saved image")
-                        }
+                        parseMember.saveInBackgroundWithBlock { sucess, error in }
                     } else {
                         println(error)
                     }
