@@ -13,7 +13,6 @@ class NewMemberViewController: UIViewController, UINavigationControllerDelegate,
     @IBOutlet var nameField: UITextField!
     @IBOutlet var positionField: UITextField!
     @IBOutlet var emailField: UITextField!
-    @IBOutlet var pictureField: UITextField!
     @IBOutlet var pictureView: UIImageView!
     
     var boardTable: UITableView!
@@ -39,9 +38,6 @@ class NewMemberViewController: UIViewController, UINavigationControllerDelegate,
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in })
         
-        //var imageData = UIImageJPEGRepresentation(image, 0.7)
-        //TODO: push imageData to parse
-        
         var mask = pictureView.layer
         mask.cornerRadius = pictureView.frame.size.width / 2
         mask.masksToBounds = true
@@ -53,13 +49,11 @@ class NewMemberViewController: UIViewController, UINavigationControllerDelegate,
         var name = nameField.text
         var position = positionField.text
         var email = emailField.text
-        var picture = pictureField.text
         
-        boardMgr.addMember(String("\(NSDate())"),
-            name: name,
+        boardMgr.addMember(name,
             position: position,
             email: email,
-            picture: picture)
+            picture: UIImageJPEGRepresentation(pictureView.image, 0.7))
     }
     
     @IBAction func doneButtonTapped(sender: AnyObject) {
@@ -83,13 +77,13 @@ class NewMemberViewController: UIViewController, UINavigationControllerDelegate,
         
     }
     
+    //TODO: make sure an image has been selected
     func validateInput() -> String? {
         var result: String?
         
         if nameField.text      != "" &&
             positionField.text != "" &&
-            emailField.text    != "" &&
-            pictureField.text  != "" {
+            emailField.text    != "" {
                 result = nil
         } else {
             result = "All fields are required"

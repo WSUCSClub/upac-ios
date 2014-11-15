@@ -4,7 +4,6 @@
 
 ## Parse
 * board members
-    * BoardManager.addMember()
     * BoardManager.deleteMember()
     * BoardManager.getMembers()
     * NewMemberViewController.imagePickerController()
@@ -13,14 +12,11 @@
     * ChangePasswordViewController.savePassword()
 
 
-## Facebook
-* 
-
-
 ## UI
 * GalleryView
+* combine About and Contact views
 * adhere to "iOS Human Interface Guidelines"
-* new app icon set with UPAC logo needed? (Photoshop smart template; [icon generator](http://makeappicon.com))
+* flatten app icon set
 * custom iPad interface
 
 

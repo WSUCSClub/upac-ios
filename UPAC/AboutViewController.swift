@@ -49,7 +49,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Format img circle
         var image: UIImageView = (cell.contentView.viewWithTag(1) as UIImageView)
         dispatch_async(dispatch_get_main_queue()) {
-            image.image = UIImage(data: m.pictureData)
+            image.image = UIImage(data: m.picture)
         }
         var mask = image.layer
         mask.cornerRadius = image.frame.size.width / 2

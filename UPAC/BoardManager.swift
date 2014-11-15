@@ -15,8 +15,7 @@ class Member {
     var name        = String()
     var position    = String()
     var email       = String()
-    var picture     = String()
-    var pictureData = NSData()
+    var picture     = NSData()
     
 }
 
@@ -24,67 +23,55 @@ class BoardManager {
     var list = [Member]()
     
     init() {
-        list = getMembers()
+        list = []
+        populateList()
     }
     
-    func getMembers() -> [Member] {
-        var members = [Member]()
-        
-        members.append(addMember("oij7tb",
-            name: "Emily Meskan",
-            position: "Director",
-            email: "EMeskan11@winona.edu",
-            picture: "http://www.winona.edu/upac/Images/UPAC-Emily_Meskan-profile.jpg"))
-        members.append(addMember("f65",
-            name: "Brittany Bieber",
-            position: "Assistant Director",
-            email: "BBieber12@winona.edu",
-            picture: "http://www.winona.edu/upac/Images/UPAC-Brittany_Bieber-profile.jpg"))
-        members.append(addMember("23424g4",
-            name: "Megan Derke",
-            position: "Accounts Director",
-            email: "MDerke11@winona.edu",
-            picture: "http://www.winona.edu/upac/Images/UPAC-Megan_Derke-profile.jpg"))
-        members.append(addMember("23g213r",
-            name: "Chris Doffing",
-            position: "Concerts Director",
-            email: "CDoffing11@winona.edu",
-            picture: "http://www.winona.edu/upac/Images/UPAC-Chris_Doffing-profile.jpg"))
-        members.append(addMember("bt2423",
-            name: "Brooke Maher",
-            position: "Special Events On-Campus Director",
-            email: "BBieber12@winona.edu",
-            picture: "http://www.winona.edu/upac/Images/UPAC-Brooke_Maher-profile.jpg"))
-        
-        return members
+    func populateList() {
+        //TODO: pull from Parse
     }
     
-    func addMember(id: String, name: String, position: String, email: String, picture: String) -> Member {
+    func addMember(name: String, position: String, email: String, picture: NSData) {
         let newMember = Member()
         
-        newMember.id = id
         newMember.name = name
         newMember.position = position
         newMember.email = email
-        
         newMember.picture = picture
-        // Can only make one request at a time from winona.edu
-        //TODO: get pictureData from Parse
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-            if let data = NSData(contentsOfURL: NSURL(string: newMember.picture)!) {
-                newMember.pictureData = data
+        
+        list.append(newMember)
+        
+        // Add to Parse
+        var parseMember = PFObject(className: "Member")
+        
+        parseMember["name"] = newMember.name
+        parseMember["position"] = newMember.position
+        parseMember["email"] = newMember.email
+        
+        parseMember.saveInBackgroundWithBlock { success, error in
+            if !success {
+                println(error)
+            } else {
+                var pictureFile = PFFile(name: "\(newMember.name).jpg", data: newMember.picture)
+                pictureFile.saveInBackgroundWithBlock { success, error in
+                    if error == nil {
+                        parseMember["picture"] = pictureFile
+                        parseMember.saveInBackgroundWithBlock { sucess, error in
+                            println("saved image")
+                        }
+                    } else {
+                        println(error)
+                    }
+                }
             }
         }
         
-        //TODO: push to parse
-        
-        return newMember
     }
     
     func deleteMember(member: Member) {
         //TODO: remove member from parse
         
-        list = getMembers()
+        populateList()
     }
     
 }
