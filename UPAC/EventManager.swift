@@ -108,7 +108,9 @@ class EventManager {
         var alertTime = NSTimeInterval(-3600)   // 1 hour prior
         localNotification.fireDate = NSDate(timeInterval: alertTime, sinceDate: event.date)
         
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        if UIApplication.sharedApplication().currentUserNotificationSettings().types != .None {
+            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        }
     }
     
     func addEvent(id: String, name: String, image: String, location: String, desc: String, date: NSDate, endDate: NSDate) -> Event {
