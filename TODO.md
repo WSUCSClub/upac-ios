@@ -4,9 +4,7 @@
 
 ## Parse
 * board members
-    * BoardManager.deleteMember()
     * BoardManager.getMembers()
-    * NewMemberViewController.imagePickerController()
 * login
     * AboutViewController.attemptLogin()
     * ChangePasswordViewController.savePassword()

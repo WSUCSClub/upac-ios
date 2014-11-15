@@ -69,8 +69,12 @@ class BoardManager {
     }
     
     func deleteMember(member: Member) {
-        //TODO: remove member from parse
+        // Delete from parse
+        var query = PFQuery(className: "Member")
+        query.whereKey("name", equalTo: member.name)
         
+        query.getFirstObject().delete()
+
         populateList()
     }
     
