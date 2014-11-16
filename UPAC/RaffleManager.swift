@@ -82,7 +82,7 @@ class Raffle: NSManagedObject {
 }
 
 class RaffleManager: ContentManager {
-    var adminPrivileges = true
+    var adminPrivileges = false
     
     init() {
         super.init(contentType: "Raffle")
@@ -92,7 +92,6 @@ class RaffleManager: ContentManager {
         list = fetchStored()
         
         var query = PFQuery(className: "Raffle")
-        //var parseList = query.findObjects()
         query.findObjectsInBackgroundWithBlock { parseList, error in
         
             // Only add to local storage if does not already exist
@@ -155,7 +154,7 @@ class RaffleManager: ContentManager {
     }
     
     func deleteRaffle(raffle: Raffle) {
-        // Delete from parse
+        // Delete from Parse
         var query = PFQuery(className: "Raffle")
         query.whereKey("eventId", equalTo: raffle.id)
         

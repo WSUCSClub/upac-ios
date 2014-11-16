@@ -17,7 +17,6 @@ class NewRaffleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
     }
     
     func saveRaffle() {

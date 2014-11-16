@@ -19,9 +19,14 @@ class ChangePasswordViewController: UIViewController {
         // Do view setup here.
     }
     
-    func savePassword() {
-        //TODO: push to Parse
-        println("saving new password")
+    func savePassword(newPassword: String) {
+        // Update on Parse
+        var query = PFQuery(className: "Login")
+        query.getFirstObjectInBackgroundWithBlock { login, error in
+            login["password"] = newPassword.md5()
+            login.saveInBackgroundWithBlock { void in }
+        }
+        
     }
     
     @IBAction func doneButtonTapped(sender: AnyObject) {
@@ -39,7 +44,7 @@ class ChangePasswordViewController: UIViewController {
             }
             
         } else {
-            savePassword()
+            savePassword(newPasswordField.text)
             self.navigationController!.popViewControllerAnimated(true)
         }
         

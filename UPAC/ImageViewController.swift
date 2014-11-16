@@ -8,7 +8,6 @@
 
 
 import UIKit
-import QuartzCore
 
 class ImageViewController: UIViewController {
     @IBOutlet var fullImageView: UIImageView!

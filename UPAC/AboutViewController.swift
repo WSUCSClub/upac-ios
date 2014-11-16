@@ -40,12 +40,6 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return boardMgr.list.count
     }
     
-    // Need to set row height explicitly or else collapses on table reload
-    // FIXED: Interface Builder -> tableView -> rowHeight
-    //func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    //    return 75
-    //}
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = boardTable.dequeueReusableCellWithIdentifier("boardMemberCell", forIndexPath:indexPath) as UITableViewCell
         
@@ -144,11 +138,10 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //TODO: move somewhere more generic
     class func attemptLogin(password: String) -> Bool {
-        //TODO: hash password
-        var passwordHash = password
+        var passwordHash = password.md5()
         
-        //TODO: get valid password hash from Parse
-        var validPasswordHash = "asdf"
+        var query = PFQuery(className: "Login")
+        var validPasswordHash = query.getFirstObject()["password"] as String
         
         var loginSuccess: Bool
         if passwordHash == validPasswordHash {

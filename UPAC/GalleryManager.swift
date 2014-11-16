@@ -52,8 +52,6 @@ class GalleryManager {
 
                         
                         // Once all the events have been loaded
-                        //if ++Loaded == eventIDs.count {
-                        // Sort list by date
                         self.list.sort({$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow})
                         
                         // Refresh tableView
@@ -75,9 +73,9 @@ class GalleryManager {
         newPicture.thumb = thumb
         newPicture.src = src
         
-        dispatch_async(dispatch_get_main_queue()) {
+        //dispatch_async(dispatch_get_main_queue()) {
         // getting background priority from global queue fails to load some pictures
-        //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             if let data = NSData(contentsOfURL: NSURL(string:newPicture.thumb)!) {
                 newPicture.data = data
             }

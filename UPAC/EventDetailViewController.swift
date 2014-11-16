@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import MapKit
-import QuartzCore
 
 class EventDetailViewController: UIViewController {
     @IBOutlet var image: UIImageView!
@@ -90,7 +88,6 @@ class EventDetailViewController: UIViewController {
             
             numberOfParticipantsLabel.hidden = false
             numberOfParticipantsLabel.text = String(raffleMgr.getForID(event.id)!.entries.count)
-            //var testEntries = raffleMgr.getForID(event.id)!.entries
         } else if !event.hasRaffle() && raffleMgr.adminPrivileges {
             createRaffleButton.hidden = false
             deleteRaffleButton.hidden = true
