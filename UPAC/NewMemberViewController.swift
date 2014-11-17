@@ -83,7 +83,8 @@ class NewMemberViewController: UIViewController, UINavigationControllerDelegate,
         
         if nameField.text      != "" &&
             positionField.text != "" &&
-            emailField.text    != "" {
+            emailField.text    != "" &&
+            pictureView.image  != nil {
                 result = nil
         } else {
             result = "All fields are required"

@@ -84,7 +84,7 @@ class Raffle: NSManagedObject {
 }
 
 class RaffleManager: ContentManager {
-    var adminPrivileges = false
+    var adminPrivileges = true
     
     init() {
         super.init(contentType: "Raffle")

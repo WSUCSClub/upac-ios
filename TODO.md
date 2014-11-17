@@ -15,10 +15,6 @@
 * add map to detail view?
 
 
-## Raffles
-* can only enter raffle if at location
-
-
 ## Gallery
 * ImageView
     * pinch-zoom
@@ -32,5 +28,3 @@
 * remote image retrieval failovers
 * write tests
 * ___ERROR CHECKING___
-    * New MemberViewController.validateInput()
-
