@@ -74,9 +74,11 @@ class Raffle: NSManagedObject {
         return winners
     }
     
-    //TODO: implement (5 char alpha-numeric)
     private func generateCode() -> String {
-        return String(Int(NSDate().timeIntervalSince1970))
+        let date = String(Int(NSDate().timeIntervalSince1970))
+        let hash = date.md5() as NSString
+        let code = hash.substringWithRange(NSRange(location: 0, length: 5)).uppercaseString
+        return code
     }
 
 }

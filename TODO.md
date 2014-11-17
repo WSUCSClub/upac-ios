@@ -17,7 +17,6 @@
 
 ## Raffles
 * can only enter raffle if at location
-* Raffle.generateCode()
 
 
 ## Gallery
