@@ -31,34 +31,38 @@ class GalleryManager {
             var albumListRequest = FBRequest(graphPath: "322196472693/albums", parameters: nil, HTTPMethod: nil)
             
             albumListRequest.startWithCompletionHandler { albumListConnection, albumListResult, albumListError in
-                // Loop through all albums
-                for albumDic in albumListResult.objectForKey("data") as [[String : AnyObject]] {
-                    var albumID = albumDic["id"]! as String
-                    
-                    // Get each individual album
-                    var albumRequest = FBRequest(graphPath: "\(albumID)/photos", parameters: nil, HTTPMethod: nil)
-                    albumRequest.startWithCompletionHandler { albumConnection, albumResult, albumError in
+                if let albumListError = albumListError {
+                    println("Could not load Facebook albums: \(albumListError)")
+                } else {
+                    // Loop through all albums
+                    for albumDic in albumListResult.objectForKey("data") as [[String : AnyObject]] {
+                        var albumID = albumDic["id"]! as String
                         
-                        if let album = albumResult as? [String : AnyObject] {
-                            // Get each picture in album
-                            for pictureDic in album["data"] as [AnyObject] {
-                                self.list.append(self.addPicture(pictureDic.objectForKey("id") as String,
-                                    date: NSDate.fromFBDate(pictureDic.objectForKey("created_time") as String),
-                                    thumb: pictureDic.objectForKey("picture") as String,
-                                    src: pictureDic.objectForKey("source") as String))
+                        // Get each individual album
+                        var albumRequest = FBRequest(graphPath: "\(albumID)/photos", parameters: nil, HTTPMethod: nil)
+                        albumRequest.startWithCompletionHandler { albumConnection, albumResult, albumError in
+                            
+                            if let album = albumResult as? [String : AnyObject] {
+                                // Get each picture in album
+                                for pictureDic in album["data"] as [AnyObject] {
+                                    self.list.append(self.addPicture(pictureDic.objectForKey("id") as String,
+                                        date: NSDate.fromFBDate(pictureDic.objectForKey("created_time") as String),
+                                        thumb: pictureDic.objectForKey("picture") as String,
+                                        src: pictureDic.objectForKey("source") as String))
+                                }
+                                
                             }
+
+                            
+                            // Once all the events have been loaded
+                            self.list.sort({$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow})
+                            
+                            // Refresh tableView
+                            __galleryCollectionView!.reloadData()
                             
                         }
 
-                        
-                        // Once all the events have been loaded
-                        self.list.sort({$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow})
-                        
-                        // Refresh tableView
-                        __galleryCollectionView!.reloadData()
-                        
                     }
-
                 }
             }
         }

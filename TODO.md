@@ -25,6 +25,6 @@
 
 
 ## Miscellaneous
-* remote image retrieval failovers
 * write tests
 * ___ERROR CHECKING___
+    * remote image retrieval

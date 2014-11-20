@@ -24,6 +24,27 @@ class EventsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // Tell user to refresh if unable to load events
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {        
+        if eventMgr.list.count < 1 {
+            var noDataLabel = UILabel()
+            noDataLabel.text = "No data is currently available. Pull down to refresh."
+            noDataLabel.textAlignment = .Center
+            noDataLabel.numberOfLines = 0
+            noDataLabel.sizeToFit()
+            
+            eventsTableView.backgroundView = noDataLabel
+            eventsTableView.separatorStyle = .None
+            
+            return 0
+        } else {
+            eventsTableView.backgroundView = nil
+            eventsTableView.separatorStyle = .SingleLine
+            
+            return 1
+        }
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return eventMgr.list.count
     }

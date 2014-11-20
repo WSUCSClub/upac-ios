@@ -22,7 +22,21 @@ class GalleryViewController: UICollectionViewController {
     
     // Number of sections
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+        if galleryMgr.list.count < 1 {
+            var noDataLabel = UILabel()
+            noDataLabel.text = "No data is currently available. Pull down to refresh."
+            noDataLabel.textAlignment = .Center
+            noDataLabel.numberOfLines = 0
+            noDataLabel.sizeToFit()
+            
+            picturesCollectionView.backgroundView = noDataLabel
+            
+            return 0
+        } else {
+            picturesCollectionView.backgroundView = nil
+            
+            return 1
+        }
     }
     
     // Size of sections

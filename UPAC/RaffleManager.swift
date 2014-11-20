@@ -84,7 +84,7 @@ class Raffle: NSManagedObject {
 }
 
 class RaffleManager: ContentManager {
-    var adminPrivileges = true
+    var adminPrivileges = false
     
     init() {
         super.init(contentType: "Raffle")
@@ -96,34 +96,38 @@ class RaffleManager: ContentManager {
         var query = PFQuery(className: "Raffle")
         query.findObjectsInBackgroundWithBlock { parseList, error in
         
-            // Only add to local storage if does not already exist
-            for parseRaffle in parseList {
-                if self.getForID(parseRaffle["eventId"] as String) == nil {
-                    // Add to Core Data
-                    let newRaffle = NSEntityDescription.insertNewObjectForEntityForName("Raffle", inManagedObjectContext: coreDataHelper.managedObjectContext!) as Raffle
+            if let error = error {
+                println("Could not retrieve raffles from Parse: \(error)")
+            } else {
+                // Only add to local storage if does not already exist
+                for parseRaffle in parseList {
+                    if self.getForID(parseRaffle["eventId"] as String) == nil {
+                        // Add to Core Data
+                        let newRaffle = NSEntityDescription.insertNewObjectForEntityForName("Raffle", inManagedObjectContext: coreDataHelper.managedObjectContext!) as Raffle
+                        
+                        newRaffle.id = parseRaffle["eventId"] as String
+                        newRaffle.date = parseRaffle["date"] as NSDate
+                        newRaffle.endDate = parseRaffle["endDate"] as NSDate
+                        newRaffle.localEntry = ""
+                        
+                        coreDataHelper.saveData()
+                        
+                        self.list.append(newRaffle)
+                    }
                     
-                    newRaffle.id = parseRaffle["eventId"] as String
-                    newRaffle.date = parseRaffle["date"] as NSDate
-                    newRaffle.endDate = parseRaffle["endDate"] as NSDate
-                    newRaffle.localEntry = ""
-                    
-                    coreDataHelper.saveData()
-                    
-                    self.list.append(newRaffle)
+                    if let localRaffle = self.getForID(parseRaffle["eventId"] as String) {
+                        localRaffle.entries = []
+                        // Add all entries to localRaffle no matter what because they are not being stored w/ Core Data
+                        if parseRaffle.allKeys.contains("entries") {
+                            var entryCount = (parseRaffle["entries"] as [String]).count
+                            localRaffle.entries = parseRaffle["entries"] as [String] // from parse
+                        }
+                    }
+
                 }
                 
-                if let localRaffle = self.getForID(parseRaffle["eventId"] as String) {
-                    localRaffle.entries = []
-                    // Add all entries to localRaffle no matter what because they are not being stored w/ Core Data
-                    if parseRaffle.allKeys.contains("entries") {
-                        var entryCount = (parseRaffle["entries"] as [String]).count
-                        localRaffle.entries = parseRaffle["entries"] as [String] // from parse
-                    }
-                }
-
+                __eventsTableView!.reloadData()
             }
-            
-            __eventsTableView!.reloadData()
         }
 
     }

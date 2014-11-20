@@ -31,19 +31,22 @@ class BoardManager {
         
         var query = PFQuery(className: "Member")
         query.findObjectsInBackgroundWithBlock { parseList, error in
-            
-            for parseMember in parseList {
-                let newMember = Member()
+            if let error = error {
+                println("Could not retrieve board members from Parse: \(error)")
+            } else {
+                for parseMember in parseList {
+                    let newMember = Member()
+                    
+                    newMember.name = parseMember["name"] as String
+                    newMember.position = parseMember["position"] as String
+                    newMember.email = parseMember["email"] as String
+                    newMember.picture = (parseMember["picture"] as PFFile).getData()
+                    
+                    self.list.append(newMember)
+                }
                 
-                newMember.name = parseMember["name"] as String
-                newMember.position = parseMember["position"] as String
-                newMember.email = parseMember["email"] as String
-                newMember.picture = (parseMember["picture"] as PFFile).getData()
-                
-                self.list.append(newMember)
+                __boardTableView!.reloadData()
             }
-            
-            __boardTableView!.reloadData()
         }
     }
     
