@@ -11,11 +11,11 @@
 
 
 ## Events
-* pull-down refresh
 * add map to detail view?
 
 
 ## Gallery
+* pull-down refresh
 * ImageView
     * pinch-zoom
 
@@ -25,6 +25,8 @@
 
 
 ## Miscellaneous
-* write tests
+* don't add duplicate notifications for events
+* don't show "pull to refresh" label on initial load
 * ___ERROR CHECKING___
     * remote image retrieval
+    * check for network connection before Parse access

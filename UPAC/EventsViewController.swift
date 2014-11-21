@@ -17,11 +17,17 @@ class EventsViewController: UITableViewController {
         super.viewDidLoad()
         
         __eventsTableView = eventsTableView
+        
+        refreshControl = UIRefreshControl()
+        refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl!.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
+        
+        eventsTableView.addSubview(refreshControl!)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func refresh() {
+        //refreshControl?.endRefreshing()
+        eventMgr.getFBEvents({ void in self.refreshControl!.endRefreshing() })
     }
     
     // Tell user to refresh if unable to load events
@@ -52,30 +58,34 @@ class EventsViewController: UITableViewController {
     // Set cell content
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let e = eventMgr.list[indexPath.row] as Event
-        
-        // Use different layout if event has a raffle
-        var cellIdentifier: String
-        if e.hasRaffle() {
-            cellIdentifier = "TableViewEventRaffleCell"
+        if !eventMgr.list.isEmpty {
+            let e = eventMgr.list[indexPath.row] as Event
+            
+            // Use different layout if event has a raffle
+            var cellIdentifier: String
+            if e.hasRaffle() {
+                cellIdentifier = "TableViewEventRaffleCell"
+            } else {
+                cellIdentifier = "TableViewEventCell"
+            }
+            
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as UITableViewCell
+            
+            // Format date circle
+            var image = (cell.contentView.viewWithTag(1) as UIImageView)
+            var mask = image.layer
+            mask.cornerRadius = image.frame.size.width / 2
+            mask.masksToBounds = true
+            (cell.contentView.viewWithTag(2) as UILabel).text = e.date.weekdayStr()
+            (cell.contentView.viewWithTag(3) as UILabel).text = e.date.dayNumStr()
+            
+            (cell.contentView.viewWithTag(4) as UILabel).text = e.name
+            (cell.contentView.viewWithTag(5) as UILabel).text = e.location
+            
+            return cell
         } else {
-            cellIdentifier = "TableViewEventCell"
+            return tableView.dequeueReusableCellWithIdentifier("TableViewEventCell", forIndexPath: indexPath) as UITableViewCell
         }
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as UITableViewCell
-        
-        // Format date circle
-        var image = (cell.contentView.viewWithTag(1) as UIImageView)
-        var mask = image.layer
-        mask.cornerRadius = image.frame.size.width / 2
-        mask.masksToBounds = true
-        (cell.contentView.viewWithTag(2) as UILabel).text = e.date.weekdayStr()
-        (cell.contentView.viewWithTag(3) as UILabel).text = e.date.dayNumStr()
-        
-        (cell.contentView.viewWithTag(4) as UILabel).text = e.name
-        (cell.contentView.viewWithTag(5) as UILabel).text = e.location
-        
-        return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -92,6 +102,12 @@ class EventsViewController: UITableViewController {
             destinationView.event = eventMgr.list[indexPath.row] as Event
             destinationView.index = indexPath.row
         }
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
 }

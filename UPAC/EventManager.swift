@@ -42,6 +42,12 @@ class EventManager {
     }
     
     func getFBEvents() {
+        getFBEvents() { void in }
+    }
+    
+    func getFBEvents(finishedLoadingClosure: () -> Void) {
+        list = []
+        
         if FBSession.activeSession().isOpen {
             var twoMonthsAgo = NSDate(timeIntervalSinceNow: NSTimeInterval(-5000000))
             var eventListRequest = FBRequest(graphPath: "322196472693/events", parameters: ["since":"\(twoMonthsAgo)"], HTTPMethod: nil)
@@ -49,6 +55,8 @@ class EventManager {
             eventListRequest.startWithCompletionHandler { connection, listResult, listError in
                 if let listError = listError {
                     println("Could not retrieve Facebook events: \(listError)")
+                    finishedLoadingClosure()
+                    __eventsTableView!.reloadData()
                 } else {
                     // Load Facebook event IDs  from json result
                     var eventIDs = [String]()
@@ -93,6 +101,7 @@ class EventManager {
                                 self.list.sort({$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow})
                                 
                                 // Refresh tableView
+                                finishedLoadingClosure()
                                 __eventsTableView!.reloadData()
                             }
 
