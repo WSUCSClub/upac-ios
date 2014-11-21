@@ -3,6 +3,8 @@
 ---
 
 ## UI
+* EventsView
+* EventDetailView
 * GalleryView
 * combine About and Contact views
 * adhere to "iOS Human Interface Guidelines"
@@ -15,7 +17,7 @@
 
 
 ## Gallery
-* pull-down refresh
+* refresh all cells at once
 * ImageView
     * pinch-zoom
 
@@ -25,8 +27,9 @@
 
 
 ## Miscellaneous
+* ___login scheme___
 * don't add duplicate notifications for events
 * don't show "pull to refresh" label on initial load
-* ___ERROR CHECKING___
+* ___error checking___
     * remote image retrieval
     * check for network connection before Parse access

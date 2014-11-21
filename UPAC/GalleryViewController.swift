@@ -13,11 +13,21 @@ var __galleryCollectionView: UICollectionView? = nil
 
 class GalleryViewController: UICollectionViewController {
     @IBOutlet var picturesCollectionView: UICollectionView!
+    var refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         __galleryCollectionView = picturesCollectionView
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
+        
+        picturesCollectionView.addSubview(refreshControl)
+    }
+    
+    func refresh() {
+        galleryMgr.getFBPictures() { void in self.refreshControl.endRefreshing() }
     }
     
     // Number of sections
@@ -46,14 +56,18 @@ class GalleryViewController: UICollectionViewController {
     
     // Set cell content
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewImageCell", forIndexPath: indexPath) as UICollectionViewCell
-        
-        dispatch_async(dispatch_get_main_queue()) {
-            (cell.contentView.viewWithTag(1) as UIImageView).image =  UIImage(data: (galleryMgr.list[indexPath.row] as Picture).data)
+        if !galleryMgr.list.isEmpty {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewImageCell", forIndexPath: indexPath) as UICollectionViewCell
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                (cell.contentView.viewWithTag(1) as UIImageView).image =  UIImage(data: (galleryMgr.list[indexPath.row] as Picture).data)
 
+            }
+                    
+            return cell
+        } else {
+            return collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewImageCell", forIndexPath: indexPath) as UICollectionViewCell
         }
-                
-        return cell
     }
     
     // On-selection functionality

@@ -25,14 +25,22 @@ class GalleryManager {
         getFBPictures()
     }
     
-    //TODO: get only most recent photos; refresh __galleryCollectionView at the correct time
     func getFBPictures() {
+        getFBPictures() { void in }
+    }
+    
+    //TODO: get only most recent photos; refresh __galleryCollectionView at the correct time
+    func getFBPictures(finishedLoadingClosure: () -> Void) {
+        list = []
+        
         if FBSession.activeSession().isOpen {
             var albumListRequest = FBRequest(graphPath: "322196472693/albums", parameters: nil, HTTPMethod: nil)
             
             albumListRequest.startWithCompletionHandler { albumListConnection, albumListResult, albumListError in
                 if let albumListError = albumListError {
                     println("Could not load Facebook albums: \(albumListError)")
+                    finishedLoadingClosure()
+                    __galleryCollectionView!.reloadData()
                 } else {
                     // Loop through all albums
                     for albumDic in albumListResult.objectForKey("data") as [[String : AnyObject]] {
@@ -58,6 +66,7 @@ class GalleryManager {
                             self.list.sort({$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow})
                             
                             // Refresh tableView
+                            finishedLoadingClosure()
                             __galleryCollectionView!.reloadData()
                             
                         }

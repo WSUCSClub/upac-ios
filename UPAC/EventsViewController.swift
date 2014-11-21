@@ -27,7 +27,7 @@ class EventsViewController: UITableViewController {
     
     func refresh() {
         //refreshControl?.endRefreshing()
-        eventMgr.getFBEvents({ void in self.refreshControl!.endRefreshing() })
+        eventMgr.getFBEvents { void in self.refreshControl!.endRefreshing() }
     }
     
     // Tell user to refresh if unable to load events
