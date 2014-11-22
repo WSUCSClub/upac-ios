@@ -32,6 +32,7 @@
 		208BBF1619E99FF600BC8F51 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208BBF1519E99FF600BC8F51 /* EventManager.swift */; };
 		208DF0E019EA132E00847186 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DF0DF19EA132E00847186 /* GalleryViewController.swift */; };
 		208DF0E419EA2D4000847186 /* GalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DF0E319EA2D4000847186 /* GalleryManager.swift */; };
+		2098CF001A21483500414DF2 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2098CEFF1A21483500414DF2 /* Secrets.swift */; };
 		209C10521A06B49B0036AB76 /* NewMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C10511A06B49B0036AB76 /* NewMemberViewController.swift */; };
 		209C10541A06DEC40036AB76 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C10531A06DEC40036AB76 /* ChangePasswordViewController.swift */; };
 		20D0446B19EB0C6A00A7795E /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D0446A19EB0C6A00A7795E /* ImageViewController.swift */; };
@@ -87,6 +88,7 @@
 		208BBF1519E99FF600BC8F51 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		208DF0DF19EA132E00847186 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		208DF0E319EA2D4000847186 /* GalleryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryManager.swift; sourceTree = "<group>"; };
+		2098CEFF1A21483500414DF2 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		209C10511A06B49B0036AB76 /* NewMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMemberViewController.swift; sourceTree = "<group>"; };
 		209C10531A06DEC40036AB76 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		20D0446A19EB0C6A00A7795E /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				204684511A0D32EC00D99B23 /* UPAC.entitlements */,
 				20F50F4619E77D8200DBED9A /* AppDelegate.swift */,
 				202CA9A11A04511B00CD1A54 /* TabBarController.swift */,
+				2098CEFF1A21483500414DF2 /* Secrets.swift */,
 				20F50F4C19E77D8200DBED9A /* Main.storyboard */,
 				20F50F5119E77D8200DBED9A /* LaunchScreen.xib */,
 				20FD4B2519EB170400F8E049 /* View Controllers */,
@@ -365,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				202CA9A41A05429B00CD1A54 /* UIColorExtension.swift in Sources */,
+				2098CF001A21483500414DF2 /* Secrets.swift in Sources */,
 				202CA9A21A04511B00CD1A54 /* TabBarController.swift in Sources */,
 				208DF0E419EA2D4000847186 /* GalleryManager.swift in Sources */,
 				20F50F4B19E77D8200DBED9A /* EventsViewController.swift in Sources */,

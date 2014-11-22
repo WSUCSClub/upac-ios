@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if FBSession.activeSession().state == FBSessionState.CreatedTokenLoaded {
             FBSession.openActiveSessionWithReadPermissions(nil, allowLoginUI: false) { session, result, error in }
         } else {
-            var accessToken = FBAccessTokenData.createTokenFromString("***REMOVED***",
+            var accessToken = FBAccessTokenData.createTokenFromString(fbAccessToken,
                 permissions: nil,
                 expirationDate: nil,
                 loginType: FBSessionLoginType.None,
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func loadParseSession() {
-        Parse.setApplicationId("***REMOVED***", clientKey: "***REMOVED***")
+        Parse.setApplicationId(parseAppId, clientKey: parseClientKey)
     }
     
     func applicationWillResignActive(application: UIApplication) {
