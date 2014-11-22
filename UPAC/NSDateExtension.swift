@@ -9,6 +9,10 @@
 import Foundation
 
 extension NSDate {
+    func medStr() -> String {
+        return NSDateFormatter.localizedStringFromDate(self, dateStyle: NSDateFormatterStyle.MediumStyle, timeStyle: NSDateFormatterStyle.NoStyle)
+    }
+    
     func dayStr() -> String {
         return NSDateFormatter.localizedStringFromDate(self, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.NoStyle)
     }

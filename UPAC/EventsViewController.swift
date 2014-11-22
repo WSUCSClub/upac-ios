@@ -45,7 +45,7 @@ class EventsViewController: UITableViewController {
             return 0
         } else {
             eventsTableView.backgroundView = nil
-            eventsTableView.separatorStyle = .SingleLine
+            //eventsTableView.separatorStyle = .SingleLine
             
             return 1
         }
@@ -65,22 +65,16 @@ class EventsViewController: UITableViewController {
             var cellIdentifier: String
             if e.hasRaffle() {
                 cellIdentifier = "TableViewEventRaffleCell"
+                //cellIdentifier = "TableViewEventCell"
             } else {
                 cellIdentifier = "TableViewEventCell"
             }
             
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as UITableViewCell
             
-            // Format date circle
-            var image = (cell.contentView.viewWithTag(1) as UIImageView)
-            var mask = image.layer
-            mask.cornerRadius = image.frame.size.width / 2
-            mask.masksToBounds = true
-            (cell.contentView.viewWithTag(2) as UILabel).text = e.date.weekdayStr()
-            (cell.contentView.viewWithTag(3) as UILabel).text = e.date.dayNumStr()
-            
-            (cell.contentView.viewWithTag(4) as UILabel).text = e.name
-            (cell.contentView.viewWithTag(5) as UILabel).text = e.location
+            (cell.contentView.viewWithTag(2) as UILabel).text = e.name
+            (cell.contentView.viewWithTag(3) as UILabel).text = "\(e.location)  -  \(e.date.medStr())"
+            (cell.contentView.viewWithTag(4) as UIImageView).image = UIImage(data: e.imageData)
             
             return cell
         } else {
