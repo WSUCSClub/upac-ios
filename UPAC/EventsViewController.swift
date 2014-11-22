@@ -72,6 +72,7 @@ class EventsViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as UITableViewCell
             
+            cell.contentView.viewWithTag(1)!.layer.borderColor = UIColor(rgb: 0xCCCCCC).CGColor
             (cell.contentView.viewWithTag(2) as UILabel).text = e.name
             (cell.contentView.viewWithTag(3) as UILabel).text = "\(e.location)  -  \(e.date.medStr())"
             (cell.contentView.viewWithTag(4) as UIImageView).image = UIImage(data: e.imageData)

@@ -10,6 +10,8 @@ import UIKit
 
 class EventDetailViewController: UIViewController {
     @IBOutlet var image: UIImageView!
+    @IBOutlet var imageContainerView: UIView!
+    @IBOutlet var contentView: UIView!
     @IBOutlet var name: UILabel!
     @IBOutlet var location: UILabel!
     @IBOutlet var date: UILabel!
@@ -51,8 +53,10 @@ class EventDetailViewController: UIViewController {
     }
     
     func updateView() {
+        self.navigationItem.title = event.name
+
         // Raffle view
-        if event.hasRaffle() {
+        if event.hasRaffle() && raffleMgr.adminPrivileges {
             raffleBar.hidden = false
             raffleDateLabel.hidden = false
             raffleDateLabel.text = "\(raffle!.date.timeStr()) - \(raffle!.endDate.timeStr())"
@@ -72,7 +76,7 @@ class EventDetailViewController: UIViewController {
             } else {
                 enterRaffleButton.hidden = true
                 raffleCodeLabel.hidden = false
-                raffleCodeLabel.text = "# \((raffleMgr.getForID(event.id)?.localEntry)!)"
+                raffleCodeLabel.text = "Ticket #\((raffleMgr.getForID(event.id)?.localEntry)!)"
             }
             
             deleteRaffleButton.hidden = true
@@ -99,6 +103,8 @@ class EventDetailViewController: UIViewController {
             self.image.image = UIImage(data: self.event.imageData)
         }
         
+        contentView.layer.borderColor = UIColor(rgb: 0xCCCCCC).CGColor
+        imageContainerView.layer.borderColor = UIColor(rgb: 0xCCCCCC).CGColor
         name.text = event.name
         location.text = event.location
         date.text = "\(event.date.dayStr()) @ \(event.date.timeStr())"
@@ -117,7 +123,7 @@ class EventDetailViewController: UIViewController {
         var entryCode = raffleMgr.getForID(event.id)?.addEntry()
         
         // Update view
-        raffleCodeLabel.text = "# \(entryCode!)"
+        raffleCodeLabel.text = "Ticket #\(entryCode!)"
         raffleCodeLabel.hidden = false
         enterRaffleButton.hidden = true
     }

@@ -3,8 +3,6 @@
 ---
 
 ## UI
-* EventsView
-* EventDetailView
 * GalleryView
 * combine About and Contact views
 * adhere to "iOS Human Interface Guidelines"
@@ -13,23 +11,25 @@
 
 
 ## Events
-* add map to detail view?
+* ui control to explicity add/delete notifications for individual events
+* make detail view [correctly scrollable](http://stackoverflow.com/questions/12905568/how-do-i-use-uiscrollview-in-storyboard/19476991#19476991)
+* infinite feed
 
 
 ## Gallery
 * refresh all cells at once
 * ImageView
     * pinch-zoom
+* sections by month
+* infinite feed
 
 
 ## Settings
-* add setting option for how far prior to send event notifications
+* 
 
 
 ## Miscellaneous
-* ___login scheme___
-* don't add duplicate notifications for events
-* don't show "pull to refresh" label on initial load
+* hide "pull to refresh" label on initial load
 * ___error checking___
     * remote image retrieval
     * check for network connection before Parse access
