@@ -32,6 +32,40 @@ class Event {
         
         return result
     }
+    
+    func addNotification() {
+        let dayPriorNotification = UILocalNotification()
+        dayPriorNotification.alertBody = "\(name) @ \(location)\n\(date.timeStr()) tomorrow"
+        dayPriorNotification.fireDate = NSDate(timeInterval: NSTimeInterval(-86400), sinceDate: date)
+
+        let hourPriorNotification = UILocalNotification()
+        hourPriorNotification.alertBody = "\(name) @ \(location)\nIn 1 hour"
+        hourPriorNotification.fireDate = NSDate(timeInterval: NSTimeInterval(-3600), sinceDate: date)
+
+        
+        if UIApplication.sharedApplication().currentUserNotificationSettings().types != .None {
+            UIApplication.sharedApplication().scheduleLocalNotification(dayPriorNotification)
+            UIApplication.sharedApplication().scheduleLocalNotification(hourPriorNotification)
+        }
+    }
+    
+    func removeNotification() {
+        for notification in UIApplication.sharedApplication().scheduledLocalNotifications as [UILocalNotification] {
+            if notification.alertBody!.rangeOfString("\(name) @ \(location)") != nil {
+                UIApplication.sharedApplication().cancelLocalNotification(notification)
+            }
+        }
+    }
+    
+    func hasNotification() -> Bool {
+        for notification in UIApplication.sharedApplication().scheduledLocalNotifications as [UILocalNotification] {
+            if notification.alertBody!.rangeOfString("\(name) @ \(location)") != nil {
+                return true
+            }
+        }
+        
+        return false
+    }
 }
 
 class EventManager {
@@ -92,7 +126,6 @@ class EventManager {
                                 date: NSDate.fromFBDate(startTimestamp),
                                 endDate: NSDate.fromFBDate(endTimestamp))
                             
-                            self.insertNotification(newEvent)
                             self.list.append(newEvent)
                             
                             // Once all the events have been loaded
@@ -109,20 +142,6 @@ class EventManager {
                     }
                 }
             }
-        }
-    }
-    
-    func insertNotification(event: Event) {
-        let localNotification = UILocalNotification()
-        
-        localNotification.alertBody = "\(event.name) @ \(event.location)\n\(event.date)"
-        
-        //TODO: get alert time from settings
-        var alertTime = NSTimeInterval(-3600)   // 1 hour prior
-        localNotification.fireDate = NSDate(timeInterval: alertTime, sinceDate: event.date)
-        
-        if UIApplication.sharedApplication().currentUserNotificationSettings().types != .None {
-            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         }
     }
     

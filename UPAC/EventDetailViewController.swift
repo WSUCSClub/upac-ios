@@ -17,6 +17,9 @@ class EventDetailViewController: UIViewController {
     @IBOutlet var date: UILabel!
     @IBOutlet var desc: UITextView!
     
+    @IBOutlet var notifyButton: UIButton!
+    @IBOutlet var dontNotifyButton: UIButton!
+    
     @IBOutlet var enterRaffleButton: UIButton!
     @IBOutlet var raffleCodeLabel: UILabel!
     
@@ -55,6 +58,20 @@ class EventDetailViewController: UIViewController {
     func updateView() {
         self.navigationItem.title = event.name
 
+        // Only show notification buttons if event hasn't happened yet and have permission
+        if event.date.compare(NSDate()) == .OrderedDescending && UIApplication.sharedApplication().currentUserNotificationSettings().types != .None {
+            if event.hasNotification() {
+                notifyButton.hidden = true
+                dontNotifyButton.hidden = false
+            } else {
+                notifyButton.hidden = false
+                dontNotifyButton.hidden = false
+            }
+        } else {
+            notifyButton.hidden = true
+            dontNotifyButton.hidden = true
+        }
+        
         // Raffle view
         if event.hasRaffle() && raffleMgr.adminPrivileges {
             raffleBar.hidden = false
@@ -67,7 +84,6 @@ class EventDetailViewController: UIViewController {
         
         if event.hasRaffle() && !raffleMgr.adminPrivileges {
             if raffleMgr.getForID(event.id)?.localEntry == "" {
-                //TODO: only show "Enter raffle" button if at event location
                 // Only show "Enter raffle" button if raffle is still open
                 if raffleMgr.getForID(event.id)?.endDate.compare(NSDate()) == NSComparisonResult.OrderedDescending {
                     enterRaffleButton.hidden = false
@@ -114,8 +130,6 @@ class EventDetailViewController: UIViewController {
             date.text = "\(date.text!) - \(event.endDate.timeStr())"
         }
         desc.text = event.desc
-        
-        //TODO: set map view to event.location
     }
     
     @IBAction func enterRaffleButtonTapped(sender: UIButton!) {
@@ -126,6 +140,21 @@ class EventDetailViewController: UIViewController {
         raffleCodeLabel.text = "Ticket #\(entryCode!)"
         raffleCodeLabel.hidden = false
         enterRaffleButton.hidden = true
+    }
+    
+    @IBAction func notifyButtonTapped(sender: UIButton!) {
+        event.addNotification()
+        
+        notifyButton.hidden = true
+        dontNotifyButton.hidden = false
+    }
+    
+    
+    @IBAction func dontNotifyButtonTapped(sender: UIButton!) {
+        event.removeNotification()
+        
+        notifyButton.hidden = false
+        dontNotifyButton.hidden = true
     }
     
     @IBAction func drawWinnersButtonTapped(sender: UIButton!) {

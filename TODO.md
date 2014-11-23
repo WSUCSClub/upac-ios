@@ -11,7 +11,6 @@
 
 
 ## Events
-* ui control to explicity add/delete notifications for individual events
 * make detail view [correctly scrollable](http://stackoverflow.com/questions/12905568/how-do-i-use-uiscrollview-in-storyboard/19476991#19476991)
 * infinite feed
 
