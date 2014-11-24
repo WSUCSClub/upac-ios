@@ -24,7 +24,6 @@
 		205E1C541A130B22008DEDED /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205E1C531A130B22008DEDED /* MobileCoreServices.framework */; };
 		205E1C561A130B2F008DEDED /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205E1C551A130B2F008DEDED /* QuartzCore.framework */; };
 		205E1C581A130B38008DEDED /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205E1C571A130B38008DEDED /* Security.framework */; };
-		205E1C5A1A130B41008DEDED /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205E1C591A130B41008DEDED /* StoreKit.framework */; };
 		205E1C5C1A130B4A008DEDED /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205E1C5B1A130B4A008DEDED /* SystemConfiguration.framework */; };
 		205F54B119F1E71E00284E05 /* RaffleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205F54B019F1E71E00284E05 /* RaffleManager.swift */; };
 		206D4B2E19F34AD600C25FCB /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206D4B2D19F34AD600C25FCB /* EventDetailViewController.swift */; };
@@ -80,7 +79,6 @@
 		205E1C531A130B22008DEDED /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		205E1C551A130B2F008DEDED /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		205E1C571A130B38008DEDED /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		205E1C591A130B41008DEDED /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		205E1C5B1A130B4A008DEDED /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		205F54B019F1E71E00284E05 /* RaffleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaffleManager.swift; sourceTree = "<group>"; };
 		206D4B2D19F34AD600C25FCB /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				205E1C5C1A130B4A008DEDED /* SystemConfiguration.framework in Frameworks */,
-				205E1C5A1A130B41008DEDED /* StoreKit.framework in Frameworks */,
 				205E1C581A130B38008DEDED /* Security.framework in Frameworks */,
 				205E1C561A130B2F008DEDED /* QuartzCore.framework in Frameworks */,
 				205E1C541A130B22008DEDED /* MobileCoreServices.framework in Frameworks */,
@@ -147,7 +144,6 @@
 			isa = PBXGroup;
 			children = (
 				205E1C5B1A130B4A008DEDED /* SystemConfiguration.framework */,
-				205E1C591A130B41008DEDED /* StoreKit.framework */,
 				205E1C571A130B38008DEDED /* Security.framework */,
 				205E1C551A130B2F008DEDED /* QuartzCore.framework */,
 				205E1C531A130B22008DEDED /* MobileCoreServices.framework */,
@@ -306,11 +302,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = wsu;
+				ORGANIZATIONNAME = "Richard Marquez";
 				TargetAttributes = {
 					20F50F4019E77D8200DBED9A = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 7ST8J4RWLW;
 						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
 							com.apple.iCloud = {
 								enabled = 0;
 							};
@@ -449,8 +449,10 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -467,8 +469,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
+				PROVISIONING_PROFILE = "";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -492,8 +498,10 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -504,7 +512,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
+				PROVISIONING_PROFILE = "";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -516,7 +528,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -524,8 +537,9 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = UPAC/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "UPAC/UPAC-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -537,7 +551,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -545,8 +560,9 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = UPAC/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "UPAC/UPAC-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
