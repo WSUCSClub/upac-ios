@@ -11,7 +11,7 @@ import UIKit
 
 var __galleryCollectionView: UICollectionView? = nil
 
-class GalleryViewController: UICollectionViewController {
+class GalleryViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     @IBOutlet var picturesCollectionView: UICollectionView!
     var refreshControl = UIRefreshControl()
     
@@ -49,11 +49,18 @@ class GalleryViewController: UICollectionViewController {
         }
     }
     
+    func getAppropriateCellSize() -> CGFloat {
+        return (self.view.frame.width / 3) - 2
+    }
+    
     // Size of sections
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return galleryMgr.list.count
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(getAppropriateCellSize(), getAppropriateCellSize())
+    }
     // Set cell content
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if !galleryMgr.list.isEmpty {
@@ -63,7 +70,10 @@ class GalleryViewController: UICollectionViewController {
                 (cell.contentView.viewWithTag(1) as UIImageView).image =  UIImage(data: (galleryMgr.list[indexPath.row] as Picture).data)
 
             }
-                    
+            
+            cell.frame.size.width = getAppropriateCellSize()
+            cell.frame.size.height = getAppropriateCellSize()
+
             return cell
         } else {
             return collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewImageCell", forIndexPath: indexPath) as UICollectionViewCell
