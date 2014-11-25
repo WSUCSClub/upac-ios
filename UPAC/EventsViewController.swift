@@ -65,7 +65,6 @@ class EventsViewController: UITableViewController {
             var cellIdentifier: String
             if e.hasRaffle() {
                 cellIdentifier = "TableViewEventRaffleCell"
-                //cellIdentifier = "TableViewEventCell"
             } else {
                 cellIdentifier = "TableViewEventCell"
             }
@@ -74,8 +73,10 @@ class EventsViewController: UITableViewController {
             
             cell.contentView.viewWithTag(1)!.layer.borderColor = UIColor(rgb: 0xCCCCCC).CGColor
             (cell.contentView.viewWithTag(2) as UILabel).text = e.name
-            (cell.contentView.viewWithTag(3) as UILabel).text = "\(e.location)  -  \(e.date.medStr())"
+            (cell.contentView.viewWithTag(3) as UILabel).text = "\(e.location)"
             (cell.contentView.viewWithTag(4) as UIImageView).image = UIImage(data: e.imageData)
+            (cell.contentView.viewWithTag(5) as UILabel).text = "\(e.date.monthStr())".uppercaseString
+            (cell.contentView.viewWithTag(6) as UILabel).text = "\(e.date.dayNumStr())"
             
             return cell
         } else {

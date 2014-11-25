@@ -9,7 +9,6 @@
 
 
 ## WANT
-* size text for no ellipses
 * photo sections by month
 * ImageView pinch-zoom
 * infinite feeds

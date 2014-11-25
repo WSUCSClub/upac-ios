@@ -19,7 +19,9 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
         __boardTableView = boardTable
     }
     
-    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Board Members"
+    }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return boardMgr.list.count
     }

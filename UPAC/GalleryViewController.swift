@@ -53,14 +53,15 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         return (self.view.frame.width / 3) - 2
     }
     
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(getAppropriateCellSize(), getAppropriateCellSize())
+    }
+    
     // Size of sections
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return galleryMgr.list.count
     }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake(getAppropriateCellSize(), getAppropriateCellSize())
-    }
+
     // Set cell content
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if !galleryMgr.list.isEmpty {

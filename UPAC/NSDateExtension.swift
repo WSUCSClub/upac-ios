@@ -27,9 +27,15 @@ extension NSDate {
         return dateFormatter.stringFromDate(self)
     }
     
+    func monthStr() -> String {
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MMM"
+        return dateFormatter.stringFromDate(self)
+    }
+    
     func dayNumStr() -> String {
         var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "d"
+        dateFormatter.dateFormat = "dd"
         return dateFormatter.stringFromDate(self)
     }
     
