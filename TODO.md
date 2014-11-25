@@ -4,7 +4,6 @@
 
 ## NEED
 * make detail view [correctly scrollable](http://stackoverflow.com/questions/12905568/how-do-i-use-uiscrollview-in-storyboard/19476991#19476991)
-* combine About and Contact views
 * refresh all cells at once (events and photos)
 * hide "pull to refresh" label on initial load
 
@@ -18,7 +17,6 @@
 
 
 ## Miscellaneous
-* remove administration
 * ___error checking___
     * remote image retrieval
     * check for network connection before Parse access
