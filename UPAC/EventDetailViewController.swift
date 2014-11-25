@@ -23,15 +23,6 @@ class EventDetailViewController: UIViewController {
     @IBOutlet var enterRaffleButton: UIButton!
     @IBOutlet var raffleCodeLabel: UILabel!
     
-    @IBOutlet var raffleDateLabel: UILabel!
-    
-    @IBOutlet var createRaffleButton: UIButton!
-    @IBOutlet var deleteRaffleButton: UIButton!
-    @IBOutlet var drawWinnersButton: UIButton!
-    @IBOutlet var numberOfParticipantsLabel: UILabel!
-    
-    @IBOutlet var raffleBar: UIImageView!
-    
     var event: Event!
     var raffle: Raffle?
     var index: Int!
@@ -72,17 +63,7 @@ class EventDetailViewController: UIViewController {
             dontNotifyButton.hidden = true
         }
         
-        // Raffle view
-        if event.hasRaffle() && raffleMgr.adminPrivileges {
-            raffleBar.hidden = false
-            raffleDateLabel.hidden = false
-            raffleDateLabel.text = "\(raffle!.date.timeStr()) - \(raffle!.endDate.timeStr())"
-        } else {
-            raffleBar.hidden = true
-            raffleDateLabel.hidden = true
-        }
-        
-        if event.hasRaffle() && !raffleMgr.adminPrivileges {
+        if event.hasRaffle() {
             if raffleMgr.getForID(event.id)?.localEntry == "" {
                 // Only show "Enter raffle" button if raffle is still open
                 if raffleMgr.getForID(event.id)?.endDate.compare(NSDate()) == NSComparisonResult.OrderedDescending {
@@ -94,25 +75,9 @@ class EventDetailViewController: UIViewController {
                 raffleCodeLabel.hidden = false
                 raffleCodeLabel.text = "Ticket #\((raffleMgr.getForID(event.id)?.localEntry)!)"
             }
-            
-            deleteRaffleButton.hidden = true
-        } else if !event.hasRaffle() && !raffleMgr.adminPrivileges {
+        } else {
             enterRaffleButton.hidden = true
             raffleCodeLabel.hidden = true
-            deleteRaffleButton.hidden = true
-        } else if event.hasRaffle() && raffleMgr.adminPrivileges {
-            createRaffleButton.hidden = true
-            deleteRaffleButton.hidden = false
-            
-            drawWinnersButton.hidden = false
-            
-            numberOfParticipantsLabel.hidden = false
-            numberOfParticipantsLabel.text = String(raffleMgr.getForID(event.id)!.entries.count)
-        } else if !event.hasRaffle() && raffleMgr.adminPrivileges {
-            createRaffleButton.hidden = false
-            deleteRaffleButton.hidden = true
-            drawWinnersButton.hidden = true
-            numberOfParticipantsLabel.hidden = true
         }
         
         dispatch_async(dispatch_get_main_queue()) {
@@ -157,57 +122,6 @@ class EventDetailViewController: UIViewController {
         dontNotifyButton.hidden = true
     }
     
-    @IBAction func drawWinnersButtonTapped(sender: UIButton!) {
-        var winners = [String]()
-        var pickWinnersAlert = UIAlertController(title: "", message: "How many winners will there be?", preferredStyle: .Alert)
-        
-        var inputNumberField = UITextField()
-        pickWinnersAlert.addTextFieldWithConfigurationHandler { (textField) -> Void in
-            textField.placeholder = "#"
-            inputNumberField = textField
-        }
-        pickWinnersAlert.view.tintColor = UIColor.blueColor()
-        
-        var cancel = UIAlertAction(title: "Cancel", style: .Default) { (action) -> Void in }
-        pickWinnersAlert.addAction(cancel)
-        
-        var ok = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in
-            var number: Int? = inputNumberField.text.toInt()
-            
-            if let number = number {     // Validating input
-                winners = raffleMgr.getForID(self.event.id)!.drawWinners(number)
-                
-                var showWinnersAlert = UIAlertController(title: "Winners", message: "", preferredStyle: .Alert)
-                showWinnersAlert.view.tintColor = UIColor.blueColor()
-                
-                for w in winners {
-                    showWinnersAlert.message! += "\(w)\n"
-                }
-                
-                var dismiss = UIAlertAction(title: "Got 'em!", style: .Default) { (action) -> Void in }
-                showWinnersAlert.addAction(dismiss)
-                
-                // Need to wrap presentation to prevent warning
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.presentViewController(showWinnersAlert, animated: true, completion: nil)
-                }
-            }
-            
-        }
-        pickWinnersAlert.addAction(ok)
-        
-        // Need to wrap presentation to prevent warning
-        dispatch_async(dispatch_get_main_queue()) {
-            self.presentViewController(pickWinnersAlert, animated: true, completion: nil)
-        }
-
-    }
-    
-    @IBAction func deleteRaffleButtonTapped(sender: UIButton!) {
-        raffleMgr.deleteRaffle(raffle!)
-        
-        updateView()
-    }
     
     func moveToNextEvent() {
         if index + 1 < eventMgr.list.count {
@@ -232,15 +146,6 @@ class EventDetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "NewRaffleView") {
-            let destinationView: NewRaffleViewController = segue.destinationViewController as NewRaffleViewController
-            
-            destinationView.delegate = self
-            destinationView.event = event
-        }
     }
     
     override func viewDidDisappear(animated: Bool) {

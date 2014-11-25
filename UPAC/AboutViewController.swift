@@ -11,28 +11,12 @@ import UIKit
 var __boardTableView: UITableView? = nil
 
 class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet var secretButton: UITextView!
     @IBOutlet var boardTable: UITableView!
-    @IBOutlet var addMemberButton: UIButton!
-    @IBOutlet var changePasswordButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         __boardTableView = boardTable
-
-        
-        var longPressRecognizer = UILongPressGestureRecognizer(target: self, action: Selector("showLogin:"))
-        longPressRecognizer.minimumPressDuration = 1
-        secretButton.addGestureRecognizer(longPressRecognizer)
-        
-        if raffleMgr.adminPrivileges == true {
-            addMemberButton.hidden = false
-            changePasswordButton.hidden = false
-        } else {
-            addMemberButton.hidden = true
-            changePasswordButton.hidden = true
-        }
     }
     
     
@@ -60,26 +44,6 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    // Allow cell swipe edits
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        // On Delete
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            boardMgr.deleteMember(boardMgr.list[indexPath.row] as Member)
-            boardTable.reloadData()
-        }
-    }
-    
-    // Only allow cell swiping if admin
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        var canEdit = false
-        
-        if raffleMgr.adminPrivileges == true {
-            canEdit = true
-        }
-        
-        return canEdit
-    }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // Send selected member an email
         UIApplication.sharedApplication().openURL(NSURL(string: "mailto:\((boardMgr.list[indexPath.row] as Member).email)")!)
@@ -87,71 +51,11 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     
-    func showLogin(sender: UILongPressGestureRecognizer) {
-        if sender.state == .Began {
-            var loginAlert = UIAlertController(title: "Login", message: "Enter your password", preferredStyle: .Alert)
-            loginAlert.view.tintColor = UIColor.blueColor()
-
-            
-            var inputPasswordField = UITextField()
-            loginAlert.addTextFieldWithConfigurationHandler { (textField) -> Void in
-                textField.placeholder = "Password"
-                textField.secureTextEntry = true
-                inputPasswordField = textField
-            }
-            
-            var cancel = UIAlertAction(title: "Cancel", style: .Default) { (action) -> Void in }
-            loginAlert.addAction(cancel)
-
-            var ok = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in
-                if AboutViewController.attemptLogin(inputPasswordField.text) {
-                    // Enable admin controls
-                    raffleMgr.adminPrivileges = true
-                    self.boardTable.reloadData()
-                    self.addMemberButton.hidden = false
-                    self.changePasswordButton.hidden = false
-                }
-                }
-            loginAlert.addAction(ok)
-            
-            // Need to wrap presentation to prevent warning
-            dispatch_async(dispatch_get_main_queue()) {
-                self.presentViewController(loginAlert, animated: true, completion: nil)
-                }
-        }
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    // Pass data to next view
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "NewMemberView") {
-            var destinationView:NewMemberViewController = segue.destinationViewController as NewMemberViewController
-            
-            destinationView.boardTable = boardTable
-        }
-    }
-    
-    
-    //TODO: move somewhere more generic
-    class func attemptLogin(password: String) -> Bool {
-        var passwordHash = password.md5()
-        
-        var query = PFQuery(className: "Login")
-        var validPasswordHash = query.getFirstObject()["password"] as String
-        
-        var loginSuccess: Bool
-        if passwordHash == validPasswordHash {
-            loginSuccess = true
-        } else {
-            loginSuccess = false
-        }
-        
-        return loginSuccess
-    }
     
 }
 

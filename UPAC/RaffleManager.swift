@@ -42,38 +42,6 @@ class Raffle: NSManagedObject {
         return code
     }
     
-    func drawWinners(numberOfWinners: Int) -> [String] {
-        var winners = [String]()
-        
-        var i = 0
-        while i < numberOfWinners && i < entries.count {
-            ++i
-            
-            if entries.count < 1 {
-                break
-            }
-            
-            var random = Int(arc4random()) % entries.count
-            var possibleWinner = entries[random]
-            
-            // Make sure entry isn't already a winner
-            var alreadyWon = false
-            for winner in winners {
-                if possibleWinner == winner {
-                    alreadyWon = true
-                    --i
-                    break
-                }
-            }
-            
-            if !alreadyWon {
-                winners.append(possibleWinner)
-            }
-        }
-        
-        return winners
-    }
-    
     private func generateCode() -> String {
         let date = String(Int(NSDate().timeIntervalSince1970))
         let hash = date.md5() as NSString
@@ -84,8 +52,6 @@ class Raffle: NSManagedObject {
 }
 
 class RaffleManager: ContentManager {
-    var adminPrivileges = false
-    
     init() {
         super.init(contentType: "Raffle")
     }
@@ -129,48 +95,6 @@ class RaffleManager: ContentManager {
                 __eventsTableView!.reloadData()
             }
         }
-
-    }
-    
-    func addRaffle(id: String, date: NSDate, endDate: NSDate) {
-        // Add to Core Data
-        let newRaffle = NSEntityDescription.insertNewObjectForEntityForName("Raffle", inManagedObjectContext: coreDataHelper.managedObjectContext!) as Raffle
-        
-        newRaffle.id = id
-        newRaffle.date = date
-        newRaffle.endDate = endDate
-        newRaffle.localEntry = ""
-        
-        coreDataHelper.saveData()
-
-        
-        // Add to Parse
-        var parseRaffle = PFObject(className: "Raffle")
-        
-        parseRaffle["eventId"] = newRaffle.id
-        parseRaffle["date"] = newRaffle.date
-        parseRaffle["endDate"] = newRaffle.endDate
-        parseRaffle.saveInBackgroundWithBlock{ success, error in
-            if !success {
-                println(error)
-            }
-        }
-        
-        list.append(newRaffle)
-    }
-    
-    func deleteRaffle(raffle: Raffle) {
-        // Delete from Parse
-        var query = PFQuery(className: "Raffle")
-        query.whereKey("eventId", equalTo: raffle.id)
-        
-        query.getFirstObject().delete()
-        
-        // Delete from Core Data
-        coreDataHelper.managedObjectContext!.deleteObject(raffle)
-        coreDataHelper.saveData()
-        
-        populateList()
 
     }
     

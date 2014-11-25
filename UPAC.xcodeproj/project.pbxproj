@@ -13,7 +13,6 @@
 		202CA9A41A05429B00CD1A54 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CA9A31A05429A00CD1A54 /* UIColorExtension.swift */; };
 		202CA9A61A05C69500CD1A54 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CA9A51A05C69500CD1A54 /* ContactViewController.swift */; };
 		202CA9A81A05D35C00CD1A54 /* BoardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202CA9A71A05D35C00CD1A54 /* BoardManager.swift */; };
-		203DC31E1A009BA20056E4A5 /* NewRaffleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203DC31D1A009BA20056E4A5 /* NewRaffleViewController.swift */; };
 		205E1C461A130A2F008DEDED /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205E1C451A130A2F008DEDED /* Parse.framework */; };
 		205E1C481A130A3E008DEDED /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205E1C471A130A3E008DEDED /* Bolts.framework */; };
 		205E1C4A1A130AE5008DEDED /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205E1C491A130AE5008DEDED /* AudioToolbox.framework */; };
@@ -32,8 +31,6 @@
 		208DF0E019EA132E00847186 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DF0DF19EA132E00847186 /* GalleryViewController.swift */; };
 		208DF0E419EA2D4000847186 /* GalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DF0E319EA2D4000847186 /* GalleryManager.swift */; };
 		2098CF001A21483500414DF2 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2098CEFF1A21483500414DF2 /* Secrets.swift */; };
-		209C10521A06B49B0036AB76 /* NewMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C10511A06B49B0036AB76 /* NewMemberViewController.swift */; };
-		209C10541A06DEC40036AB76 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209C10531A06DEC40036AB76 /* ChangePasswordViewController.swift */; };
 		20D0446B19EB0C6A00A7795E /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D0446A19EB0C6A00A7795E /* ImageViewController.swift */; };
 		20D647B219ED9607007E8D1C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D647B119ED9607007E8D1C /* FacebookSDK.framework */; };
 		20EF822C19F9B33B00CC7BD0 /* UPAC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20EF822A19F9B33B00CC7BD0 /* UPAC.xcdatamodeld */; };
@@ -67,7 +64,6 @@
 		202CA9A31A05429A00CD1A54 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		202CA9A51A05C69500CD1A54 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		202CA9A71A05D35C00CD1A54 /* BoardManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardManager.swift; sourceTree = "<group>"; };
-		203DC31D1A009BA20056E4A5 /* NewRaffleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRaffleViewController.swift; sourceTree = "<group>"; };
 		204684511A0D32EC00D99B23 /* UPAC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = UPAC.entitlements; sourceTree = "<group>"; };
 		205E1C451A130A2F008DEDED /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		205E1C471A130A3E008DEDED /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -87,8 +83,6 @@
 		208DF0DF19EA132E00847186 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		208DF0E319EA2D4000847186 /* GalleryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryManager.swift; sourceTree = "<group>"; };
 		2098CEFF1A21483500414DF2 /* Secrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
-		209C10511A06B49B0036AB76 /* NewMemberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMemberViewController.swift; sourceTree = "<group>"; };
-		209C10531A06DEC40036AB76 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		20D0446A19EB0C6A00A7795E /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		20D647B119ED9607007E8D1C /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		20D647B319ED967B007E8D1C /* UPAC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UPAC-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -246,12 +240,9 @@
 			children = (
 				20F50F4A19E77D8200DBED9A /* EventsViewController.swift */,
 				206D4B2D19F34AD600C25FCB /* EventDetailViewController.swift */,
-				203DC31D1A009BA20056E4A5 /* NewRaffleViewController.swift */,
 				208DF0DF19EA132E00847186 /* GalleryViewController.swift */,
 				20D0446A19EB0C6A00A7795E /* ImageViewController.swift */,
 				20F50F4819E77D8200DBED9A /* AboutViewController.swift */,
-				209C10531A06DEC40036AB76 /* ChangePasswordViewController.swift */,
-				209C10511A06B49B0036AB76 /* NewMemberViewController.swift */,
 				202CA9A51A05C69500CD1A54 /* ContactViewController.swift */,
 			);
 			name = "View Controllers";
@@ -378,11 +369,8 @@
 				205F54B119F1E71E00284E05 /* RaffleManager.swift in Sources */,
 				208DF0E019EA132E00847186 /* GalleryViewController.swift in Sources */,
 				206D4B2E19F34AD600C25FCB /* EventDetailViewController.swift in Sources */,
-				203DC31E1A009BA20056E4A5 /* NewRaffleViewController.swift in Sources */,
-				209C10541A06DEC40036AB76 /* ChangePasswordViewController.swift in Sources */,
 				202CA9A01A0450BD00CD1A54 /* UIImageExtension.swift in Sources */,
 				20EF825419FB463200CC7BD0 /* CoreDataHelper.swift in Sources */,
-				209C10521A06B49B0036AB76 /* NewMemberViewController.swift in Sources */,
 				201EDC2919F77A4F00B278D0 /* NSDateExtension.swift in Sources */,
 				208BBF1619E99FF600BC8F51 /* EventManager.swift in Sources */,
 				20EF822C19F9B33B00CC7BD0 /* UPAC.xcdatamodeld in Sources */,

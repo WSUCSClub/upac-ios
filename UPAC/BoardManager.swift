@@ -49,50 +49,5 @@ class BoardManager {
             }
         }
     }
-    
-    func addMember(name: String, position: String, email: String, picture: NSData) {
-        let newMember = Member()
         
-        newMember.name = name
-        newMember.position = position
-        newMember.email = email
-        newMember.picture = picture
-        
-        list.append(newMember)
-        
-        // Add to Parse
-        var parseMember = PFObject(className: "Member")
-        
-        parseMember["name"] = newMember.name
-        parseMember["position"] = newMember.position
-        parseMember["email"] = newMember.email
-        
-        parseMember.saveInBackgroundWithBlock { success, error in
-            if !success {
-                println(error)
-            } else {
-                var pictureFile = PFFile(name: "\(newMember.name).jpg", data: newMember.picture)
-                pictureFile.saveInBackgroundWithBlock { success, error in
-                    if error == nil {
-                        parseMember["picture"] = pictureFile
-                        parseMember.saveInBackgroundWithBlock { sucess, error in }
-                    } else {
-                        println(error)
-                    }
-                }
-            }
-        }
-        
-    }
-    
-    func deleteMember(member: Member) {
-        // Delete from parse
-        var query = PFQuery(className: "Member")
-        query.whereKey("name", equalTo: member.name)
-        
-        query.getFirstObject().delete()
-
-        populateList()
-    }
-    
 }
