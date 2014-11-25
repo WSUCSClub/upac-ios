@@ -9,13 +9,15 @@
 import UIKit
 
 class EventDetailViewController: UIViewController {
+    @IBOutlet var topHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var image: UIImageView!
     @IBOutlet var imageContainerView: UIView!
-    @IBOutlet var contentView: UIView!
     @IBOutlet var name: UILabel!
     @IBOutlet var location: UILabel!
     @IBOutlet var date: UILabel!
     @IBOutlet var desc: UITextView!
+    @IBOutlet var descHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet var notifyButton: UIButton!
     @IBOutlet var dontNotifyButton: UIButton!
@@ -44,6 +46,7 @@ class EventDetailViewController: UIViewController {
         var swipeRight = UISwipeGestureRecognizer(target: self, action: Selector("moveToPreviousEvent"))
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(swipeRight)
+        
     }
     
     func updateView() {
@@ -84,7 +87,6 @@ class EventDetailViewController: UIViewController {
             self.image.image = UIImage(data: self.event.imageData)
         }
         
-        contentView.layer.borderColor = UIColor(rgb: 0xCCCCCC).CGColor
         imageContainerView.layer.borderColor = UIColor(rgb: 0xCCCCCC).CGColor
         name.text = event.name
         location.text = event.location
@@ -94,7 +96,13 @@ class EventDetailViewController: UIViewController {
         if event.date != event.endDate {
             date.text = "\(date.text!) - \(event.endDate.timeStr())"
         }
+        
         desc.text = event.desc
+        descHeightConstraint.constant = desc.sizeThatFits(CGSize(width: desc.frame.width, height: CGFloat.max)).height
+        
+        scrollView.setContentOffset(CGPointMake(0, topHeightConstraint.constant), animated: false)
+
+
     }
     
     @IBAction func enterRaffleButtonTapped(sender: UIButton!) {
