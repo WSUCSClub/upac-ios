@@ -26,7 +26,7 @@ class EventsViewController: UITableViewController {
     }
     
     func refresh() {
-        //refreshControl?.endRefreshing()
+        raffleMgr.getRaffles()
         eventMgr.getFBEvents { void in self.refreshControl!.endRefreshing() }
     }
     

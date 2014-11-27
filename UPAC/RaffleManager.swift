@@ -54,7 +54,7 @@ class RaffleManager {
     var list = [Raffle]()
 
     init() {
-        populateList()
+        getRaffles()
     }
     
     func fetchStored() -> [Raffle] {
@@ -66,7 +66,7 @@ class RaffleManager {
         return coreDataHelper.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as [Raffle]!
     }
     
-    func populateList() {
+    func getRaffles() {
         list = fetchStored()
         
         var query = PFQuery(className: "Raffle")
