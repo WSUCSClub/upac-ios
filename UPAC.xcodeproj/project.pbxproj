@@ -34,7 +34,6 @@
 		20D647B219ED9607007E8D1C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D647B119ED9607007E8D1C /* FacebookSDK.framework */; };
 		20EF822C19F9B33B00CC7BD0 /* UPAC.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 20EF822A19F9B33B00CC7BD0 /* UPAC.xcdatamodeld */; };
 		20EF825419FB463200CC7BD0 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EF825319FB463200CC7BD0 /* CoreDataHelper.swift */; };
-		20EF825619FB564300CC7BD0 /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EF825519FB564300CC7BD0 /* ContentManager.swift */; };
 		20F50F4719E77D8200DBED9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50F4619E77D8200DBED9A /* AppDelegate.swift */; };
 		20F50F4919E77D8200DBED9A /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50F4819E77D8200DBED9A /* ContactViewController.swift */; };
 		20F50F4B19E77D8200DBED9A /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50F4A19E77D8200DBED9A /* EventsViewController.swift */; };
@@ -86,7 +85,6 @@
 		20D647B319ED967B007E8D1C /* UPAC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UPAC-Bridging-Header.h"; sourceTree = "<group>"; };
 		20EF822B19F9B33B00CC7BD0 /* UPAC.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UPAC.xcdatamodel; sourceTree = "<group>"; };
 		20EF825319FB463200CC7BD0 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
-		20EF825519FB564300CC7BD0 /* ContentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
 		20F50F4119E77D8200DBED9A /* UPAC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UPAC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F50F4519E77D8200DBED9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20F50F4619E77D8200DBED9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -223,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				20EF825319FB463200CC7BD0 /* CoreDataHelper.swift */,
-				20EF825519FB564300CC7BD0 /* ContentManager.swift */,
 				208BBF1519E99FF600BC8F51 /* EventManager.swift */,
 				205F54B019F1E71E00284E05 /* RaffleManager.swift */,
 				208DF0E319EA2D4000847186 /* GalleryManager.swift */,
@@ -372,7 +369,6 @@
 				20EF822C19F9B33B00CC7BD0 /* UPAC.xcdatamodeld in Sources */,
 				202CA9A81A05D35C00CD1A54 /* BoardManager.swift in Sources */,
 				20F50F4919E77D8200DBED9A /* ContactViewController.swift in Sources */,
-				20EF825619FB564300CC7BD0 /* ContentManager.swift in Sources */,
 				20F832F01A1827270042A512 /* StringExtension.swift in Sources */,
 				20F832EE1A1727DE0042A512 /* ArrayExtension.swift in Sources */,
 			);
