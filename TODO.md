@@ -3,13 +3,14 @@
 ---
 
 ## NEED
+* event listing UI
 * refresh all cells at once (events and photos)
-* hide "pull to refresh" label on initial load
 
 
 ## WANT
 * photo sections by month
 * ImageView pinch-zoom
+* swipe animations
 * infinite feeds
 * tab bar selected icons (stroked)
 

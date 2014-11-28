@@ -33,13 +33,13 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     // Number of sections
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         if galleryMgr.list.count < 1 {
-            var noDataLabel = UILabel()
+            /*var noDataLabel = UILabel()
             noDataLabel.text = "No data is currently available. Pull down to refresh."
             noDataLabel.textAlignment = .Center
             noDataLabel.numberOfLines = 0
             noDataLabel.sizeToFit()
             
-            picturesCollectionView.backgroundView = noDataLabel
+            picturesCollectionView.backgroundView = noDataLabel*/
             
             return 0
         } else {

@@ -33,13 +33,13 @@ class EventsViewController: UITableViewController {
     // Tell user to refresh if unable to load events
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {        
         if eventMgr.list.count < 1 {
-            var noDataLabel = UILabel()
+            /*var noDataLabel = UILabel()
             noDataLabel.text = "No data is currently available. Pull down to refresh."
             noDataLabel.textAlignment = .Center
             noDataLabel.numberOfLines = 0
             noDataLabel.sizeToFit()
             
-            eventsTableView.backgroundView = noDataLabel
+            eventsTableView.backgroundView = noDataLabel*/
             eventsTableView.separatorStyle = .None
             
             return 0
