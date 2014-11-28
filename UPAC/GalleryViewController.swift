@@ -32,6 +32,24 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         }
     }
     
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "CollectionViewHeader", forIndexPath: indexPath) as UICollectionReusableView
+        
+        header.layer.borderColor = UIColor(rgb: 0xCCCCCC).CGColor
+        
+        var album = galleryMgr.list[indexPath.section]
+        var firstPhoto = "\(album.first!.date.monthStr()) \(album.first!.date.dayNumStr())"
+        var lastPhoto = "\(album.last!.date.monthStr()) \(album.last!.date.dayNumStr())"
+        
+        if firstPhoto != lastPhoto {
+            (header.viewWithTag(1) as UILabel).text = "\(firstPhoto) - \(lastPhoto)"
+        } else {
+            (header.viewWithTag(1) as UILabel).text = firstPhoto
+        }
+        
+        return header
+    }
+    
     // Number of sections
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         if galleryMgr.list.count < 1 {
@@ -45,7 +63,7 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         } else {
             picturesCollectionView.backgroundView = nil
             
-            return 1
+            return galleryMgr.list.count
         }
     }
     
@@ -59,7 +77,7 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     
     // Size of sections
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return galleryMgr.list.count
+        return galleryMgr.list[section].count
     }
 
     // Set cell content
@@ -67,7 +85,7 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         if !galleryMgr.list.isEmpty {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewImageCell", forIndexPath: indexPath) as UICollectionViewCell
             
-            (cell.contentView.viewWithTag(1) as UIImageView).image =  UIImage(data: (galleryMgr.list[indexPath.row] as Picture).data)
+            (cell.contentView.viewWithTag(1) as UIImageView).image =  UIImage(data: galleryMgr.list[indexPath.section][indexPath.row].data)
             
             cell.frame.size.width = getAppropriateCellSize()
             cell.frame.size.height = getAppropriateCellSize()
@@ -90,7 +108,8 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
             
             var indexPath:NSIndexPath = self.picturesCollectionView.indexPathForCell(sender as UICollectionViewCell)!
             
-            destinationView.picture = galleryMgr.list[indexPath.row] as Picture
+            destinationView.album = galleryMgr.list[indexPath.section]
+            destinationView.picture = galleryMgr.list[indexPath.section][indexPath.row]
             destinationView.index = indexPath.row
         }
     }

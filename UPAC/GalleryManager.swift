@@ -19,7 +19,7 @@ class Picture {
 }
 
 class GalleryManager {
-    var list = [Picture]()
+    var list = [[Picture]]()
     
     init() {
         getFBPictures()
@@ -46,6 +46,7 @@ class GalleryManager {
                     var count = 0
                     for albumDic in albumListResult.objectForKey("data") as [[String : AnyObject]] {
                         ++count
+                        var album = [Picture]()
                         
                         var albumID = albumDic["id"]! as String
                         
@@ -53,10 +54,10 @@ class GalleryManager {
                         var albumRequest = FBRequest(graphPath: "\(albumID)/photos", parameters: nil, HTTPMethod: nil)
                         albumRequest.startWithCompletionHandler { albumConnection, albumResult, albumError in
                             
-                            if let album = albumResult as? [String : AnyObject] {
+                            if let fbAlbum = albumResult as? [String : AnyObject] {
                                 // Get each picture in album
-                                for pictureDic in album["data"] as [AnyObject] {
-                                    self.list.append(self.addPicture(pictureDic.objectForKey("id") as String,
+                                for pictureDic in fbAlbum["data"] as [AnyObject] {
+                                    album.append(self.addPicture(pictureDic.objectForKey("id") as String,
                                         date: NSDate.fromFBDate(pictureDic.objectForKey("created_time") as String),
                                         thumb: pictureDic.objectForKey("picture") as String,
                                         src: pictureDic.objectForKey("source") as String))
@@ -65,12 +66,19 @@ class GalleryManager {
                             }
 
                             
-                            // Once all the events have been loaded
-                            self.list.sort({$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow})
+                            // Once all the pictures have been loaded
+                            album.sort({$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow})
+                            
+                            if album.count > 0 {
+                                self.list.append(album)
+                            }
                             
                             // Refresh tableView
-
                             if count == (albumListResult.objectForKey("data") as [[String : AnyObject]]).count {
+                                //self.list = self.list.reverse() // put albums in reverse chronological
+                                self.list.sort({$0[0].date.timeIntervalSinceNow > $1[0].date.timeIntervalSinceNow})
+
+
                                 __galleryCollectionView!.reloadData()
                                 finishedLoadingClosure()
                             }

@@ -14,6 +14,7 @@ class ImageViewController: UIViewController {
     @IBOutlet var backButton: UIButton!
     @IBOutlet var dateLabel: UILabel!
     
+    var album: [Picture]!
     var picture: Picture!
     var index: Int!
 
@@ -68,9 +69,9 @@ class ImageViewController: UIViewController {
     }
     
     func moveToNextPicture() {
-        if index + 1 < galleryMgr.list.count {
+        if index + 1 < album.count {
             index?++
-            picture = galleryMgr.list[index] as Picture
+            picture = album[index]
             
             updateView()
         }
@@ -80,7 +81,7 @@ class ImageViewController: UIViewController {
     func moveToPreviousPicture() {
         if index - 1 >= 0 {
             index?--
-            picture = galleryMgr.list[index] as Picture
+            picture = album[index]
             
             updateView()
         }
