@@ -40,10 +40,13 @@ class GalleryManager {
                 if let albumListError = albumListError {
                     println("Could not load Facebook albums: \(albumListError)")
                     finishedLoadingClosure()
-                    __galleryCollectionView!.reloadData()
+                    //__galleryCollectionView!.reloadData()
                 } else {
                     // Loop through all albums
+                    var count = 0
                     for albumDic in albumListResult.objectForKey("data") as [[String : AnyObject]] {
+                        ++count
+                        
                         var albumID = albumDic["id"]! as String
                         
                         // Get each individual album
@@ -66,12 +69,17 @@ class GalleryManager {
                             self.list.sort({$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow})
                             
                             // Refresh tableView
-                            finishedLoadingClosure()
-                            __galleryCollectionView!.reloadData()
+
+                            if count == (albumListResult.objectForKey("data") as [[String : AnyObject]]).count {
+                                __galleryCollectionView!.reloadData()
+                                finishedLoadingClosure()
+                            }
                             
                         }
 
                     }
+                    
+                    
                 }
             }
         }
@@ -88,11 +96,11 @@ class GalleryManager {
         
         //dispatch_async(dispatch_get_main_queue()) {
         // getting background priority from global queue fails to load some pictures
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+        //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             if let data = NSData(contentsOfURL: NSURL(string:newPicture.thumb)!) {
                 newPicture.data = data
             }
-        }
+        //}
 
         return newPicture
     }

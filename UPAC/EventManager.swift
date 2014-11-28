@@ -155,11 +155,11 @@ class EventManager {
         newEvent.endDate = endDate
         
         newEvent.image = image
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+        //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             if let data = NSData(contentsOfURL: NSURL(string: newEvent.image)!) {
                 newEvent.imageData = data
             }
-        }
+        //}
         
         return newEvent
     }

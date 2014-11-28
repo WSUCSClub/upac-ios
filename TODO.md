@@ -4,7 +4,6 @@
 
 ## NEED
 * event listing UI
-* refresh all cells at once (events and photos)
 
 
 ## WANT

@@ -27,19 +27,19 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     }
     
     func refresh() {
-        galleryMgr.getFBPictures() { void in self.refreshControl.endRefreshing() }
+        galleryMgr.getFBPictures() { void in
+            self.refreshControl.endRefreshing()
+        }
     }
     
     // Number of sections
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         if galleryMgr.list.count < 1 {
-            /*var noDataLabel = UILabel()
-            noDataLabel.text = "No data is currently available. Pull down to refresh."
-            noDataLabel.textAlignment = .Center
-            noDataLabel.numberOfLines = 0
-            noDataLabel.sizeToFit()
+            var loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+            loadingIndicator.color = UIColor.grayColor()
+            loadingIndicator.startAnimating()
             
-            picturesCollectionView.backgroundView = noDataLabel*/
+            picturesCollectionView.backgroundView = loadingIndicator
             
             return 0
         } else {
@@ -67,14 +67,11 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         if !galleryMgr.list.isEmpty {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewImageCell", forIndexPath: indexPath) as UICollectionViewCell
             
-            dispatch_async(dispatch_get_main_queue()) {
-                (cell.contentView.viewWithTag(1) as UIImageView).image =  UIImage(data: (galleryMgr.list[indexPath.row] as Picture).data)
-
-            }
+            (cell.contentView.viewWithTag(1) as UIImageView).image =  UIImage(data: (galleryMgr.list[indexPath.row] as Picture).data)
             
             cell.frame.size.width = getAppropriateCellSize()
             cell.frame.size.height = getAppropriateCellSize()
-
+            
             return cell
         } else {
             return collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewImageCell", forIndexPath: indexPath) as UICollectionViewCell
