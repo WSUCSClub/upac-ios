@@ -43,7 +43,7 @@ class EventsViewController: UITableViewController {
             return 0
         } else {
             eventsTableView.backgroundView = nil
-            //eventsTableView.separatorStyle = .SingleLine
+            eventsTableView.separatorStyle = .SingleLine
             
             return 1
         }
@@ -69,12 +69,10 @@ class EventsViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as UITableViewCell
             
-            cell.contentView.viewWithTag(1)!.layer.borderColor = UIColor(rgb: 0xCCCCCC).CGColor
-            (cell.contentView.viewWithTag(2) as UILabel).text = e.name
-            (cell.contentView.viewWithTag(3) as UILabel).text = "\(e.location)"
-            (cell.contentView.viewWithTag(4) as UIImageView).image = UIImage(data: e.imageData)
-            (cell.contentView.viewWithTag(5) as UILabel).text = "\(e.date.monthStr())".uppercaseString
-            (cell.contentView.viewWithTag(6) as UILabel).text = "\(e.date.dayNumStr())"
+            (cell.contentView.viewWithTag(1) as UILabel).text = e.name
+            (cell.contentView.viewWithTag(2) as UILabel).text = "\(e.date.monthStr()) \(e.date.dayNumStr()) @ \(e.location)"
+            (cell.contentView.viewWithTag(3) as UIImageView).image = UIImage(data: e.imageData)
+            cell.contentView.viewWithTag(3)!.layer.borderColor = UIColor(rgb: 0x888888).CGColor
             
             return cell
         } else {

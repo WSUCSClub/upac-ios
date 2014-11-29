@@ -7,7 +7,6 @@
 
 
 ## WANT
-* photo sections by month
 * ImageView pinch-zoom
 * swipe animations
 * infinite feeds
