@@ -67,6 +67,21 @@ class EventDetailViewController: UIViewController {
         }
         
         if event.hasRaffle() {
+            // Onboarding
+            //NSUserDefaults.standardUserDefaults().removeObjectForKey("firstRun")
+            if NSUserDefaults.standardUserDefaults().objectForKey("firstRun") == nil {
+                var onboardingTitle = "How Raffles Work"
+                var onboardingMessage = "\nJust click the \"Enter Raffle\" button to enter this event's raffle for a chance to win a prize, then during the event UPAC will announce the winners. Did we mention it's absolutely free?!"
+                
+                var alert = UIAlertController(title: onboardingTitle, message: onboardingMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                alert.view.tintColor = UIColor.blueColor()
+                self.presentViewController(alert, animated: true, completion: nil)
+                
+                NSUserDefaults.standardUserDefaults().setObject(false, forKey: "firstRun")
+            }
+            
+            
             if raffleMgr.getForID(event.id)?.localEntry == "" {
                 // Only show "Enter raffle" button if raffle is still open
                 if raffleMgr.getForID(event.id)?.endDate.compare(NSDate()) == NSComparisonResult.OrderedDescending {

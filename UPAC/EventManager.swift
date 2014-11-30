@@ -70,6 +70,7 @@ class Event {
 
 class EventManager {
     var list = [Event]()
+    var eventsLoaded = 0
     
     init() {
         getFBEvents()
@@ -99,7 +100,7 @@ class EventManager {
                     }
                     
                     // Load Facebook events into list[] from json result
-                    var eventsLoaded = 0
+                    self.eventsLoaded = 0
                     for eventID in eventIDs {
                         var eventRequest = FBRequest(graphPath: eventID, parameters: ["fields":"id,name,cover,location,description,start_time,end_time"], HTTPMethod: nil)
                         
@@ -129,7 +130,7 @@ class EventManager {
                             self.list.append(newEvent)
                             
                             // Once all the events have been loaded
-                            if ++eventsLoaded == eventIDs.count {
+                            if ++self.eventsLoaded == eventIDs.count {
                                 // Sort list by date
                                 self.list.sort({$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow})
                                 
@@ -155,9 +156,16 @@ class EventManager {
         newEvent.endDate = endDate
         
         newEvent.image = image
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+        // Donwnload the first few pictures on the main thread so screen refresh is not required
+        if eventsLoaded < 6 {
             if let data = NSData(contentsOfURL: NSURL(string: newEvent.image)!) {
                 newEvent.imageData = data
+            }
+        } else {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+                if let data = NSData(contentsOfURL: NSURL(string: newEvent.image)!) {
+                    newEvent.imageData = data
+                }
             }
         }
         
