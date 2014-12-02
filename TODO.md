@@ -3,7 +3,7 @@
 ---
 
 ## NEED
-* event listing UI
+* notify and raffle buttons
 
 
 ## WANT

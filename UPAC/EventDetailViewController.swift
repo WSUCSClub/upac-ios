@@ -71,7 +71,7 @@ class EventDetailViewController: UIViewController {
             //NSUserDefaults.standardUserDefaults().removeObjectForKey("firstRun")
             if NSUserDefaults.standardUserDefaults().objectForKey("firstRun") == nil {
                 var onboardingTitle = "How Raffles Work"
-                var onboardingMessage = "\nJust click the \"Enter Raffle\" button to enter this event's raffle for a chance to win a prize, then during the event UPAC will announce the winners. Did we mention it's absolutely free?!"
+                var onboardingMessage = "\nJust tap the \"Enter Raffle\" button to enter this event's raffle for a chance to win a prize, then during the event UPAC will announce the winners. Did we mention it's absolutely free?!"
                 
                 var alert = UIAlertController(title: onboardingTitle, message: onboardingMessage, preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
