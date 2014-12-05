@@ -54,7 +54,14 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func linkToFacebook() {
         // Open browser to UPAC Facebook group page
-        UIApplication.sharedApplication().openURL(NSURL(string: "https://www.facebook.com/WSU.UPAC")!)
+        var nativeURL = NSURL(string: "fb://profile/322196472693")!
+        var webURL = NSURL(string: "https://www.facebook.com/WSU.UPAC")!
+        
+        if UIApplication.sharedApplication().canOpenURL(nativeURL) {
+            UIApplication.sharedApplication().openURL(nativeURL)
+        } else {
+            UIApplication.sharedApplication().openURL(webURL)
+        }
     }
     
     @IBAction func linkToTwitter() {
