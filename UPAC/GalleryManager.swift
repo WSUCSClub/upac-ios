@@ -49,7 +49,7 @@ class GalleryManager {
                         var album = [Picture]()
                         
                         var albumID = albumDic["id"]! as String
-                        
+                                                
                         // Get each individual album
                         var albumRequest = FBRequest(graphPath: "\(albumID)/photos", parameters: nil, HTTPMethod: nil)
                         albumRequest.startWithCompletionHandler { albumConnection, albumResult, albumError in

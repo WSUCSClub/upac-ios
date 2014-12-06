@@ -66,7 +66,14 @@ class ContactViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func linkToTwitter() {
         // Open browser to UPAC Twitter page
-        UIApplication.sharedApplication().openURL(NSURL(string: "https://twitter.com/UPACWSU")!)
+        var nativeURL = NSURL(string: "twitter://user?screen_name=UPACWSU")!
+        var webURL = NSURL(string: "https://twitter.com/UPACWSU")!
+        
+        if UIApplication.sharedApplication().canOpenURL(nativeURL) {
+            UIApplication.sharedApplication().openURL(nativeURL)
+        } else {
+            UIApplication.sharedApplication().openURL(webURL)
+        }
     }
     
     @IBAction func linkToEmail() {
