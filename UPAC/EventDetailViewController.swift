@@ -47,6 +47,11 @@ class EventDetailViewController: UIViewController {
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(swipeRight)
         
+        notifyButton.layer.borderColor = UIColor(rgb: 0x555555).CGColor
+        dontNotifyButton.layer.borderColor = UIColor(rgb: 0x555555).CGColor
+        enterRaffleButton.layer.borderColor = UIColor(rgb: 0x555555).CGColor
+        raffleCodeLabel.layer.borderColor = UIColor(rgb: 0x555555).CGColor
+        
     }
     
     func updateView() {
@@ -59,7 +64,7 @@ class EventDetailViewController: UIViewController {
                 dontNotifyButton.hidden = false
             } else {
                 notifyButton.hidden = false
-                dontNotifyButton.hidden = false
+                dontNotifyButton.hidden = true
             }
         } else {
             notifyButton.hidden = true
