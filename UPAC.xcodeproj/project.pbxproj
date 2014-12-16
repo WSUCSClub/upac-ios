@@ -25,7 +25,6 @@
 		205E1C5C1A130B4A008DEDED /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205E1C5B1A130B4A008DEDED /* SystemConfiguration.framework */; };
 		205F54B119F1E71E00284E05 /* RaffleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205F54B019F1E71E00284E05 /* RaffleManager.swift */; };
 		206D4B2E19F34AD600C25FCB /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206D4B2D19F34AD600C25FCB /* EventDetailViewController.swift */; };
-		206D4B3119F4239700C25FCB /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 206D4B2F19F4239700C25FCB /* TODO.md */; };
 		208BBF1619E99FF600BC8F51 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208BBF1519E99FF600BC8F51 /* EventManager.swift */; };
 		208DF0E019EA132E00847186 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DF0DF19EA132E00847186 /* GalleryViewController.swift */; };
 		208DF0E419EA2D4000847186 /* GalleryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DF0E319EA2D4000847186 /* GalleryManager.swift */; };
@@ -75,7 +74,6 @@
 		205E1C5B1A130B4A008DEDED /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		205F54B019F1E71E00284E05 /* RaffleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaffleManager.swift; sourceTree = "<group>"; };
 		206D4B2D19F34AD600C25FCB /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
-		206D4B2F19F4239700C25FCB /* TODO.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		208BBF1519E99FF600BC8F51 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		208DF0DF19EA132E00847186 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		208DF0E319EA2D4000847186 /* GalleryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryManager.swift; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 		20F50F3819E77D8200DBED9A = {
 			isa = PBXGroup;
 			children = (
-				206D4B2F19F4239700C25FCB /* TODO.md */,
 				20F50F4319E77D8200DBED9A /* UPAC */,
 				20F50F5B19E77D8200DBED9A /* UPACTests */,
 				20F50F4219E77D8200DBED9A /* Products */,
@@ -333,7 +330,6 @@
 			files = (
 				20F50F4E19E77D8200DBED9A /* Main.storyboard in Resources */,
 				20F50F5319E77D8200DBED9A /* LaunchScreen.xib in Resources */,
-				206D4B3119F4239700C25FCB /* TODO.md in Resources */,
 				20F50F5019E77D8200DBED9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

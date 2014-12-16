@@ -23,6 +23,24 @@ class EventsViewController: UITableViewController {
         refreshControl!.addTarget(self, action: "refresh", forControlEvents: .ValueChanged)
         
         eventsTableView.addSubview(refreshControl!)
+        onboarding()
+    }
+    
+    func onboarding() {
+        // Onboarding
+        //NSUserDefaults.standardUserDefaults().removeObjectForKey("firstRun")
+        if NSUserDefaults.standardUserDefaults().objectForKey("firstRun") == nil {
+            var onboardingTitle = "How Raffles Work"
+            var onboardingMessage = "\nJust tap the \"Enter Raffle\" button to enter the event's raffle for a chance to win a prize, then during the event UPAC will announce the winners that are chosen at random.\n\nRULES\n* Free to enter\n* No sign-up required\n* Drawings are held at their respective event's location\n* Must be present at event to win\n* Must show raffle ticket # on device to UPAC host to receive prize\n* Must be current Winona State University student to be eligible\n\nNOTE\nApple is not a sponsor of these raffles, nor are they involved in any way."
+            
+            var alert = UIAlertController(title: onboardingTitle, message: onboardingMessage, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            alert.view.tintColor = UIColor.blueColor()
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            NSUserDefaults.standardUserDefaults().setObject(false, forKey: "firstRun")
+        }
     }
     
     func refresh() {
