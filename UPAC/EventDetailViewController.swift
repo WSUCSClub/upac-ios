@@ -37,8 +37,6 @@ class EventDetailViewController: UIViewController {
             raffle = raffleMgr.getForID(event.id)?
         }
         
-        updateView()
-        
         var swipeLeft = UISwipeGestureRecognizer(target: self, action: Selector("moveToNextEvent"))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
         self.view.addGestureRecognizer(swipeLeft)
@@ -52,6 +50,11 @@ class EventDetailViewController: UIViewController {
         enterRaffleButton.layer.borderColor = UIColor(rgb: 0x555555).CGColor
         raffleCodeLabel.layer.borderColor = UIColor(rgb: 0x555555).CGColor
         
+        updateView()    // Keep so that prototype filler text is not shown before "appearing"
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        updateView()
     }
     
     func updateView() {
@@ -103,7 +106,8 @@ class EventDetailViewController: UIViewController {
         }
         
         desc.text = event.desc
-        descHeightConstraint.constant = desc.sizeThatFits(CGSize(width: desc.frame.width, height: CGFloat.max)).height
+        //descHeightConstraint.constant = desc.sizeThatFits(CGSize(width: desc.frame.width, height: CGFloat.max)).height
+        descHeightConstraint.constant = desc.intrinsicContentSize().height
         
         scrollView.setContentOffset(CGPointMake(0, topHeightConstraint.constant), animated: false)
 
