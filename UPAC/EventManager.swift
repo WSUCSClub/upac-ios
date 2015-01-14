@@ -132,7 +132,7 @@ class EventManager {
                             // Once all the events have been loaded
                             if ++self.eventsLoaded == eventIDs.count {
                                 // Sort list by date
-                                self.list.sort({$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow})
+                                self.list.sort({$0.date.timeIntervalSinceNow < $1.date.timeIntervalSinceNow})
                                 
                                 // Refresh tableView
                                 finishedLoadingClosure()
