@@ -84,8 +84,8 @@ class EventManager {
         list = []
         
         if FBSession.activeSession().isOpen {
-            var twoMonthsAgo = NSDate(timeIntervalSinceNow: NSTimeInterval(-5000000))
-            var eventListRequest = FBRequest(graphPath: "322196472693/events", parameters: ["since":"\(twoMonthsAgo)"], HTTPMethod: nil)
+            var oneDayAgo = NSDate(timeIntervalSinceNow: NSTimeInterval(-86400))
+            var eventListRequest = FBRequest(graphPath: "322196472693/events", parameters: ["since":"\(oneDayAgo)"], HTTPMethod: nil)
             
             eventListRequest.startWithCompletionHandler { connection, listResult, listError in
                 if let listError = listError {
