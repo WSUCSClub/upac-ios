@@ -503,6 +503,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iOS Distribution: Richard Marquez";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Distribution: Richard Marquez";
@@ -513,6 +514,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = UPAC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3341f480-4f67-4697-b385-ecf9604ade16";
@@ -526,6 +528,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iOS Distribution: Richard Marquez";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Distribution: Richard Marquez";
@@ -536,6 +539,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = UPAC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3341f480-4f67-4697-b385-ecf9604ade16";
