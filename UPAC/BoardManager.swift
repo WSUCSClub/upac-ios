@@ -37,10 +37,10 @@ class BoardManager {
                 for parseMember in parseList {
                     let newMember = Member()
                     
-                    newMember.name = parseMember["name"] as String
-                    newMember.position = parseMember["position"] as String
-                    newMember.email = parseMember["email"] as String
-                    newMember.picture = (parseMember["picture"] as PFFile).getData()
+                    newMember.name = parseMember["name"] as! String
+                    newMember.position = parseMember["position"] as! String
+                    newMember.email = parseMember["email"] as! String
+                    newMember.picture = (parseMember["picture"] as! PFFile).getData()
                     
                     self.list.append(newMember)
                 }

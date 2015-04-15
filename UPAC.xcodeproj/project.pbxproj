@@ -39,20 +39,9 @@
 		20F50F4E19E77D8200DBED9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20F50F4C19E77D8200DBED9A /* Main.storyboard */; };
 		20F50F5019E77D8200DBED9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20F50F4F19E77D8200DBED9A /* Images.xcassets */; };
 		20F50F5319E77D8200DBED9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20F50F5119E77D8200DBED9A /* LaunchScreen.xib */; };
-		20F50F5F19E77D8200DBED9A /* UPACTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F50F5E19E77D8200DBED9A /* UPACTests.swift */; };
 		20F832EE1A1727DE0042A512 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F832ED1A1727DD0042A512 /* ArrayExtension.swift */; };
 		20F832F01A1827270042A512 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F832EF1A1827270042A512 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		20F50F5919E77D8200DBED9A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 20F50F3919E77D8200DBED9A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 20F50F4019E77D8200DBED9A;
-			remoteInfo = UPAC;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		201EDC2819F77A4F00B278D0 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
@@ -91,9 +80,6 @@
 		20F50F4D19E77D8200DBED9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20F50F4F19E77D8200DBED9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		20F50F5219E77D8200DBED9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		20F50F5819E77D8200DBED9A /* UPACTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UPACTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		20F50F5D19E77D8200DBED9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20F50F5E19E77D8200DBED9A /* UPACTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPACTests.swift; sourceTree = "<group>"; };
 		20F832ED1A1727DD0042A512 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		20F832EF1A1827270042A512 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,13 +101,6 @@
 				205E1C481A130A3E008DEDED /* Bolts.framework in Frameworks */,
 				205E1C461A130A2F008DEDED /* Parse.framework in Frameworks */,
 				20D647B219ED9607007E8D1C /* FacebookSDK.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		20F50F5519E77D8200DBED9A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				20F50F4319E77D8200DBED9A /* UPAC */,
-				20F50F5B19E77D8200DBED9A /* UPACTests */,
 				20F50F4219E77D8200DBED9A /* Products */,
 				205E1C441A13094C008DEDED /* Frameworks */,
 			);
@@ -161,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				20F50F4119E77D8200DBED9A /* UPAC.app */,
-				20F50F5819E77D8200DBED9A /* UPACTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,23 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				20F50F4519E77D8200DBED9A /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		20F50F5B19E77D8200DBED9A /* UPACTests */ = {
-			isa = PBXGroup;
-			children = (
-				20F50F5E19E77D8200DBED9A /* UPACTests.swift */,
-				20F50F5C19E77D8200DBED9A /* Supporting Files */,
-			);
-			path = UPACTests;
-			sourceTree = "<group>";
-		};
-		20F50F5C19E77D8200DBED9A /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				20F50F5D19E77D8200DBED9A /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -259,24 +219,6 @@
 			productReference = 20F50F4119E77D8200DBED9A /* UPAC.app */;
 			productType = "com.apple.product-type.application";
 		};
-		20F50F5719E77D8200DBED9A /* UPACTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 20F50F6519E77D8200DBED9A /* Build configuration list for PBXNativeTarget "UPACTests" */;
-			buildPhases = (
-				20F50F5419E77D8200DBED9A /* Sources */,
-				20F50F5519E77D8200DBED9A /* Frameworks */,
-				20F50F5619E77D8200DBED9A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				20F50F5A19E77D8200DBED9A /* PBXTargetDependency */,
-			);
-			name = UPACTests;
-			productName = UPACTests;
-			productReference = 20F50F5819E77D8200DBED9A /* UPACTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -298,10 +240,6 @@
 							};
 						};
 					};
-					20F50F5719E77D8200DBED9A = {
-						CreatedOnToolsVersion = 6.0.1;
-						TestTargetID = 20F50F4019E77D8200DBED9A;
-					};
 				};
 			};
 			buildConfigurationList = 20F50F3C19E77D8200DBED9A /* Build configuration list for PBXProject "UPAC" */;
@@ -318,7 +256,6 @@
 			projectRoot = "";
 			targets = (
 				20F50F4019E77D8200DBED9A /* UPAC */,
-				20F50F5719E77D8200DBED9A /* UPACTests */,
 			);
 		};
 /* End PBXProject section */
@@ -331,13 +268,6 @@
 				20F50F4E19E77D8200DBED9A /* Main.storyboard in Resources */,
 				20F50F5319E77D8200DBED9A /* LaunchScreen.xib in Resources */,
 				20F50F5019E77D8200DBED9A /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		20F50F5619E77D8200DBED9A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,23 +300,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		20F50F5419E77D8200DBED9A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				20F50F5F19E77D8200DBED9A /* UPACTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		20F50F5A19E77D8200DBED9A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 20F50F4019E77D8200DBED9A /* UPAC */;
-			targetProxy = 20F50F5919E77D8200DBED9A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		20F50F4C19E77D8200DBED9A /* Main.storyboard */ = {
@@ -548,40 +462,6 @@
 			};
 			name = Release;
 		};
-		20F50F6619E77D8200DBED9A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = UPACTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UPAC.app/UPAC";
-			};
-			name = Debug;
-		};
-		20F50F6719E77D8200DBED9A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = UPACTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UPAC.app/UPAC";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -599,15 +479,6 @@
 			buildConfigurations = (
 				20F50F6319E77D8200DBED9A /* Debug */,
 				20F50F6419E77D8200DBED9A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		20F50F6519E77D8200DBED9A /* Build configuration list for PBXNativeTarget "UPACTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				20F50F6619E77D8200DBED9A /* Debug */,
-				20F50F6719E77D8200DBED9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

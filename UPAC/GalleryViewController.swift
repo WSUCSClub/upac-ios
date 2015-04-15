@@ -33,7 +33,7 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     }
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "CollectionViewHeader", forIndexPath: indexPath) as UICollectionReusableView
+        let header = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "CollectionViewHeader", forIndexPath: indexPath) as! UICollectionReusableView
         
         header.layer.borderColor = UIColor(rgb: 0xCCCCCC).CGColor
         
@@ -42,9 +42,9 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         var lastPhoto = "\(album.last!.date.monthStr()) \(album.last!.date.dayNumStr())"
         
         if firstPhoto != lastPhoto {
-            (header.viewWithTag(1) as UILabel).text = "\(firstPhoto) - \(lastPhoto)"
+            (header.viewWithTag(1) as! UILabel).text = "\(firstPhoto) - \(lastPhoto)"
         } else {
-            (header.viewWithTag(1) as UILabel).text = firstPhoto
+            (header.viewWithTag(1) as! UILabel).text = firstPhoto
         }
         
         return header
@@ -83,16 +83,16 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     // Set cell content
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if !galleryMgr.list.isEmpty {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewImageCell", forIndexPath: indexPath) as UICollectionViewCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewImageCell", forIndexPath: indexPath) as! UICollectionViewCell
             
-            (cell.contentView.viewWithTag(1) as UIImageView).image =  UIImage(data: galleryMgr.list[indexPath.section][indexPath.row].data)
+            (cell.contentView.viewWithTag(1) as! UIImageView).image =  UIImage(data: galleryMgr.list[indexPath.section][indexPath.row].data)
             
             cell.frame.size.width = getAppropriateCellSize()
             cell.frame.size.height = getAppropriateCellSize()
             
             return cell
         } else {
-            return collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewImageCell", forIndexPath: indexPath) as UICollectionViewCell
+            return collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewImageCell", forIndexPath: indexPath) as! UICollectionViewCell
         }
     }
     
@@ -104,9 +104,9 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     // Pass data to next view
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "FullImageView") {
-            var destinationView:ImageViewController = segue.destinationViewController as ImageViewController
+            var destinationView:ImageViewController = segue.destinationViewController as! ImageViewController
             
-            var indexPath:NSIndexPath = self.picturesCollectionView.indexPathForCell(sender as UICollectionViewCell)!
+            var indexPath:NSIndexPath = self.picturesCollectionView.indexPathForCell(sender as! UICollectionViewCell)!
             
             destinationView.album = galleryMgr.list[indexPath.section]
             destinationView.picture = galleryMgr.list[indexPath.section][indexPath.row]

@@ -50,7 +50,7 @@ class Event {
     }
     
     func removeNotification() {
-        for notification in UIApplication.sharedApplication().scheduledLocalNotifications as [UILocalNotification] {
+        for notification in UIApplication.sharedApplication().scheduledLocalNotifications as! [UILocalNotification] {
             if notification.alertBody!.rangeOfString("\(name) @ \(location)") != nil {
                 UIApplication.sharedApplication().cancelLocalNotification(notification)
             }
@@ -58,7 +58,7 @@ class Event {
     }
     
     func hasNotification() -> Bool {
-        for notification in UIApplication.sharedApplication().scheduledLocalNotifications as [UILocalNotification] {
+        for notification in UIApplication.sharedApplication().scheduledLocalNotifications as! [UILocalNotification] {
             if notification.alertBody!.rangeOfString("\(name) @ \(location)") != nil {
                 return true
             }
@@ -95,7 +95,7 @@ class EventManager {
                 } else {
                     // Load Facebook event IDs  from json result
                     var eventIDs = [String]()
-                    for eventDic in listResult.objectForKey("data") as [[String : String]] {
+                    for eventDic in listResult.objectForKey("data") as! [[String : String]] {
                         eventIDs.append(eventDic["id"]!)
                     }
                     
@@ -105,25 +105,25 @@ class EventManager {
                         var eventRequest = FBRequest(graphPath: eventID, parameters: ["fields":"id,name,cover,location,description,start_time,end_time"], HTTPMethod: nil)
                         
                         eventRequest.startWithCompletionHandler { connection, eventResult, eventError in                        
-                            let event = eventResult as [String : AnyObject]
+                            let event = eventResult as! [String : AnyObject]
                             
                             // Convert timestamps to NSDate
-                            let startTimestamp = event["start_time"]! as String
+                            let startTimestamp = event["start_time"]! as! String
                             
                             // Events do not have to have a set end_time
                             var endTimestamp: String
                             if event["end_time"] != nil {
-                                endTimestamp = event["end_time"]! as String
+                                endTimestamp = event["end_time"]! as! String
                             } else {
                                 endTimestamp = startTimestamp
                             }
                             
                             
-                            let newEvent = self.addEvent(event["id"]! as String,
-                                name: (event["name"]! as String).stringByReplacingOccurrencesOfString("UPAC Presents: ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil),
-                                image: (event["cover"]! as NSDictionary).valueForKey("source") as String,
-                                location: event["location"]! as String,
-                                desc: event["description"]! as String,
+                            let newEvent = self.addEvent(event["id"]! as! String,
+                                name: (event["name"]! as! String).stringByReplacingOccurrencesOfString("UPAC Presents: ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil),
+                                image: (event["cover"]! as! NSDictionary).valueForKey("source") as! String,
+                                location: event["location"]! as! String,
+                                desc: event["description"]! as! String,
                                 date: NSDate.fromFBDate(startTimestamp),
                                 endDate: NSDate.fromFBDate(endTimestamp))
                             

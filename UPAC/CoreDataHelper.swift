@@ -14,7 +14,7 @@ let coreDataHelper = CoreDataHelper()
 
 class CoreDataHelper {
     var managedObjectContext: NSManagedObjectContext? = {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         if let managedObjectContext = appDelegate.managedObjectContext {
             return managedObjectContext
         } else {

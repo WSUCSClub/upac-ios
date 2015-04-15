@@ -85,16 +85,16 @@ class EventsViewController: UITableViewController {
                 cellIdentifier = "TableViewEventCell"
             }
             
-            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! UITableViewCell
             
-            (cell.contentView.viewWithTag(1) as UILabel).text = e.name
-            (cell.contentView.viewWithTag(2) as UILabel).text = "\(e.date.monthStr()) \(e.date.dayNumStr()) @ \(e.location)"
-            (cell.contentView.viewWithTag(3) as UIImageView).image = UIImage(data: e.imageData)
+            (cell.contentView.viewWithTag(1) as! UILabel).text = e.name
+            (cell.contentView.viewWithTag(2) as! UILabel).text = "\(e.date.monthStr()) \(e.date.dayNumStr()) @ \(e.location)"
+            (cell.contentView.viewWithTag(3) as! UIImageView).image = UIImage(data: e.imageData)
             cell.contentView.viewWithTag(3)!.layer.borderColor = UIColor(rgb: 0x888888).CGColor
             
             return cell
         } else {
-            return tableView.dequeueReusableCellWithIdentifier("TableViewEventCell", forIndexPath: indexPath) as UITableViewCell
+            return tableView.dequeueReusableCellWithIdentifier("TableViewEventCell", forIndexPath: indexPath) as! UITableViewCell
         }
     }
     
@@ -104,9 +104,9 @@ class EventsViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EventDetailView" || segue.identifier == "EventDetailRaffleView" {
-            let destinationView:EventDetailViewController = segue.destinationViewController as EventDetailViewController
+            let destinationView:EventDetailViewController = segue.destinationViewController as! EventDetailViewController
             
-            let indexPath:NSIndexPath = self.eventsTableView.indexPathForCell(sender as UITableViewCell)!
+            let indexPath:NSIndexPath = self.eventsTableView.indexPathForCell(sender as! UITableViewCell)!
             
             destinationView.delegate = self
             destinationView.event = eventMgr.list[indexPath.row] as Event

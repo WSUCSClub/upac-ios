@@ -11,7 +11,7 @@ import Foundation
 extension Array {
     func contains<T : Equatable>(x:T) -> Bool {
         for var i = 0; i < self.count; i++ {
-            if self[i] as T == x {
+            if self[i] as! T == x {
                 return true
             }
         }

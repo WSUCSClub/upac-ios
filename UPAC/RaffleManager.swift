@@ -63,7 +63,7 @@ class RaffleManager {
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
         fetchRequest.sortDescriptors = [ sortDescriptor ]
         
-        return coreDataHelper.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as [Raffle]!
+        return coreDataHelper.managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as! [Raffle]!
     }
     
     func getRaffles() {
@@ -81,7 +81,7 @@ class RaffleManager {
                     var stillExists = false
                     
                     for parseRaffle in parseList {
-                        if localRaffle.id == parseRaffle["eventId"] as String {
+                        if localRaffle.id == parseRaffle["eventId"] as! String {
                             stillExists = true
                         }
                     }
@@ -95,13 +95,13 @@ class RaffleManager {
                 
                 // Only add to local storage if does not already exist
                 for parseRaffle in parseList {
-                    if self.getForID(parseRaffle["eventId"] as String) == nil {
+                    if self.getForID(parseRaffle["eventId"] as! String) == nil {
                         // Add to Core Data
-                        let newRaffle = NSEntityDescription.insertNewObjectForEntityForName("Raffle", inManagedObjectContext: coreDataHelper.managedObjectContext!) as Raffle
+                        let newRaffle = NSEntityDescription.insertNewObjectForEntityForName("Raffle", inManagedObjectContext: coreDataHelper.managedObjectContext!) as! Raffle
                         
-                        newRaffle.id = parseRaffle["eventId"] as String
-                        newRaffle.date = parseRaffle["date"] as NSDate
-                        newRaffle.endDate = parseRaffle["endDate"] as NSDate
+                        newRaffle.id = parseRaffle["eventId"] as! String
+                        newRaffle.date = parseRaffle["date"] as! NSDate
+                        newRaffle.endDate = parseRaffle["endDate"] as! NSDate
                         newRaffle.localEntry = ""
                         
                         self.list.append(newRaffle)

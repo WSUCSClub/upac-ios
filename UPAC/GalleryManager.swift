@@ -44,11 +44,11 @@ class GalleryManager {
                 } else {
                     // Loop through all albums
                     var count = 0
-                    for albumDic in albumListResult.objectForKey("data") as [[String : AnyObject]] {
+                    for albumDic in albumListResult.objectForKey("data") as! [[String : AnyObject]] {
                         ++count
                         var album = [Picture]()
                         
-                        var albumID = albumDic["id"]! as String
+                        var albumID = albumDic["id"]! as! String
                                                 
                         // Get each individual album
                         var albumRequest = FBRequest(graphPath: "\(albumID)/photos", parameters: nil, HTTPMethod: nil)
@@ -56,11 +56,11 @@ class GalleryManager {
                             
                             if let fbAlbum = albumResult as? [String : AnyObject] {
                                 // Get each picture in album
-                                for pictureDic in fbAlbum["data"] as [AnyObject] {
-                                    album.append(self.addPicture(pictureDic.objectForKey("id") as String,
-                                        date: NSDate.fromFBDate(pictureDic.objectForKey("created_time") as String),
-                                        thumb: pictureDic.objectForKey("picture") as String,
-                                        src: pictureDic.objectForKey("source") as String))
+                                for pictureDic in fbAlbum["data"] as! [AnyObject] {
+                                    album.append(self.addPicture(pictureDic.objectForKey("id") as! String,
+                                        date: NSDate.fromFBDate(pictureDic.objectForKey("created_time") as! String),
+                                        thumb: pictureDic.objectForKey("picture") as! String,
+                                        src: pictureDic.objectForKey("source") as! String))
                                 }
                                 
                             }
@@ -74,7 +74,7 @@ class GalleryManager {
                             }
                             
                             // Refresh tableView
-                            if count == (albumListResult.objectForKey("data") as [[String : AnyObject]]).count {
+                            if count == (albumListResult.objectForKey("data") as! [[String : AnyObject]]).count {
                                 //self.list = self.list.reverse() // put albums in reverse chronological
                                 self.list.sort({$0[0].date.timeIntervalSinceNow > $1[0].date.timeIntervalSinceNow})
 

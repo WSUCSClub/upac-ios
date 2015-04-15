@@ -34,7 +34,7 @@ class EventDetailViewController: UIViewController {
         super.viewDidLoad()
         
         if event.hasRaffle() {
-            raffle = raffleMgr.getForID(event.id)?
+            raffle = raffleMgr.getForID(event.id)
         }
         
         var swipeLeft = UISwipeGestureRecognizer(target: self, action: Selector("moveToNextEvent"))
@@ -144,7 +144,7 @@ class EventDetailViewController: UIViewController {
         if index + 1 < eventMgr.list.count {
             index?++
             event = eventMgr.list[index] as Event
-            raffle = raffleMgr.getForID(event.id)?
+            raffle = raffleMgr.getForID(event.id)
             
             updateView()
         }
@@ -154,7 +154,7 @@ class EventDetailViewController: UIViewController {
         if index - 1 >= 0 {
             index?--
             event = eventMgr.list[index] as Event
-            raffle = raffleMgr.getForID(event.id)?
+            raffle = raffleMgr.getForID(event.id)
             
             updateView()
         }
